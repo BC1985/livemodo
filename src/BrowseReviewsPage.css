@@ -1,0 +1,25 @@
+.tagline {
+  color: gray;
+  font-style: italic;
+}
+.band-search {
+  margin-top: 60px;
+  background-color: lightgray;
+  padding: 20px;
+}
+
+.browse-reviews-container {
+  padding: 40px;
+  text-align: left;
+}
+.user-name {
+  font-weight: bold;
+}
+.user-status {
+  font-style: italic;
+  font-weight: normal;
+  color: gray;
+}
+.review {
+  margin-bottom: 100px;
+}
