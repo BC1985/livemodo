@@ -1,6 +1,11 @@
 import React from "react";
 
 function SignupForm() {
+  const spanStyle = {
+    color: "gray",
+    fontStyle: "italic",
+    fontSize: "12px"
+  };
   return (
     <>
       <div className="call-to-action">
@@ -18,14 +23,23 @@ function SignupForm() {
           <input type="text" placeholder="e.g tommy@theroom.com" required />
           <label>*Password</label>
           <input type="text" required />
-          <p>Pick the option that best describes your concergoing habits</p>
-          <input type="radio" />
-          Homebody
-          <input type="radio" />
-          Occasional concertgoer
-          <input type="radio" />
-          Concert Connuiseur
-          <p>(* indicated required field)</p>
+          <p style={spanStyle}>(* indicated required field)</p>
+          <p>
+            Pick the option that best describes your concergoing habits
+            (optional)
+          </p>
+          <div>
+            <input type="radio" value="homebody" />
+            Homebody
+          </div>
+          <div>
+            <input type="radio" />
+            Occasional concertgoer
+          </div>
+          <div>
+            <input type="radio" />
+            Concert Connuiseur
+          </div>
           <button type="submit">Sign me up!</button>
         </form>
       </div>

@@ -1,5 +1,16 @@
 form {
+  display: flex;
+  flex-direction: column;
   margin-left: 70px;
   margin-right: 70px;
   text-align: left;
+}
+
+label {
+  padding: 5px;
+}
+
+button {
+  align-self: center;
+  margin: 20px;
 }
