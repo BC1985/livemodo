@@ -7,6 +7,8 @@ import Footer from "./Footer";
 import "./Footer.css";
 import LandingPage from "./LandingPage";
 import "./LandingPage.css";
+import SignupForm from "./SignupForm";
+import "./SignupForm.css";
 export default class App extends Component {
   render() {
     return (
@@ -14,6 +16,7 @@ export default class App extends Component {
         <div className="App">
           <Navbar />
           <LandingPage />
+          <SignupForm />
           <Footer />
         </div>
       </Router>
