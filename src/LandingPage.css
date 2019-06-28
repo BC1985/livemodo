@@ -1,0 +1,15 @@
+h1 {
+  padding-top: 100px;
+}
+
+.description {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  line-height: 25px;
+}
+
+.call-to-action {
+  padding: 20px;
+}
