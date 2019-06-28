@@ -1,11 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-// import { faMusic } from "@fortawesome/free-solid-svg-icons";
+import { faPortrait } from "@fortawesome/free-solid-svg-icons";
 
 function BrowseReviewsPage() {
   const star = <FontAwesomeIcon icon={faStar} />;
-  //   const musicalNote = <FontAwesomeIcon icon={faMusic} />;
+  const userThumbnail = <FontAwesomeIcon icon={faPortrait} />;
 
   return (
     <>
@@ -30,8 +30,10 @@ function BrowseReviewsPage() {
             <h4 className="tagline">
               This is a user tagline lorem ipsum dolor sit amet
             </h4>
+
             <p className="user-name">
-              Username <span className="user-status">(avid concertgoer)</span>
+              <span className="user-thumbnail">{userThumbnail}</span> Username{" "}
+              <span className="user-status">(avid concertgoer)</span>
             </p>
             <div className="review">
               <p>
@@ -54,7 +56,8 @@ function BrowseReviewsPage() {
               This is a user tagline lorem ipsum dolor sit amet
             </h4>
             <p className="user-name">
-              Username <span className="user-status">(Homebody)</span>
+              <span className="user-thumbnail">{userThumbnail}</span> Username{" "}
+              <span className="user-status">(Homebody)</span>
             </p>
             <div className="review">
               <p>
@@ -80,7 +83,8 @@ function BrowseReviewsPage() {
               This is a user tagline lorem ipsum dolor sit amet
             </h4>
             <p className="user-name">
-              Username <span className="user-status">(avid concertgoer)</span>
+              <span className="user-thumbnail">{userThumbnail}</span> Username{" "}
+              <span className="user-status">(avid concertgoer)</span>
             </p>
             <div className="review">
               <p>
