@@ -23,10 +23,10 @@ function SignupForm() {
           <input type="text" placeholder="e.g tommy@theroom.com" required />
           <label>*Password</label>
           <input type="text" required />
-          <p style={spanStyle}>(* indicated required field)</p>
+          <p style={spanStyle}>(* indicates required field)</p>
           <p>
-            Pick the option that best describes your concergoing habits
-            (optional)
+            Pick the option that best describes your concergoing habits{" "}
+            <span style={spanStyle}>(optional)</span>
           </p>
           <div>
             <input type="radio" value="homebody" />
