@@ -12,6 +12,9 @@ import "./SignupForm.css";
 import BrowseReviewsPage from "./BrowseReviewsPage";
 import "./BrowseReviewsPage.css";
 import LoginForm from "./LoginPage";
+import AddReviewsPage from "./AddReviewsPage";
+import "./AddReviewsPage.css";
+
 export default class App extends Component {
   render() {
     return (
@@ -22,6 +25,7 @@ export default class App extends Component {
           <SignupForm />
           <BrowseReviewsPage />
           <LoginForm />
+          <AddReviewsPage />
           <Footer />
         </div>
       </Router>
