@@ -20,7 +20,9 @@ function BrowseReviewsPage() {
         <div className="reviews-section">
           <h2>Browse latest reviews</h2>
           <div className="review-container">
-            <h3 className="band-name">Wild Munching Goats</h3>
+            <h3 className="band-name">Sonic Tooth</h3>
+            <p>Venue: The Globe Theatre</p>
+            <p>Date:12/3/2003</p>
             {star}
             {star}
             {star}
@@ -43,6 +45,9 @@ function BrowseReviewsPage() {
           </div>
           <div className="review-container">
             <h3 className="band-name">The Pointy Brothers</h3>
+            <p className="venue-name">Venue: Bob's Crab Shack</p>
+            <p>Date:05/11/2012</p>
+
             {star}
             {star}
             <h4 className="tagline">
@@ -63,6 +68,9 @@ function BrowseReviewsPage() {
           </div>
           <div className="review-container">
             <h3 className="band-name">Veruca's Midnight Spacemen</h3>
+            <p className="venue-name">Venue: Pompeii ruins</p>
+            <p>Date:04/20/2004</p>
+
             {star}
             {star}
             {star}
