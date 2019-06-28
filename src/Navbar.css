@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  text-align: center;
+  background-color: rgb(65, 63, 63);
+  color: white;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
