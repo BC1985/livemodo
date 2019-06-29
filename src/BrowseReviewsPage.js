@@ -11,9 +11,11 @@ function BrowseReviewsPage() {
     <>
       <div className="band-search">
         <form>
-          <label>Search band </label>
-          <input type="text" placeholder="e.g The Zombie Kittens" />
-          <button type="submit">Go</button>
+          <div>
+            <label>Search band </label>
+            <input type="text" placeholder="e.g The Zombie Kittens" />
+            <button type="submit">Go</button>
+          </div>
         </form>
       </div>
       <div className="browse-reviews-container">
@@ -97,6 +99,7 @@ function BrowseReviewsPage() {
             </div>
           </div>
         </div>
+        <div className="push" />
       </div>
     </>
   );
