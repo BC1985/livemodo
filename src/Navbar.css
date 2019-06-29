@@ -4,15 +4,24 @@
 
 nav {
   display: flex;
-  text-align: center;
+  flex-direction: row;
+
   background-color: rgb(65, 63, 63);
   color: white;
   height: 40px;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
+  justify-content: space-evenly;
 }
-
+ul {
+  display: flex;
+}
 a {
   color: white;
   text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
 }

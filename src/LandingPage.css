@@ -3,8 +3,8 @@ h1 {
 }
 
 .description {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-top: 20px;
   margin-bottom: 100px;
   line-height: 25px;
@@ -12,4 +12,13 @@ h1 {
 
 .call-to-action {
   padding: 20px;
+}
+
+.header {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.call-to-action {
+  font-family: "Josefin Sans", sans-serif;
+  text-decoration: underline;
 }

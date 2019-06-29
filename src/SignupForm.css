@@ -6,6 +6,12 @@ form {
   text-align: left;
 }
 
+input,
+textarea {
+  background-color: #cccc;
+  padding: 5px;
+}
+
 label {
   padding: 5px;
 }

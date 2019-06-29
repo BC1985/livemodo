@@ -1,0 +1,13 @@
+.forgot-credentials {
+  height: 50vh;
+}
+
+form {
+  margin-right: auto;
+  margin-left: auto;
+  width: 30%;
+}
+
+.login-header {
+  padding: 50px;
+}
