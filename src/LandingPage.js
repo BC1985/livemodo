@@ -26,7 +26,7 @@ const Description = () => {
 export default function LandingPage() {
   return (
     <div className="container">
-      <div className="hero">
+      <div className="header">
         <h1>Livemodo</h1>
         <h3>Your wiki live shows resource</h3>
       </div>
