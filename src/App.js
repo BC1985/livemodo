@@ -46,7 +46,7 @@ export default class App extends Component {
             {this.state.isEmptyState && (
               <AddReviewsPage addReview={this.changeState} />
             )}
-            {/* <Route path="/add" component={AddReviewsPage} /> */}
+            <Route path="/add" component={AddReviewsPage} />
             />
           </Switch>
           <Footer />
