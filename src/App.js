@@ -17,6 +17,7 @@ import AddReviewsPage from "./AddReviewsPage";
 import "./AddReviewsPage.css";
 import ThankYouPage from "./ThankYouPage";
 import ErrorMessage from "./ErrorMessage";
+import Calendar from "react-calendar";
 
 export default class App extends Component {
   constructor() {
@@ -48,6 +49,7 @@ export default class App extends Component {
               <AddReviewsPage
                 addReview={this.changeState}
                 errorMessage={ErrorMessage}
+                Calendar={Calendar}
               />
             )}
             <Route path="/add" component={AddReviewsPage} />
