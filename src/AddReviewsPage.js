@@ -1,5 +1,12 @@
 import React, { Component } from "react";
+import ErrorMessage from "./ErrorMessage";
 // import ThankYouPage from "./ThankYouPage";
+function validate(venue, bandName) {
+  return {
+    bandName: bandName.length === 0,
+    venue: venue.length === 0
+  };
+}
 class addReviewsPage extends Component {
   constructor() {
     super();
@@ -7,11 +14,30 @@ class addReviewsPage extends Component {
       tagline: "",
       bandName: "",
       venue: "",
-      date: "",
+      showDate: "",
       selectedItem: "",
-      showThankYouPage: false
+      showThankYouPage: false,
+      errors: { venue: false, bandName: false },
+      touched: {
+        venue: false,
+        bandName: false
+      },
+      errorMessage: false
     };
   }
+
+  canSubmit = () => {
+    const { bandName, venue } = this.state;
+    const errors = this.props.validate(venue, bandName);
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    return !isDisabled;
+  };
+
+  handleSubmit = e => {
+    if (!this.canSubmit()) {
+      e.preventDefault();
+    }
+  };
   changeHandler = e => {
     const name = e.target.name;
     const value = e.target.type === "radio" ? e.target.checked : e.target.value;
@@ -25,32 +51,38 @@ class addReviewsPage extends Component {
     this.setState({
       selectedItem
     });
-    console.log(this.state);
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    // this.setState({
-    //   redirect: true
-    // });
+  handleBlur = field => e => {
+    this.setState({
+      touched: { ...this.state.touched, [field]: true }
+    });
   };
-
   render() {
-    // if (this.state.redirect) {
-    //   return <Redirect to="/thank-you" component={ThankYouPage} />;
-    // }
+    const shouldBeError = field => {
+      const hasErrors = errors[field];
+      const shouldShow = this.state.touched[field];
+      return hasErrors ? shouldShow : false;
+    };
+
+    const { bandName, venue } = this.state;
+    const errors = validate(venue, bandName);
+    const isEnabled = !Object.keys(errors).some(x => errors[x]);
+    
     const spanStyle = {
       color: "gray",
       fontStyle: "italic",
       fontSize: "12px"
     };
+    console.log(this.state.errors);
+
     return (
       <div>
         <div className="add-review-container">
           <div>
             <h2 id="add-review-header">Add review</h2>
           </div>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <label>
               Add tagline <span style={spanStyle}>(optional)</span>
             </label>
@@ -64,29 +96,36 @@ class addReviewsPage extends Component {
               />
               <label>*Name of performer/ band</label>
               <input
+                className={shouldBeError("bandName") ? "error" : ""}
                 placeholder="e.g The hungry Caterpillars"
                 name="bandName"
                 value={this.state.bandName.value}
                 onChange={this.changeHandler}
+                onBlur={this.handleBlur("bandName")}
                 required
               />
               <label>*Name of venue</label>
               <input
+                className={shouldBeError("venue") ? "error" : ""}
                 placeholder="e.g Yolanda's Prophylactic Emporium"
                 name="venue"
                 value={this.state.venue.value}
+                onBlur={this.handleBlur("venue")}
                 onChange={this.changeHandler}
                 required
               />
               <label>*Date of performace</label>
               <input
                 type="text"
-                name="date"
-                value={this.state.date.value}
+                name="showDate"
+                value={this.state.showDate.value}
                 onChange={this.changeHandler}
                 required
               />
               <p style={spanStyle}>(* indicates required field)</p>
+              <div className={shouldBeError("message") ? "error" : ""}>
+                {this.state.errors && <ErrorMessage />}
+              </div>
             </section>
             <label>*Rate your experience</label>
             <section className="radio-buttons">
@@ -127,7 +166,11 @@ class addReviewsPage extends Component {
               5
             </section>
 
-            <button type="submit" onClick={this.props.addReview}>
+            <button
+              type="submit"
+              disabled={!isEnabled}
+              onClick={this.props.addReview}
+            >
               Submit
             </button>
           </form>

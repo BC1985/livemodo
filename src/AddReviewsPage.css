@@ -10,3 +10,7 @@
 #add-review-header {
   padding: 20px;
 }
+
+.error {
+  border: 1px solid red;
+}
