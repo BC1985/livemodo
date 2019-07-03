@@ -7,7 +7,7 @@ function validate(venue, bandName) {
     venue: venue.length === 0
   };
 }
-class addReviewsPage extends Component {
+class AddReviewsPage extends Component {
   constructor() {
     super();
     this.state = {
@@ -68,13 +68,12 @@ class addReviewsPage extends Component {
     const { bandName, venue } = this.state;
     const errors = validate(venue, bandName);
     const isEnabled = !Object.keys(errors).some(x => errors[x]);
-    
+
     const spanStyle = {
       color: "gray",
       fontStyle: "italic",
       fontSize: "12px"
     };
-    console.log(this.state.errors);
 
     return (
       <div>
@@ -123,8 +122,8 @@ class addReviewsPage extends Component {
                 required
               />
               <p style={spanStyle}>(* indicates required field)</p>
-              <div className={shouldBeError("message") ? "error" : ""}>
-                {this.state.errors && <ErrorMessage />}
+              <div>
+                <ErrorMessage />{" "}
               </div>
             </section>
             <label>*Rate your experience</label>
@@ -180,4 +179,4 @@ class addReviewsPage extends Component {
     );
   }
 }
-export default addReviewsPage;
+export default AddReviewsPage;
