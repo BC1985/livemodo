@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ErrorMessage from "./ErrorMessage";
 // import ThankYouPage from "./ThankYouPage";
+import Calendar from "react-calendar";
 function validate(venue, bandName) {
   return {
     bandName: bandName.length === 0,
@@ -14,7 +15,8 @@ class AddReviewsPage extends Component {
       tagline: "",
       bandName: "",
       venue: "",
-      showDate: "",
+      currentDate: new Date(),
+      selectedDate: "",
       selectedItem: "",
       showThankYouPage: false,
       errors: { venue: false, bandName: false },
@@ -57,6 +59,10 @@ class AddReviewsPage extends Component {
     this.setState({
       touched: { ...this.state.touched, [field]: true }
     });
+  };
+
+  changeShowDate = e => {
+    this.setState({});
   };
   render() {
     const shouldBeError = field => {
@@ -114,13 +120,19 @@ class AddReviewsPage extends Component {
                 required
               />
               <label>*Date of performace</label>
-              <input
+              <Calendar
+                className="show-date-picker"
+                value={this.state.selectedDate}
+                onChange={this.changeShowDate}
+              />
+              {/* <input
                 type="text"
-                name="showDate"
-                value={this.state.showDate.value}
+                name="date"
+                value={this.state.date.value}
                 onChange={this.changeHandler}
                 required
-              />
+              /> */}
+
               <p style={spanStyle}>(* indicates required field)</p>
               <div>
                 <ErrorMessage />{" "}
