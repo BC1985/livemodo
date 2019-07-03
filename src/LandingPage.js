@@ -1,13 +1,6 @@
-import React from "react";
-
-const CallToAction = () => {
-  return (
-    <div>
-      <h3>Sign up</h3>
-    </div>
-  );
-};
-
+import React, { Component } from "react";
+// import { Router, Link } from "react-router-dom";
+// import LoginPage from "./LoginPage";
 const Description = () => {
   return (
     <div>
@@ -23,19 +16,49 @@ const Description = () => {
   );
 };
 
-export default function LandingPage() {
-  return (
-    <div className="container">
-      <div className="header">
-        <h1>Livemodo</h1>
-        <h3>Your wiki live shows resource</h3>
+export default class LandingPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isLoggedIn: true,
+      userName: "John"
+    };
+  }
+
+  UserIsLoggedIn = () => {
+    return <p>Welcome {this.state.userName}!</p>;
+  };
+  UserNotLoggedIn = () => {
+    return (
+      // <Router>
+      //   <Link to="/login">
+      <p>Log in</p>
+      //   </Link>
+      // </Router>
+    );
+  };
+
+  render() {
+    const Greeting = () => {
+      if (this.state.isLoggedIn) {
+        return <this.UserIsLoggedIn />;
+      }
+      return <this.UserNotLoggedIn />;
+    };
+
+    return (
+      <div className="container">
+        <div className="header">
+          <h1>Livemodo</h1>
+          <h3>Your wiki live shows resource</h3>
+        </div>
+        <div className={!this.state.isLoggedIn ? "login" : "greeting"}>
+          <Greeting />
+        </div>
+        <div className="description">
+          <Description />
+        </div>
       </div>
-      <div className="call-to-action">
-        <CallToAction />
-      </div>
-      <div className="description">
-        <Description />
-      </div>
-    </div>
-  );
+    );
+  }
 }

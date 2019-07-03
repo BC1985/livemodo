@@ -10,15 +10,19 @@ h1 {
   line-height: 25px;
 }
 
-.call-to-action {
-  padding: 20px;
-}
-
 .header {
   font-family: "Josefin Sans", sans-serif;
 }
 
-.call-to-action {
+.login {
+  padding: 20px;
   font-family: "Josefin Sans", sans-serif;
   text-decoration: underline;
+  color: black;
+}
+
+.greeting {
+  padding: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  color: black;
 }
