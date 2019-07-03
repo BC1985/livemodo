@@ -1,12 +1,15 @@
 import React from "react";
 
+const handleSubmit = e => {
+  e.preventDefault();
+};
 export default function LoginForm() {
   return (
     <div className="login-form-container">
       <section className="login-header">
         <h1>Login to Livemodo</h1>
       </section>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Username</label>
         <input type="text" />
         <label>Password</label>
