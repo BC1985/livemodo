@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 
-class LoginComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoggedIn: true
-    };
-  }
+export default class LoginComponent extends Component {
+  // setLoginState = () => {
+  //   const { isLoggedIn } = this.props;
+  //   if (!isLoggedIn) {
+  //     return "Log in";
+  //   }
+  // };
   render() {
-    let linkText = this.state.isLoggedIn ? "Log out" : "Log in";
-    return <div>{linkText}</div>;
+    return <div>{this.props.children}</div>;
   }
 }
-
-export default LoginComponent;
