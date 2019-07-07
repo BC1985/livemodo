@@ -6,11 +6,10 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  background-image: url("../src/images/audience-backlit-blue-2078071.jpg");
+  background-size: cover;
+  color: whitesmoke;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
