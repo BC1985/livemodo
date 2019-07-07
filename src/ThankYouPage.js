@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 class ThankYouPage extends Component {
   componentDidMount() {
     const redirect = () => {
-      this.props.history.goBack();
+      this.props.history.push("/");
       this.props.thankYouRedirect();
     };
     setTimeout(redirect, 3000);
