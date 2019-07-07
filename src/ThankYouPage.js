@@ -1,8 +1,16 @@
 import React, { Component } from "react";
-// import { Router, Route } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 // import LandingPage from "./LandingPage";
 
-export default class ThankYouPage extends Component {
+class ThankYouPage extends Component {
+  componentDidMount() {
+    const redirect = () => {
+      this.props.history.goBack();
+      this.props.thankYouRedirect();
+    };
+    setTimeout(redirect, 3000);
+  }
+
   render() {
     return (
       <div className="hero">
@@ -14,3 +22,5 @@ export default class ThankYouPage extends Component {
     );
   }
 }
+
+export default withRouter(ThankYouPage);
