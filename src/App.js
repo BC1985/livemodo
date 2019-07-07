@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Navbar";
-import "./Navbar.css";
 import Footer from "./Footer";
 import "./Footer.css";
 import LandingPage from "./LandingPage";
@@ -25,8 +24,9 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      isEmptyState: true,
-      isLoggedIn: false
+      isLoggedIn: true,
+      userName: "John",
+      isEmptyState: true
     };
   }
 
@@ -43,23 +43,17 @@ export default class App extends Component {
     });
   };
   render() {
-    const { isLoggedIn } = this.state;
-    console.log(isLoggedIn);
+    const { isLoggedIn, userName } = this.state;
     return (
       <Router>
         <div className="App">
-          <Navbar isLoggedIn={isLoggedIn} />
+          <Navbar isLoggedIn={isLoggedIn} userName={userName} />
           <BrowseForm />
           <Switch>
             {this.state.isThankYouPage && (
               <ThankYouPage thankYouRedirect={this.thankYouRedirect} />
             )}
-            <Route
-              exact
-              path="/"
-              component={LandingPage}
-              isLoggedIn={isLoggedIn}
-            />
+            <LandingPage isLoggedIn={isLoggedIn} />
             <Route path="/signup" component={SignupForm} />
             <Route path="/browse" component={BrowseReviewsPage} />
             <Route path="/login" component={LoginPage} />
