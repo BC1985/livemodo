@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Button from "./Button";
 import "./LandingPage.css";
 
@@ -23,22 +23,31 @@ export default class LandingPage extends Component {
   constructor() {
     super();
     this.state = {
-      userName: "John",
-      Redirect: false
+      userName: "John"
     };
   }
+  redirect = () => {
+    this.setState({
+      Redirect: true
+    });
+    console.log(this.state);
+  };
   UserNotLoggedIn = () => {
     return (
       <Link to="/login">
-        <Button id="login-button">Log in</Button>
+        <Button id="login-button" onClick={this.redirect}>
+          Log in
+        </Button>
       </Link>
     );
   };
 
   render() {
     const { isLoggedIn } = this.props;
-    console.log(isLoggedIn);
 
+    if (this.state.Redirect) {
+      return <Redirect push to="/login" />;
+    }
     const notLoggedIn = <this.UserNotLoggedIn />;
     return (
       <div className="container">
