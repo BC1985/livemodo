@@ -1,28 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import LoginComponent from "./LoginComponent";
 
-export default function Navbar() {
-  return (
-    <div className="container">
-      <nav className="nav-wrapper">
-        <ul>
-          <Link to="/">
-            <li>About</li>
-          </Link>
-          <Link to="/add">
-            <li>Add review</li>
-          </Link>
-          <Link to="/browse">
-            <li>Browse reviews</li>
-          </Link>
-          <Link to="/login">
-            <li>
-              <LoginComponent />
-            </li>
-          </Link>
-        </ul>
-      </nav>
-    </div>
-  );
+export default class Navbar extends Component {
+  render() {
+    return (
+      <div className="container">
+        <nav className="nav-wrapper">
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/add">Add review</NavLink>
+          <NavLink to="/browse">Browse reviews</NavLink>
+          <NavLink to="/login">
+            <LoginComponent>
+              {this.props.isLoggedIn ? "" : "Log out"}
+            </LoginComponent>
+          </NavLink>
+        </nav>
+      </div>
+    );
+  }
 }
