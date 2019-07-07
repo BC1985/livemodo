@@ -4,6 +4,8 @@ import ErrorMessage from "./ErrorMessage";
 // import Calendar from "react-calendar";
 import Calendar from "react-calendar";
 import Button from "./Button";
+import "./AddReviewsPage.css";
+
 function validate(venue, bandName) {
   return {
     bandName: bandName.length === 0,

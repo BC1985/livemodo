@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "./Button";
+import "./BrowseForm.css";
 
 class BrowseForm extends Component {
   constructor(props) {

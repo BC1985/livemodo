@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faPortrait } from "@fortawesome/free-solid-svg-icons";
+import "./BrowseReviewsPage.css";
 
 function BrowseReviewsPage() {
   const star = <FontAwesomeIcon icon={faStar} />;

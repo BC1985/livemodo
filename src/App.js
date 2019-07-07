@@ -3,22 +3,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import "./Footer.css";
 import LandingPage from "./LandingPage";
-import "./LandingPage.css";
 import SignupForm from "./SignupForm";
-import "./SignupForm.css";
 import BrowseReviewsPage from "./BrowseReviewsPage";
-import "./BrowseReviewsPage.css";
 import LoginPage from "./LoginPage";
-import "./LoginPage.css";
 import AddReviewsPage from "./AddReviewsPage";
-import "./AddReviewsPage.css";
 import ThankYouPage from "./ThankYouPage";
 import ErrorMessage from "./ErrorMessage";
 import Calendar from "react-calendar";
 import BrowseForm from "./BrowseForm";
-import "./BrowseForm.css";
 
 export default class App extends Component {
   constructor() {

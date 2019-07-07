@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 // import LandingPage from "./LandingPage";
 import Button from "./Button";
+import "./LoginPage.css";
 
 export default class LoginForm extends Component {
   constructor() {
