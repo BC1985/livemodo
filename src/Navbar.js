@@ -6,7 +6,7 @@ import "./Navbar.css";
 
 export default class Navbar extends Component {
   render() {
-    let { isLoggedIn, userName } = this.props;
+    let { isLoggedIn } = this.props;
     return (
       <div className="container">
         <nav className="nav-wrapper">
