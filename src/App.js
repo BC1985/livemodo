@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import LandingPage from "./LandingPage";
 import SignupForm from "./SignupForm";
 import BrowseReviewsPage from "./BrowseReviewsPage";
-import LoginPage from "./LoginPage";
+import LoginForm from "./LoginPage";
 import AddReviewsPage from "./AddReviewsPage";
 import ThankYouPage from "./ThankYouPage";
 import ErrorMessage from "./ErrorMessage";
@@ -17,12 +17,18 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      isLoggedIn: true,
+      isLoggedIn: false,
       userName: "John",
       isEmptyState: true
     };
   }
 
+  changeLoginState = () => {
+    this.setState({
+      ...this.state,
+      isLoggedIn: true
+    });
+  };
   changeState = () => {
     this.setState({
       ...this.state,
@@ -36,23 +42,30 @@ export default class App extends Component {
     });
   };
   render() {
-    const { isLoggedIn, userName } = this.state;
+    const { isLoggedIn, userName, isThankYouPage, isEmptyState } = this.state;
+    console.log(this.state.isLoggedIn);
+
     return (
       <Router>
         <div className="App">
           <Navbar isLoggedIn={isLoggedIn} userName={userName} />
           <BrowseForm />
           <Switch>
-            {this.state.isThankYouPage && (
+            <Route
+              exact
+              path="/"
+              component={LandingPage}
+              isLoggedIn={isLoggedIn}
+            />
+            {isThankYouPage && (
               <ThankYouPage thankYouRedirect={this.thankYouRedirect} />
             )}
-            <LandingPage isLoggedIn={isLoggedIn} />
             <Route path="/signup" component={SignupForm} />
             <Route path="/browse" component={BrowseReviewsPage} />
-            <Route path="/login" component={LoginPage} />
-            {this.state.isEmptyState && (
+            <LoginForm path="/login" changeLoginState={this.changeLoginState} />
+            {isEmptyState && (
               <AddReviewsPage
-                addReview={this.changeState}
+                changeState={this.changeState}
                 errorMessage={ErrorMessage}
                 Calendar={Calendar}
               />
