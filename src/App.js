@@ -51,12 +51,7 @@ export default class App extends Component {
           <Navbar isLoggedIn={isLoggedIn} userName={userName} />
           <BrowseForm />
           <Switch>
-            <Route
-              exact
-              path="/"
-              component={LandingPage}
-              isLoggedIn={isLoggedIn}
-            />
+            <LandingPage exact path="/" isLoggedIn={isLoggedIn} />
             {isThankYouPage && (
               <ThankYouPage thankYouRedirect={this.thankYouRedirect} />
             )}
