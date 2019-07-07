@@ -22,15 +22,10 @@ export default class LandingPage extends Component {
   constructor() {
     super();
     this.state = {
-      // isLoggedIn: true,
       userName: "John",
       Redirect: false
     };
   }
-
-  UserIsLoggedIn = () => {
-    return <p>Welcome {this.state.userName}!</p>;
-  };
   UserNotLoggedIn = () => {
     return (
       <Link to="/login">
@@ -42,7 +37,7 @@ export default class LandingPage extends Component {
   render() {
     const { isLoggedIn } = this.props;
     console.log(isLoggedIn);
-    const loggedIn = <this.UserIsLoggedIn />;
+
     const notLoggedIn = <this.UserNotLoggedIn />;
     return (
       <div className="container">
@@ -51,7 +46,7 @@ export default class LandingPage extends Component {
           <h3>Your wiki live shows resource</h3>
         </div>
         <div id={!this.props.isLoggedIn ? "login" : "greeting"}>
-          {isLoggedIn ? loggedIn : notLoggedIn}
+          {!isLoggedIn ? notLoggedIn : null}
         </div>
 
         <div className="description">
