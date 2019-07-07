@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import ErrorMessage from "./ErrorMessage";
 // import ThankYouPage from "./ThankYouPage";
+// import Calendar from "react-calendar";
 import Calendar from "react-calendar";
+import Button from "./Button";
 function validate(venue, bandName) {
   return {
     bandName: bandName.length === 0,
@@ -15,9 +17,9 @@ class AddReviewsPage extends Component {
       tagline: "",
       bandName: "",
       venue: "",
-      currentDate: new Date(),
-      selectedDate: "",
+      value: new Date(),
       selectedItem: "",
+      selectedItemValue: "",
       showThankYouPage: false,
       errors: { venue: false, bandName: false },
       touched: {
@@ -48,21 +50,27 @@ class AddReviewsPage extends Component {
     });
   };
   checkItem = e => {
-    let selectedItem = this.state.selectedItem;
+    let { selectedItem, selectedItemValue } = this.state;
     selectedItem = e.target.checked;
+    selectedItemValue = e.target.value;
+    // selectedItemValue = e.target.value;
     this.setState({
-      selectedItem
+      selectedItem,
+      selectedItemValue
     });
   };
 
   handleBlur = field => e => {
     this.setState({
-      touched: { ...this.state.touched, [field]: true }
+      touched: { ...this.state.touched, [field]: true },
+      ErrorMessage: true
     });
   };
 
-  changeShowDate = e => {
-    this.setState({});
+  changeShowDate = value => {
+    this.setState({
+      value
+    });
   };
   render() {
     const shouldBeError = field => {
@@ -76,118 +84,125 @@ class AddReviewsPage extends Component {
     const isEnabled = !Object.keys(errors).some(x => errors[x]);
 
     const spanStyle = {
-      color: "gray",
+      color: "smokewhite",
       fontStyle: "italic",
       fontSize: "12px"
     };
 
     return (
-      <div>
+      <>
+        <div id="add-review-header">
+          <h2>Add review</h2>
+        </div>
         <div className="add-review-container">
-          <div>
-            <h2 id="add-review-header">Add review</h2>
-          </div>
+          <div />
           <form onSubmit={this.handleSubmit}>
-            <label>
-              Add tagline <span style={spanStyle}>(optional)</span>
-            </label>
-            <section>
+            <div id="show-information">
+              <label>
+                Add tagline <span style={spanStyle}>(optional)</span>
+              </label>
               <input
                 type="text"
                 placeholder="Write a short sentence describing your experiece of the show"
                 name="tagline"
-                value={this.state.tagline.value}
+                value={this.state.tagline}
                 onChange={this.changeHandler}
               />
-              <label>*Name of performer/ band</label>
+
+              <label>Name of performer/ band*</label>
               <input
-                className={shouldBeError("bandName") ? "error" : ""}
-                placeholder="e.g The hungry Caterpillars"
+                className={shouldBeError("bandName") ? "error" : null}
+                placeholder="e.g The Hungry Caterpillars"
                 name="bandName"
-                value={this.state.bandName.value}
+                value={this.state.bandName}
                 onChange={this.changeHandler}
                 onBlur={this.handleBlur("bandName")}
                 required
               />
-              <label>*Name of venue</label>
+
+              <label>Name of venue*</label>
               <input
-                className={shouldBeError("venue") ? "error" : ""}
+                className={shouldBeError("venue") ? "error" : null}
                 placeholder="e.g Yolanda's Prophylactic Emporium"
                 name="venue"
-                value={this.state.venue.value}
+                value={this.state.venue}
                 onBlur={this.handleBlur("venue")}
                 onChange={this.changeHandler}
                 required
               />
-              <label>*Date of performace</label>
+            </div>
+            <div id="calendar">
+              <label>Date of performace*</label>
               <Calendar
-                className="show-date-picker"
-                value={this.state.selectedDate}
+                value={this.state.value}
                 onChange={this.changeShowDate}
               />
-              {/* <input
+            </div>
+            {/* <input
                 type="text"
                 name="date"
                 value={this.state.date.value}
                 onChange={this.changeHandler}
                 required
               /> */}
-
+            <div id="required-fields">
               <p style={spanStyle}>(* indicates required field)</p>
-              <div>
-                <ErrorMessage />{" "}
-              </div>
-            </section>
-            <label>*Rate your experience</label>
-            <section className="radio-buttons">
+            </div>
+
+            <div id="error-message">
+              {this.state.errorMessage && <ErrorMessage />}
+            </div>
+
+            <label>Rate your experience of the show*</label>
+            <div id="radio-buttons">
+              1
               <input
                 type="radio"
                 name="button"
                 value="1"
                 onChange={this.checkItem}
               />
-              1
+              2
               <input
                 type="radio"
                 name="button"
                 value="2"
                 onChange={this.checkItem}
               />
-              2
+              3
               <input
                 type="radio"
                 name="button"
                 value="3"
                 onChange={this.checkItem}
               />
-              3
+              4
               <input
                 type="radio"
                 name="button"
                 value="4"
                 onChange={this.checkItem}
               />
-              4
+              5
               <input
                 type="radio"
                 name="button"
                 value="5"
                 onChange={this.checkItem}
               />
-              5
-            </section>
+            </div>
 
-            <button
+            <Button
               type="submit"
               disabled={!isEnabled}
               onClick={this.props.addReview}
             >
               Submit
-            </button>
+            </Button>
           </form>
         </div>
         <div className="push" />
-      </div>
+      </>
     );
   }
 }
