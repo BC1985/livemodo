@@ -6,7 +6,7 @@ nav {
   display: flex;
   flex-direction: row;
 
-  background-color: rgb(65, 63, 63);
+  background-color: #373f51;
   color: white;
   height: 40px;
   align-items: center;

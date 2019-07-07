@@ -1,18 +1,13 @@
 form {
   display: flex;
   flex-direction: column;
-  margin-left: 70px;
-  margin-right: 70px;
-  text-align: left;
+  align-items: center;
+  justify-content: center;
 }
 
 input,
 textarea {
   background-color: #cccc;
-  padding: 5px;
-}
-
-label {
   padding: 5px;
 }
 
