@@ -1,32 +1,25 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 // import LandingPage from "./LandingPage";
 import Button from "./Button";
 import "./LoginPage.css";
 
 export default class LoginForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      Redirect: false
-    };
-  }
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.history.push("/");
+    this.props.changeLoginState();
+  };
   render() {
-    const handleSubmit = e => {
-      e.preventDefault();
-      this.setState({
-        Redirect: true
-      });
-    };
-    if (this.state.Redirect) {
-      return <Redirect to="/" />;
-    }
+    // if (this.state.Redirect) {
+    //   return <Redirect to="/thank-you" />;
+    // }
     return (
       <div className="login-form-container">
         <section className="login-header">
           <h1>Login to Livemodo</h1>
         </section>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <label>Username</label>
           <input type="text" />
           <label>Password</label>
