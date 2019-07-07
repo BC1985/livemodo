@@ -12,7 +12,6 @@ import "./SignupForm.css";
 import BrowseReviewsPage from "./BrowseReviewsPage";
 import "./BrowseReviewsPage.css";
 import LoginPage from "./LoginPage";
-import loginComponent from "./LoginComponent";
 import "./LoginPage.css";
 import AddReviewsPage from "./AddReviewsPage";
 import "./AddReviewsPage.css";
@@ -45,14 +44,11 @@ export default class App extends Component {
   };
   render() {
     const { isLoggedIn } = this.state;
-    console.log(this.state.isLoggedIn);
+    console.log(isLoggedIn);
     return (
       <Router>
         <div className="App">
-          <Navbar
-            loginComponent={loginComponent}
-            // setLoginState={this.setLoginState}
-          />
+          <Navbar isLoggedIn={isLoggedIn} />
           <BrowseForm />
           <Switch>
             {this.state.isThankYouPage && (
