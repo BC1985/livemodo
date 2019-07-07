@@ -11,19 +11,23 @@ import SignupForm from "./SignupForm";
 import "./SignupForm.css";
 import BrowseReviewsPage from "./BrowseReviewsPage";
 import "./BrowseReviewsPage.css";
-import LoginForm from "./LoginPage";
+import LoginPage from "./LoginPage";
+import loginComponent from "./LoginComponent";
 import "./LoginPage.css";
 import AddReviewsPage from "./AddReviewsPage";
 import "./AddReviewsPage.css";
 import ThankYouPage from "./ThankYouPage";
 import ErrorMessage from "./ErrorMessage";
 import Calendar from "react-calendar";
+import BrowseForm from "./BrowseForm";
+import "./BrowseForm.css";
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      isEmptyState: true
+      isEmptyState: true,
+      isLoggedIn: false
     };
   }
 
@@ -34,17 +38,35 @@ export default class App extends Component {
       isThankYouPage: true
     });
   };
+  thankYouRedirect = () => {
+    this.setState({
+      isThankYouPage: false
+    });
+  };
   render() {
+    const { isLoggedIn } = this.state;
+    console.log(this.state.isLoggedIn);
     return (
       <Router>
         <div className="App">
-          <Navbar />
+          <Navbar
+            loginComponent={loginComponent}
+            // setLoginState={this.setLoginState}
+          />
+          <BrowseForm />
           <Switch>
-            {this.state.isThankYouPage && <ThankYouPage />}
-            <Route path="/" exact component={LandingPage} isLoggedIn={false} />
+            {this.state.isThankYouPage && (
+              <ThankYouPage thankYouRedirect={this.thankYouRedirect} />
+            )}
+            <Route
+              exact
+              path="/"
+              component={LandingPage}
+              isLoggedIn={isLoggedIn}
+            />
             <Route path="/signup" component={SignupForm} />
             <Route path="/browse" component={BrowseReviewsPage} />
-            <Route path="/login" component={LoginForm} />
+            <Route path="/login" component={LoginPage} />
             {this.state.isEmptyState && (
               <AddReviewsPage
                 addReview={this.changeState}
@@ -53,7 +75,6 @@ export default class App extends Component {
               />
             )}
             <Route path="/add" component={AddReviewsPage} />
-            />
           </Switch>
           <Footer />
         </div>
