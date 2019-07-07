@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-// import { Router, Link } from "react-router-dom";
-// import LoginPage from "./LoginPage";
+import { Link } from "react-router-dom";
+import Button from "./Button";
+
+// import LoginForm from "./LoginPage";
 const Description = () => {
   return (
     <div>
@@ -20,8 +22,9 @@ export default class LandingPage extends Component {
   constructor() {
     super();
     this.state = {
-      isLoggedIn: true,
-      userName: "John"
+      // isLoggedIn: true,
+      userName: "John",
+      Redirect: false
     };
   }
 
@@ -30,31 +33,27 @@ export default class LandingPage extends Component {
   };
   UserNotLoggedIn = () => {
     return (
-      // <Router>
-      //   <Link to="/login">
-      <p>Log in</p>
-      //   </Link>
-      // </Router>
+      <Link to="/login">
+        <Button id="login-button">Log in</Button>
+      </Link>
     );
   };
 
   render() {
-    const Greeting = () => {
-      if (this.state.isLoggedIn) {
-        return <this.UserIsLoggedIn />;
-      }
-      return <this.UserNotLoggedIn />;
-    };
-
+    const { isLoggedIn } = this.props;
+    console.log(isLoggedIn);
+    const loggedIn = <this.UserIsLoggedIn />;
+    const notLoggedIn = <this.UserNotLoggedIn />;
     return (
       <div className="container">
         <div className="header">
           <h1>Livemodo</h1>
           <h3>Your wiki live shows resource</h3>
         </div>
-        <div className={!this.state.isLoggedIn ? "login" : "greeting"}>
-          <Greeting />
+        <div id={!this.props.isLoggedIn ? "login" : "greeting"}>
+          {isLoggedIn ? loggedIn : notLoggedIn}
         </div>
+
         <div className="description">
           <Description />
         </div>
