@@ -32,17 +32,19 @@ class AddReviewsPage extends Component {
     };
   }
 
-  canSubmit = () => {
-    const { bandName, venue } = this.state;
-    const errors = this.props.validate(venue, bandName);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
-  };
+  // canSubmit = () => {
+  //   const { bandName, venue } = this.state;
+  //   const errors = this.props.validate(venue, bandName);
+  //   const isDisabled = Object.keys(errors).some(x => errors[x]);
+  //   return !isDisabled;
+  // };
 
   handleSubmit = e => {
-    if (!this.canSubmit()) {
-      e.preventDefault();
-    }
+    e.preventDefault();
+    this.props.changeState();
+    // if (!this.canSubmit()) {
+    //   e.preventDefault();
+    // }
   };
   changeHandler = e => {
     const name = e.target.name;
@@ -197,7 +199,7 @@ class AddReviewsPage extends Component {
             <Button
               type="submit"
               disabled={!isEnabled}
-              onClick={this.props.addReview}
+              // onClick={this.props.changeState}
             >
               Submit
             </Button>
