@@ -1,7 +1,7 @@
 .push {
-  height: 500px;
+  height: -250px;
 }
 
-.hero {
-  margin-bottom: -500px;
+.redirected {
+  margin-bottom: 250px;
 }

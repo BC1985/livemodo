@@ -3,6 +3,7 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: -40px;
 }
 
 #signup-form input,
@@ -24,4 +25,8 @@ button {
 
 #sign-form label {
   margin-right: 100px;
+}
+
+.push {
+  height: 40px;
 }
