@@ -24,9 +24,21 @@ export default class App extends Component {
   }
 
   changeLoginState = () => {
+    !this.state.isLoggedIn
+      ? this.setState({
+          ...this.state,
+          isLoggedIn: true
+        })
+      : this.setState({
+          ...this.state,
+          isLoggedIn: false
+        });
+  };
+
+  logOut = () => {
     this.setState({
       ...this.state,
-      isLoggedIn: true
+      isLoggedIn: false
     });
   };
   changeState = () => {
@@ -42,20 +54,35 @@ export default class App extends Component {
     });
   };
   render() {
-    const { isLoggedIn, userName, isThankYouPage, isEmptyState } = this.state;
+    const {
+      isLoggedIn,
+      userName,
+      isThankYouPage,
+      isEmptyState,
+      isNewUser
+    } = this.state;
     console.log(this.state.isLoggedIn);
 
     return (
       <Router>
         <div className="App">
-          <Navbar isLoggedIn={isLoggedIn} userName={userName} />
+          <Navbar
+            isLoggedIn={isLoggedIn}
+            userName={userName}
+            changeLoginState={this.changeLoginState}
+          />
           <BrowseForm />
           <Switch>
-            <LandingPage exact path="/" isLoggedIn={isLoggedIn} />
+            <LandingPage
+              exact
+              path="/"
+              isLoggedIn={isLoggedIn}
+              isNewUser={isNewUser}
+            />
             {isThankYouPage && (
               <ThankYouPage thankYouRedirect={this.thankYouRedirect} />
             )}
-            <Route path="/signup" component={SignupForm} />
+            <Route path="/register" component={SignupForm} />
             <Route path="/browse" component={BrowseReviewsPage} />
             <LoginForm path="/login" changeLoginState={this.changeLoginState} />
             {isEmptyState && (
