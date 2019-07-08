@@ -5,13 +5,26 @@ form {
   justify-content: center;
 }
 
-input,
+#signup-form input,
 textarea {
   background-color: #cccc;
   padding: 5px;
+  display: inline-block;
+  margin-left: 100px;
 }
 
 button {
   align-self: center;
   margin: 20px;
+}
+
+.text-input {
+  display: inline-block;
+}
+
+#sign-form label {
+  margin-right: 100px;
+}
+#signup {
+  justify-content: end;
 }
