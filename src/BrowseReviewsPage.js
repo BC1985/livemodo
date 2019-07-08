@@ -11,7 +11,7 @@ function BrowseReviewsPage() {
   return (
     <div className="browse-reviews-container">
       <div className="reviews-section">
-        <h2>Browse latest reviews</h2>
+        <h1>Browse latest reviews</h1>
         <div className="review-container">
           <h3 className="band-name">Sonic Tooth</h3>
           <p>Venue: The Globe Theatre</p>
