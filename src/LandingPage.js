@@ -42,21 +42,38 @@ export default class LandingPage extends Component {
     );
   };
 
+  // isLoggedIn = () => {
+  //   if (!this.props.isLoggedIn) {
+  //     return (
+  //       <Link to="/login">
+  //         <Button>Log in</Button>
+  //       </Link>
+  //     );
+  //   }
+  // };
+  // isNewUser = () => {
+  //   return (
+  //     <Link to="/register">
+  //       <Button>Register</Button>
+  //     </Link>
+  //   );
+  // };
+
   render() {
     const { isLoggedIn } = this.props;
 
     if (this.state.Redirect) {
       return <Redirect push to="/login" />;
     }
-    const notLoggedIn = <this.UserNotLoggedIn />;
+    const logIn = <this.UserNotLoggedIn />;
     return (
       <div className="container">
         <div className="header">
           <h1>Livemodo</h1>
           <h3>Your wiki live shows resource</h3>
         </div>
-        <div id={!this.props.isLoggedIn ? "login" : "greeting"}>
-          {!isLoggedIn ? notLoggedIn : null}
+        <div id={!isLoggedIn ? "login" : "greeting"}>
+          {!isLoggedIn ? logIn : null}
         </div>
 
         <div className="description">
