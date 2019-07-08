@@ -9,7 +9,7 @@ class ThankYouPage extends Component {
       this.props.history.push("/");
       this.props.thankYouRedirect();
     };
-    setTimeout(redirect, 9000);
+    setTimeout(redirect, 3000);
   }
 
   render() {
