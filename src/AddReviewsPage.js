@@ -100,7 +100,7 @@ class AddReviewsPage extends Component {
         </div>
         <div className="add-review-container">
           <div />
-          <form onSubmit={this.handleSubmit}>
+          <form id="add-review-form" onSubmit={this.handleSubmit}>
             <div id="show-information">
               <label>
                 Add tagline <span style={spanStyle}>(optional)</span>

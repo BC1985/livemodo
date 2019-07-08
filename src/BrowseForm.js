@@ -10,7 +10,7 @@ class BrowseForm extends Component {
   render() {
     return (
       <div className="search-form">
-        <form>
+        <form id="search-form">
           <input type="text" placeholder="Search performer or venue " />
           <Button>search</Button>
         </form>
