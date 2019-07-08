@@ -11,14 +11,20 @@ class Navbar extends Component {
   };
   render() {
     let { isLoggedIn } = this.props;
-
+    const spanStyle = {
+      cursor: "pointer"
+    };
     return (
       <div className="container">
         <nav className="nav-wrapper">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/add">Add review</NavLink>
           <NavLink to="/browse">Browse reviews</NavLink>
-          {isLoggedIn ? <span onClick={this.signOut}>Log out</span> : null}
+          {isLoggedIn ? (
+            <span style={spanStyle} onClick={this.signOut}>
+              Log out
+            </span>
+          ) : null}
         </nav>
       </div>
     );
