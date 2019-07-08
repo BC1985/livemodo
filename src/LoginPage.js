@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 // import LandingPage from "./LandingPage";
-import Button from "./Button";
 import "./LoginPage.css";
 
 class LoginForm extends Component {
@@ -11,24 +10,36 @@ class LoginForm extends Component {
     this.props.changeLoginState();
   };
   render() {
-    // if (this.state.Redirect) {
-    //   return <Redirect to="/thank-you" />;
-    // }
+    const loginButton = {
+      width: "400px",
+      height: "28px",
+      borderRadius: "5px",
+      backgroundColor: "#373f51",
+      color: "whitesmoke"
+    };
+
     return (
       <div className="login-form-container">
         <section className="login-header">
           <h1>Login to Livemodo</h1>
         </section>
-        <form onSubmit={this.handleSubmit}>
+        <form id="login-form" onSubmit={this.handleSubmit}>
           <label>Username</label>
           <input type="text" />
           <label>Password</label>
           <input type="text" />
 
-          <Button>Log in</Button>
+          <button style={loginButton}>Log in</button>
         </form>
-        <section className="forgot-credentials">
-          <p>Forgot username/ password? Click here</p>
+        <section id="help">
+          <div id="forgot-password">
+            <p>Forgot password? Click here</p>
+          </div>
+          <div id="register">
+            <Link to="/register">
+              <p>Don't have an account? Sign up</p>
+            </Link>
+          </div>
         </section>
       </div>
     );
