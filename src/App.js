@@ -82,7 +82,7 @@ export default class App extends Component {
             {isThankYouPage && (
               <ThankYouPage thankYouRedirect={this.thankYouRedirect} />
             )}
-            <Route path="/register" component={SignupForm} />
+            <SignupForm path="/register" changeState={this.changeState} />
             <Route path="/browse" component={BrowseReviewsPage} />
             <LoginForm path="/login" changeLoginState={this.changeLoginState} />
             {isEmptyState && (
