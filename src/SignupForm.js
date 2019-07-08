@@ -1,64 +1,74 @@
-import React from "react";
+import React, { Component } from "react";
 import "./SignupForm.css";
+import Button from "./Button";
 
-function SignupForm() {
-  const spanStyle = {
-    color: "gray",
-    fontStyle: "italic",
-    fontSize: "12px"
+class SignupForm extends Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.changeState();
   };
-  return (
-    <>
-      <div className="call-to-action">
-        <h2>Join the Livemodo community!</h2>
-      </div>
-      <div className="signup-form">
-        <form id="signup">
-          <div className="text-input">
-            <label>*First Name </label>
-            <input type="text" placeholder="e.g Tommy" required />
-          </div>
-          <div className="text-input">
-            <label>*Last Name </label>
-            <input type="text" placeholder="e.g Wisseau" required />
-          </div>
-          <div className="text-input">
-            <label>*Username </label>
-            <input type="text" required />
-          </div>
-          <div className="text-input">
-            <label>*Email </label>
-            <input type="text" placeholder="e.g tommy@theroom.com" required />
-          </div>
-          <div className="text-input">
-            <label>*Password</label>
-            <input type="text" required />
-          </div>
+  render() {
+    const spanStyle = {
+      color: "gray",
+      fontStyle: "italic",
+      fontSize: "12px"
+    };
 
-          <p style={spanStyle}>(* indicates required field)</p>
-          <p>
-            Pick the option that best describes your concergoing habits{" "}
-            <span style={spanStyle}>(optional)</span>
-          </p>
-          <div className="form-buttons">
-            <div>
-              <input type="radio" value="homebody" />
-              Homebody
+    return (
+      <>
+        <div className="call-to-action">
+          <h2>Join the Livemodo community!</h2>
+        </div>
+        <div className="signup-form">
+          <form id="signup" onSubmit={this.handleSubmit}>
+            <div className="text-input">
+              <label>*First Name </label>
+              <input type="text" placeholder="e.g Tommy" required />
             </div>
-            <div>
-              <input type="radio" />
-              Occasional concertgoer
+            <div className="text-input">
+              <label>*Last Name </label>
+              <input type="text" placeholder="e.g Wisseau" required />
             </div>
-            <div>
-              <input type="radio" />
-              Concert Connuiseur
+            <div className="text-input">
+              <label>*Username </label>
+              <input type="text" required />
             </div>
-            <button type="submit">Sign me up!</button>
-          </div>
-        </form>
-      </div>
-    </>
-  );
+            <div className="text-input">
+              <label>*Email </label>
+              <input type="text" placeholder="e.g tommy@theroom.com" required />
+            </div>
+            <div className="text-input">
+              <label>*Password</label>
+              <input type="text" required />
+            </div>
+
+            <p style={spanStyle}>(* indicates required field)</p>
+            <p>
+              Pick the option that best describes your concergoing habits{" "}
+              <span style={spanStyle}>(optional)</span>
+            </p>
+            <div className="form-buttons">
+              <div>
+                <input type="radio" value="homebody" />
+                Homebody
+              </div>
+              <div>
+                <input type="radio" />
+                Occasional concertgoer
+              </div>
+              <div>
+                <input type="radio" />
+                Concert Connuiseur
+              </div>
+
+              <Button type="submit">Submit</Button>
+            </div>
+          </form>
+          <div className="push" />
+        </div>
+      </>
+    );
+  }
 }
 
 export default SignupForm;
