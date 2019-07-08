@@ -33,12 +33,10 @@ class LoginForm extends Component {
         </form>
         <section id="help">
           <div id="forgot-password">
-            <p>Forgot password? Click here</p>
+            <Link to="/forgot-password">Forgot password? Click here</Link>
           </div>
           <div id="register">
-            <Link to="/register">
-              <p>Don't have an account? Sign up</p>
-            </Link>
+            <Link to="/register">Don't have an account? Sign up</Link>
           </div>
         </section>
       </div>

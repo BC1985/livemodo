@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import "./App.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -12,6 +17,8 @@ import ThankYouPage from "./ThankYouPage";
 import ErrorMessage from "./ErrorMessage";
 import Calendar from "react-calendar";
 import BrowseForm from "./BrowseForm";
+import ForgotPassword from "./ForgotPassword";
+import PasswordConfirmation from "./PasswodConfirmation";
 
 export default class App extends Component {
   constructor() {
@@ -61,7 +68,6 @@ export default class App extends Component {
       isEmptyState,
       isNewUser
     } = this.state;
-    console.log(this.state.isLoggedIn);
 
     return (
       <Router>
@@ -93,6 +99,9 @@ export default class App extends Component {
               />
             )}
             <Route path="/add" component={AddReviewsPage} />
+            <Route path="/forgot-password" component={ForgotPassword} />
+            <Redirect from="/forgot-password" to="/confirmation" />
+            <Route path="/confirmation" component={PasswordConfirmation} />
           </Switch>
           <Footer />
         </div>
