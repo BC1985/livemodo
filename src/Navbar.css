@@ -16,8 +16,8 @@ nav {
 ul {
   display: flex;
 }
-a {
-  color: black;
+.nav-wrapper > a {
+  color: white;
   text-decoration: none;
 }
 
