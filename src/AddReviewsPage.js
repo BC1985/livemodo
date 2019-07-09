@@ -15,7 +15,6 @@ function validate(venue, band_name) {
 class AddReviewsPage extends Component {
   constructor() {
     super();
-    this.isMounted = false;
     this.state = {
       reviews: [],
       id: "",
@@ -37,19 +36,6 @@ class AddReviewsPage extends Component {
     };
   }
 
-  // canSubmit = () => {
-  //   const { band_name, venue } = this.state;
-  //   const errors = this.props.validate(venue, band_name);
-  //   const isDisabled = Object.keys(errors).some(x => errors[x]);
-  //   return !isDisabled;
-  // };
-
-  componentDidMount() {
-    this.isMounted = true;
-  }
-  componentWillUnmount() {
-    this.isMounted = false;
-  }
   handleSubmit = e => {
     const { id } = this.state;
     e.preventDefault();
