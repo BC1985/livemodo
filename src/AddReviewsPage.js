@@ -6,45 +6,85 @@ import Calendar from "react-calendar";
 import Button from "./Button";
 import "./AddReviewsPage.css";
 
-function validate(venue, bandName) {
+function validate(venue, band_name) {
   return {
-    bandName: bandName.length === 0,
+    band_name: band_name.length === 0,
     venue: venue.length === 0
   };
 }
 class AddReviewsPage extends Component {
   constructor() {
     super();
+    this.isMounted = false;
     this.state = {
+      reviews: [],
+      id: "",
       tagline: "",
-      bandName: "",
+      band_name: "",
       venue: "",
-      value: new Date(),
+      show_date: "",
+      posted: "",
       selectedItem: "",
-      selectedItemValue: "",
+      rating: "",
+      content: "",
       showThankYouPage: false,
-      errors: { venue: false, bandName: false },
+      errors: { venue: false, band_name: false },
       touched: {
         venue: false,
-        bandName: false
+        band_name: false
       },
       errorMessage: false
     };
   }
 
   // canSubmit = () => {
-  //   const { bandName, venue } = this.state;
-  //   const errors = this.props.validate(venue, bandName);
+  //   const { band_name, venue } = this.state;
+  //   const errors = this.props.validate(venue, band_name);
   //   const isDisabled = Object.keys(errors).some(x => errors[x]);
   //   return !isDisabled;
   // };
 
+  componentDidMount() {
+    this.isMounted = true;
+  }
+  componentWillUnmount() {
+    this.isMounted = false;
+  }
   handleSubmit = e => {
+    const { id } = this.state;
     e.preventDefault();
+    const newReview = {
+      id: parseInt(id),
+      tagline: this.state.tagline,
+      band_name: this.state.band_name,
+      venue: this.state.venue,
+      show_date: this.state.show_date,
+      posted: new Date(),
+      content: this.state.content,
+      rating: this.state.rating
+    };
+    fetch("http://localhost:8000/api/reviews", {
+      method: "POST",
+      body: JSON.stringify(newReview),
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(review => {
+        this.addReview(review);
+      });
     this.props.changeState();
     // if (!this.canSubmit()) {
     //   e.preventDefault();
     // }
+  };
+
+  addReview = review => {
+    console.log(review);
+    this.setState({
+      reviews: [...this.state.reviews, review]
+    });
   };
   changeHandler = e => {
     const name = e.target.name;
@@ -54,13 +94,12 @@ class AddReviewsPage extends Component {
     });
   };
   checkItem = e => {
-    let { selectedItem, selectedItemValue } = this.state;
+    let { selectedItem, rating } = this.state;
     selectedItem = e.target.checked;
-    selectedItemValue = e.target.value;
-    // selectedItemValue = e.target.value;
+    rating = e.target.value;
     this.setState({
       selectedItem,
-      selectedItemValue
+      rating
     });
   };
 
@@ -73,7 +112,7 @@ class AddReviewsPage extends Component {
 
   changeShowDate = value => {
     this.setState({
-      value
+      show_date: value
     });
   };
   render() {
@@ -83,8 +122,8 @@ class AddReviewsPage extends Component {
       return hasErrors ? shouldShow : false;
     };
 
-    const { bandName, venue } = this.state;
-    const errors = validate(venue, bandName);
+    const { band_name, venue } = this.state;
+    const errors = validate(venue, band_name);
     const isEnabled = !Object.keys(errors).some(x => errors[x]);
 
     const spanStyle = {
@@ -107,7 +146,7 @@ class AddReviewsPage extends Component {
               </label>
               <input
                 type="text"
-                placeholder="Write a short sentence describing your experiece of the show"
+                placeholder="Write a short sentence describing your experiece from the show"
                 name="tagline"
                 value={this.state.tagline}
                 onChange={this.changeHandler}
@@ -115,12 +154,12 @@ class AddReviewsPage extends Component {
 
               <label>Name of performer/ band*</label>
               <input
-                className={shouldBeError("bandName") ? "error" : null}
+                className={shouldBeError("band_name") ? "error" : null}
                 placeholder="e.g The Hungry Caterpillars"
-                name="bandName"
-                value={this.state.bandName}
+                name="band_name"
+                value={this.state.band_name}
                 onChange={this.changeHandler}
-                onBlur={this.handleBlur("bandName")}
+                onBlur={this.handleBlur("band_name")}
                 required
               />
 
@@ -140,15 +179,20 @@ class AddReviewsPage extends Component {
               <Calendar
                 value={this.state.value}
                 onChange={this.changeShowDate}
+                activeStartDate={this.state.value}
               />
             </div>
-            {/* <input
-                type="text"
-                name="date"
-                value={this.state.date.value}
-                onChange={this.changeHandler}
-                required
-              /> */}
+            <label>
+              Anything you care to add?{" "}
+              <span style={spanStyle}>(optional)</span>
+            </label>
+            <input
+              type="text"
+              name="content"
+              value={this.state.content}
+              onChange={this.changeHandler}
+            />
+
             <div id="required-fields">
               <p style={spanStyle}>(* indicates required field)</p>
             </div>
