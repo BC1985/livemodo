@@ -19,6 +19,7 @@ import Calendar from "react-calendar";
 import BrowseForm from "./BrowseForm";
 import ForgotPassword from "./ForgotPassword";
 import PasswordConfirmation from "./PasswodConfirmation";
+require("dotenv").config();
 
 export default class App extends Component {
   constructor() {

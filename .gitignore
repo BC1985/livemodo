@@ -24,3 +24,4 @@ yarn-error.log*
 src/logo.svg
 src/serviceWorker.js
 src/LoginComponent.js
+.env
