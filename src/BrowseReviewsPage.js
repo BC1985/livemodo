@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 // import { faPortrait } from "@fortawesome/free-solid-svg-icons";
 import "./BrowseReviewsPage.css";
-import { parseDate } from "./utils/parseDate";
+// import { parseDate } from "./utils/parseDate";
+import Review from "./Review";
 
 class BrowseReviewsPage extends Component {
   constructor() {
@@ -21,28 +20,25 @@ class BrowseReviewsPage extends Component {
     this.setState({
       reviews
     });
-    console.log(this.state);
+    console.log(this.state.reviews);
   };
   render() {
-    const star = <FontAwesomeIcon icon={faStar} />;
-    // const userThumbnail = <FontAwesomeIcon icon={faPortrait} />;
     const { reviews } = this.state;
+    const reviewComponents = reviews.map(review => (
+      <Review
+        key={review.id}
+        band_name={review.band_name}
+        show_date={review.show_date}
+        tagline={review.tagline}
+        posted={review.posted}
+        venue={review.venue}
+        content={review.content}
+      />
+    ));
     return (
-      <>
-        <div>
-          {reviews.map(review => (
-            <div key={review.id}>
-              <h2>{review.band_name}</h2>
-              <h3>{review.tagline}</h3>
-              <p>Venue: {review.venue}</p>
-              <p>Date: {parseDate(review.show_date)}</p>
-              <p>posted: {parseDate(review.posted)}</p>
-              <p>{review.content}</p>
-              <p>{star}</p>
-            </div>
-          ))}
-        </div>
-      </>
+      <div className="reviews-container">
+        <div>{reviewComponents}</div>
+      </div>
     );
   }
 }
