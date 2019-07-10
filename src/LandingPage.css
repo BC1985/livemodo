@@ -9,7 +9,9 @@ h1 {
   margin-bottom: 100px;
   line-height: 25px;
 }
-
+.container {
+  text-align: center;
+}
 .header {
   font-family: "Josefin Sans", sans-serif;
 }
