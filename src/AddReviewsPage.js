@@ -5,7 +5,7 @@ import ErrorMessage from "./ErrorMessage";
 import Calendar from "react-calendar";
 import Button from "./Button";
 import "./AddReviewsPage.css";
-
+import { TokenService } from "./utils/token-service";
 function validate(venue, band_name) {
   return {
     band_name: band_name.length === 0,
@@ -53,7 +53,8 @@ class AddReviewsPage extends Component {
       method: "POST",
       body: JSON.stringify(newReview),
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        authorization: `basic ${TokenService.getAuthToken()}`
       }
     })
       .then(res => res.json())
@@ -61,9 +62,6 @@ class AddReviewsPage extends Component {
         this.addReview(review);
       });
     this.props.changeState();
-    // if (!this.canSubmit()) {
-    //   e.preventDefault();
-    // }
   };
 
   addReview = review => {
