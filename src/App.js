@@ -105,7 +105,7 @@ export default class App extends Component {
                 Calendar={Calendar}
               />
             )}
-            <Route path="/add" component={AddReviewsPage} />
+
             <Route path="/forgot-password" component={ForgotPassword} />
             <Redirect from="/forgot-password" to="/confirmation" />
             <Route path="/confirmation" component={PasswordConfirmation} />
