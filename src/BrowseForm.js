@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Button from "./Button";
 import "./BrowseForm.css";
-import { API_KEY } from "./config";
+import config from "./config";
 class BrowseForm extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +9,9 @@ class BrowseForm extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    const url = `https://www.googleapis.com/youtube/v3/videos?id=w_7_lEOaU10&key=${API_KEY}&part=snippet`;
+    const url = `https://www.googleapis.com/youtube/v3/videos?id=w_7_lEOaU10&key=${
+      config.API_KEY
+    }&part=snippet`;
     fetch(url)
       .then(res => {
         res.json();
