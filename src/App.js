@@ -52,7 +52,7 @@ export default class App extends Component {
   changeState = () => {
     this.setState({
       ...this.state,
-      isEmptyState: false,
+      // isEmptyState: false,
       isThankYouPage: true
     });
   };
