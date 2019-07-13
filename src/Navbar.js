@@ -18,7 +18,8 @@ class Navbar extends Component {
       <div className="container">
         <nav className="nav-wrapper">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/add">Add review</NavLink>
+          {isLoggedIn ? <NavLink to="/add">Add review</NavLink> : null}
+
           <NavLink to="/browse">Browse reviews</NavLink>
           {isLoggedIn ? (
             <span style={spanStyle} onClick={this.signOut}>
