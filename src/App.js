@@ -61,12 +61,6 @@ export default class App extends Component {
       isThankYouPage: false
     });
   };
-  // addReview = review => {
-  //   console.log(review);
-  //   this.setState({
-  //     reviews: [...this.state.reviews, review]
-  //   });
-  // };
   render() {
     const {
       isLoggedIn,

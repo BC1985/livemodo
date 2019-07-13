@@ -26,13 +26,12 @@ class LoginForm extends Component {
         username.value = "";
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
-        this.props.onLoginSuccess();
-        this.props.history.push("/");
-        this.props.changeLoginState();
       })
       .catch(res => {
         this.setState({ error: res.error });
       });
+    this.props.history.push("/");
+    this.props.changeLoginState();
   };
 
   changeHandler = e => {
@@ -45,7 +44,6 @@ class LoginForm extends Component {
   };
   render() {
     const { username, password } = this.state;
-    console.log(this.state);
     const loginButton = {
       width: "400px",
       height: "28px",

@@ -47,7 +47,6 @@ class SignupForm extends Component {
       fontStyle: "italic",
       fontSize: "12px"
     };
-    console.log(this.state);
 
     return (
       <>

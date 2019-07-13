@@ -20,7 +20,6 @@ class BrowseReviewsPage extends Component {
     this.setState({
       reviews
     });
-    console.log(this.state.reviews);
   };
   render() {
     const { reviews } = this.state;
