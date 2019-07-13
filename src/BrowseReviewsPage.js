@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-// import { faPortrait } from "@fortawesome/free-solid-svg-icons";
 import "./BrowseReviewsPage.css";
-// import { parseDate } from "./utils/parseDate";
 import Review from "./Review";
+import config from "./config";
 
 class BrowseReviewsPage extends Component {
   constructor() {
@@ -15,7 +14,7 @@ class BrowseReviewsPage extends Component {
     this.fetchReviews();
   }
   fetchReviews = async () => {
-    const data = await fetch("http://localhost:8000/api/reviews");
+    const data = await fetch(`${config.API_ENDPOINT}/reviews`);
     const reviews = await data.json();
     this.setState({
       reviews
