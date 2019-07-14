@@ -10,14 +10,17 @@ class LoginForm extends Component {
     super();
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      error: false
     };
   }
 
   handeSubmitJwtAuth = e => {
     e.preventDefault();
-    this.setState({ error: null });
     const { username, password } = e.target;
+    TokenService.saveAuthToken(
+      TokenService.makeBasicAuthToken(username.value, password.value)
+    );
     this.postLogin({
       username: username.value,
       password: password.value
@@ -43,11 +46,11 @@ class LoginForm extends Component {
         this.setState({
           error: true
         });
-        res.json().then(e => Promise.reject(e));
+        // res.json().then(e => Promise.reject(e));
       } else {
-        res.json();
         this.props.history.push("/");
         this.props.changeLoginState();
+        return res.json();
       }
     });
   }
