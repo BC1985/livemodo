@@ -19,25 +19,29 @@ class SignupForm extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state);
   };
   handleSubmit = e => {
     e.preventDefault();
-    const { first_name, last_name, username, password } = e.target;
+    const { first_name, last_name, email, username, password } = e.target;
+
     this.setState({ error: null });
     AuthApiService.postUser({
       first_name: first_name.value,
       last_name: last_name.value,
       username: username.value,
-      password: password.value
+      password: password.value,
+      email: email.value
     })
       .then(user => {
         first_name.value = "";
         last_name.value = "";
         username.value = "";
         password.value = "";
+        email.value = "";
       })
-      .catch(res => this.setState({ error: res.error }));
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
 
     this.props.changeState();
   };
