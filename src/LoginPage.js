@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 // import LandingPage from "./LandingPage";
 import "./LoginPage.css";
-import AuthApiService from "./services/auth-api-service";
 import { TokenService } from "./utils/token-service";
+import config from "./config";
 
 class LoginForm extends Component {
   constructor() {
@@ -18,7 +18,7 @@ class LoginForm extends Component {
     e.preventDefault();
     this.setState({ error: null });
     const { username, password } = e.target;
-    AuthApiService.postLogin({
+    this.postLogin({
       username: username.value,
       password: password.value
     })
@@ -28,12 +28,29 @@ class LoginForm extends Component {
         TokenService.saveAuthToken(res.authToken);
       })
       .catch(res => {
-        this.setState({ error: res.error });
+        this.setState({ error: true });
       });
-    this.props.history.push("/");
-    this.props.changeLoginState();
   };
-
+  postLogin(credentials) {
+    return fetch(`${config.API_ENDPOINT}/auth/login`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(credentials)
+    }).then(res => {
+      if (!res.ok) {
+        this.setState({
+          error: true
+        });
+        res.json().then(e => Promise.reject(e));
+      } else {
+        res.json();
+        this.props.history.push("/");
+        this.props.changeLoginState();
+      }
+    });
+  }
   changeHandler = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -64,6 +81,7 @@ class LoginForm extends Component {
             name="username"
             value={username.value}
             onChange={this.changeHandler}
+            required
           />
           <label>Password</label>
           <input
@@ -71,6 +89,7 @@ class LoginForm extends Component {
             name="password"
             value={password.value}
             onChange={this.changeHandler}
+            required
           />
           <button style={loginButton}>Log in</button>
         </form>
@@ -82,6 +101,10 @@ class LoginForm extends Component {
             <Link to="/register">Don't have an account? Sign up</Link>
           </div>
         </section>
+        <div id="error">
+          {this.state.error ? "Incorrect username or password" : ""}
+        </div>
+        <div className="push" />
       </div>
     );
   }
