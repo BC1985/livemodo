@@ -1,31 +1,32 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import "./Navbar.css";
+import { TokenService } from "./utils/token-service";
 
 // import LoginComponent from "./LoginComponent";
 
 class Navbar extends Component {
-  signOut = () => {
-    this.props.changeLoginState();
-    this.props.history.push("/");
+  handleLogOut = () => {
+    TokenService.clearAuthToken();
+  };
+
+  renderLoggedInLinks = () => {
+    return (
+      <>
+        <NavLink to="/add">Add review</NavLink>
+        <NavLink to="/" onClick={this.handleLogOut}>
+          Log out
+        </NavLink>
+      </>
+    );
   };
   render() {
-    let { isLoggedIn } = this.props;
-    const spanStyle = {
-      cursor: "pointer"
-    };
     return (
       <div className="container">
         <nav className="nav-wrapper">
           <NavLink to="/">Home</NavLink>
-          {isLoggedIn ? <NavLink to="/add">Add review</NavLink> : null}
-
           <NavLink to="/browse">Browse reviews</NavLink>
-          {isLoggedIn ? (
-            <span style={spanStyle} onClick={this.signOut}>
-              Log out
-            </span>
-          ) : null}
+          {TokenService.hasAuthToken() ? this.renderLoggedInLinks() : null}
         </nav>
       </div>
     );

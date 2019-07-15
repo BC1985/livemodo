@@ -25,34 +25,20 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      isLoggedIn: false,
-      userName: "John",
       isEmptyState: true
     };
   }
 
   changeLoginState = () => {
-    !this.state.isLoggedIn
-      ? this.setState({
-          ...this.state,
-          isLoggedIn: true
-        })
-      : this.setState({
-          ...this.state,
-          isLoggedIn: false
-        });
-  };
-
-  logOut = () => {
     this.setState({
       ...this.state,
-      isLoggedIn: false
+      isLoggedIn: true
     });
   };
+
   changeState = () => {
     this.setState({
       ...this.state,
-      // isEmptyState: false,
       isThankYouPage: true
     });
   };
