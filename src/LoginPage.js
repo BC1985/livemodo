@@ -103,16 +103,16 @@ class LoginForm extends Component {
             onChange={this.changeHandler}
             required
           />
+          <div id="toggle-password">
+            <input
+              type="checkbox"
+              onClick={this.showHidePassword}
+              id="checkbox"
+            />
+            <span style={{ fontSize: "13px" }}>Show password</span>
+          </div>
+          <button style={loginButton}>Log in</button>
         </form>
-        <div style={{ marginLeft: "50px" }}>
-          <input
-            type="checkbox"
-            onClick={this.showHidePassword}
-            id="checkbox"
-          />
-          <span style={{ fontSize: "13px" }}>Show password</span>
-        </div>
-        <button style={loginButton}>Log in</button>
         <section id="help">
           <div id="forgot-password">
             <Link to="/forgot-password">Forgot password? Click here</Link>
