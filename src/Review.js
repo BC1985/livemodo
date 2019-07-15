@@ -16,11 +16,12 @@ class Review extends Component {
         <p>Venue: {review.venue}</p>
         <p>Date:{parseDate(review.show_date)}</p>
         {star}
+        {star}
         <h4 className="tagline">{review.tagline}</h4>
         <p>posted: {parseDate(review.posted)}</p>
         <p className="user-name">
-          <span className="user-thumbnail">{userThumbnail}</span> Username:
-          {review.username}{" "}
+          <span className="user-thumbnail">{userThumbnail}</span>{" "}
+          <span style={{ color: "#1B4079" }}>{review.username}</span>
         </p>
         <div className="review">{review.content}</div>
       </>
