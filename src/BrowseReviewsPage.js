@@ -31,6 +31,7 @@ class BrowseReviewsPage extends Component {
         posted={review.posted}
         venue={review.venue}
         content={review.content}
+        username={review.username}
       />
     ));
     return (

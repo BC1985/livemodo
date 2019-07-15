@@ -19,8 +19,8 @@ class Review extends Component {
         <h4 className="tagline">{review.tagline}</h4>
         <p>posted: {parseDate(review.posted)}</p>
         <p className="user-name">
-          <span className="user-thumbnail">{userThumbnail}</span> Username{" "}
-          <span className="user-status">(avid concertgoer)</span>
+          <span className="user-thumbnail">{userThumbnail}</span> Username:
+          {review.username}{" "}
         </p>
         <div className="review">{review.content}</div>
       </>
