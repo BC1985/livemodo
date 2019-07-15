@@ -63,7 +63,6 @@ class AddReviewsPage extends Component {
       .then(review => {
         this.addReview(review);
       });
-    this.props.changeState();
   };
 
   addReview = review => {
@@ -71,6 +70,7 @@ class AddReviewsPage extends Component {
     this.setState({
       reviews: [...this.state.reviews, review]
     });
+    this.props.changeState();
   };
   changeHandler = e => {
     const name = e.target.name;
