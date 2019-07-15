@@ -14,7 +14,7 @@ h1 {
   justify-content: space-evenly;
 }
 
-#login-form input {
+#login-form input:not(#checkbox) {
   display: flex;
   width: 400px;
   height: 28px;

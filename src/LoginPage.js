@@ -60,7 +60,15 @@ class LoginForm extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state);
+  };
+
+  showHidePassword = () => {
+    const input = document.getElementById("password");
+    if (input.type === "password") {
+      input.type = "text";
+    } else {
+      input.type = "password";
+    }
   };
   render() {
     const { username, password } = this.state;
@@ -88,14 +96,23 @@ class LoginForm extends Component {
           />
           <label>Password</label>
           <input
-            type="text"
+            id="password"
+            type="password"
             name="password"
             value={password.value}
             onChange={this.changeHandler}
             required
           />
-          <button style={loginButton}>Log in</button>
         </form>
+        <div style={{ marginLeft: "50px" }}>
+          <input
+            type="checkbox"
+            onClick={this.showHidePassword}
+            id="checkbox"
+          />
+          <span style={{ fontSize: "13px" }}>Show password</span>
+        </div>
+        <button style={loginButton}>Log in</button>
         <section id="help">
           <div id="forgot-password">
             <Link to="/forgot-password">Forgot password? Click here</Link>
