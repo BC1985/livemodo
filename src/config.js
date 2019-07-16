@@ -5,5 +5,5 @@ module.exports = {
   API_ENDPOINT: "http://localhost:8000/api",
   API_BASE_URL:
     process.env.REACT_APP_API_BASE_URL ||
-    "https://stormy-mesa-41939.herokuapp.com/api/"
+    "https://stormy-mesa-41939.herokuapp.com/api"
 };
