@@ -6,6 +6,7 @@ import Calendar from "react-calendar";
 import Button from "./Button";
 import "./AddReviewsPage.css";
 import { TokenService } from "./utils/token-service";
+import config from "./config";
 function validate(venue, band_name) {
   return {
     band_name: band_name.length === 0,
@@ -51,7 +52,7 @@ class AddReviewsPage extends Component {
       content: this.state.content,
       rating: this.state.rating
     };
-    fetch("http://localhost:8000/api/reviews", {
+    fetch(`${config.API_BASE_URL}/reviews`, {
       method: "POST",
       body: JSON.stringify(newReview),
       headers: {
