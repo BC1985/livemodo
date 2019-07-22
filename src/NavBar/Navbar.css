@@ -44,21 +44,21 @@ li {
   padding: 10px;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .nav-links a::after {
+  border-top: 1px solid white;
   content: "";
   width: 0;
   height: 1px;
   display: inline-block;
-  background: white;
   position: absolute;
-  /* left: 0px;
-  bottom: 0px; */
-  transition: 0.3s ease-in;
+  bottom: 0.4em;
+  transition: 0.2s ease-in;
 }
 .nav-links a:hover::after {
-  width: 100%;
+  width: 85%;
 }
 
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
