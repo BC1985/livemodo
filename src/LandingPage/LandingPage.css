@@ -1,0 +1,214 @@
+/* Global settings */
+
+#greeting {
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.description {
+  margin: 0 20% 10% 20%;
+  line-height: 25px;
+  text-align: left;
+}
+
+.header {
+  padding-top: 10%;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    background: url(../images/portrait-mode.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width: 100%;
+  }
+
+  .description {
+    margin: 0 20%;
+    line-height: 25px;
+  }
+  .header {
+    margin: 5% 20% 0 20%;
+  }
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .container {
+    background-image: url(../images/concert.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .description {
+    margin: 0 20%;
+    line-height: 25px;
+  }
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  h1 {
+    padding-top: 30px;
+  }
+
+  .container {
+    text-align: center;
+  }
+  .header {
+    color: whitesmoke;
+  }
+
+  #login {
+    padding: 20px;
+    font-family: "Josefin Sans", sans-serif;
+    text-decoration: underline;
+    color: whitesmoke;
+  }
+
+  #login-button > button {
+    padding: 20px;
+    border-radius: 5px;
+    width: 100px;
+    border: 3px solid gray;
+  }
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+/* Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    background-attachment: local;
+  }
+  .header {
+    margin-top: 10%;
+  }
+}
+
+/* ----------- iPhone X --------------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .header {
+    margin-top: 40%;
+  }
+  #button {
+    margin-bottom: 20px;
+  }
+  #greeting {
+    padding-bottom: 0px;
+  }
+}
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .container {
+    background-image: url(../images/concert.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+  }
+  .header {
+    margin-top: 5%;
+  }
+}
+/* Samsung Galaxy S6, S6+, S7, S7+ | 1440×2560 pixels ----------- */
+
+/* Portrait */
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 4) and (orientation: portrait) {
+  .header {
+    margin-top: 30%;
+  }
+  .container {
+    background-image: url(../images/concert.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .container {
+    background-image: url(../images/concert.png);
+    background-size: cover;
+    background-position: center;
+  }
+  .header {
+    padding-top: 20%;
+  }
+  .description,
+  .header {
+    font-size: 1.5em;
+    line-height: 35px;
+  }
+
+  .push {
+    height: 300px;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .container {
+    background-image: url(../images/concert.png);
+    background-size: cover;
+    background-position: center;
+  }
+  .description,
+  .header {
+    font-size: 1.5em;
+    line-height: 35px;
+  }
+}
+
+/* ----------Laptops and desktops----------- */
+
+/* ----------- Non-Retina Screens ----------- */
+@media screen and (min-device-width: 1024px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) {
+  .container {
+    background-image: url(../images/concert.png);
+    background-size: cover;
+    background-position: center;
+  }
+  .description {
+    font-size: 1.5em;
+    line-height: 35px;
+  }
+  .header {
+    padding-top: 10%;
+  }
+
+  .description {
+    font-size: 1.5em;
+    line-height: 35px;
+  }
+}
+@media screen and (min-device-width: 1600px) {
+  .container {
+    background-image: url(../images/concert.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    max-width: 100%;
+  }
+}

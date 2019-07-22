@@ -1,0 +1,330 @@
+/* --------Gloabal settings-------- */
+
+*,
+a {
+  color: whitesmoke;
+}
+
+h1 {
+  text-align: center;
+}
+
+#login-form input[type="text"],
+[type="password"] {
+  width: 100%;
+  height: 30px;
+  margin: 10px 0;
+  background-color: lightgray;
+}
+
+#help {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  margin: 0 20% 20% 20%;
+}
+#show-password {
+  font-size: 0.5em;
+}
+#button {
+  border: 1px solid #202530;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+  margin: 20px 0;
+  text-decoration: none;
+  width: 100%;
+  display: inline-block;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #373f51;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#646d7e),
+    to(#22242e)
+  );
+
+  cursor: pointer;
+}
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .login-form-container {
+    font-size: 1.2em;
+    margin-top: 30%;
+  }
+  #login-form {
+    margin: 0 20%;
+  }
+  #show-password {
+    font-size: 0.8em;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .login-form-container {
+    background-image: url(../images/microphone-portrait-mode.png);
+    background-size: cover;
+    background-position: center;
+  }
+
+  #login-form {
+    padding-top: 5%;
+    font-size: 1.2em;
+  }
+  #help {
+    margin-bottom: 0px;
+    height: 40px;
+  }
+}
+/*------- iPhone 6,7,8 --------*/
+
+/* Landscape */
+@media only screen and (min-device-width: 475px) and (max-device-width: 667px) {
+  .login-form-container {
+    /* padding-top: 10%; */
+    background-image: url(../images/microphone-portrait-mode.png);
+    background-size: cover;
+    background-position-y: -30vh;
+  }
+  #login-form {
+    padding-top: 10%;
+    margin: 0% 20% 0 20%;
+    font-size: 1.2em;
+  }
+  #show-password {
+    font-size: 0.8em;
+  }
+  #error {
+    color: red;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+  }
+
+  #help {
+    margin: 0px 20%;
+    height: 0px;
+    font-size: 1.2em;
+  }
+  .push {
+    height: -50px;
+  }
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  #login-form {
+    margin: 0% 20% 0 20%;
+  }
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .login-form-container {
+    padding: 0 20%;
+  }
+  #login-form {
+    display: flex;
+    align-content: center;
+    margin: 0px;
+  }
+
+  #help {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+  }
+
+  #error {
+    color: red;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+  }
+
+  .push {
+    height: -20%;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .login-form-container {
+    padding-top: 10%;
+    background-image: url(../images/microphone-portrait-mode.png);
+    background-size: cover;
+    background-position-y: -40vh;
+  }
+  #login-form {
+    margin: 0 20% 0 20%;
+  }
+  #help {
+    margin: 0px 20%;
+  }
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  #help {
+    margin: 0px;
+    font-size: 1.2em;
+  }
+  #show-password {
+    font-size: 0.7em;
+  }
+  #login-form {
+    display: flex;
+    margin: 0;
+
+    flex-direction: column;
+    margin: 0;
+  }
+  .login-form-container {
+    padding: 0 20%;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .login-form-container {
+    padding: 5% 20%;
+    background-image: url(../images/microphone.png);
+    background-size: cover;
+    background-position: bottom;
+  }
+  #show-password {
+    font-size: 0.7em;
+  }
+
+  #help {
+    margin: 0;
+  }
+}
+
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .login-form-container {
+    padding: 20% 20% 0 20%;
+    font-size: 1.3em;
+    background-size: cover;
+    background-image: url(../images/microphone.png);
+    background-position: center;
+  }
+  .push {
+    height: 400px;
+  }
+  #login-form input[type="text"],
+  [type="password"] {
+    width: 100%;
+    height: 40px;
+    background-color: lightgray;
+    font-size: 20px;
+  }
+  #help {
+    margin: 0;
+  }
+
+  #button {
+    font-size: 0.8em;
+  }
+  #show-password {
+    font-size: 0.8em;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1200px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .login-form-container {
+    padding: 10% 20% 0 20%;
+    font-size: 1.5em;
+    background-size: cover;
+    background-image: url(../images/microphone.png);
+    background-position: bottom;
+  }
+
+  #help {
+    margin: 0;
+  }
+  #show-password {
+    font-size: 0.8em;
+  }
+  /* .push {
+    height: 240px;
+  } */
+}
+/*-------------- Desktop and laptops ---------------- */
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .login-form-container {
+    background-size: cover;
+    background-image: url(../images/microphone.png);
+    background-position: center;
+    padding: 15% 20%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2em;
+  }
+
+  #login-form input[type="text"],
+  [type="password"] {
+    width: 100%;
+    height: 40px;
+    background-color: lightgray;
+    font-size: 20px;
+  }
+
+  #toggle-password {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 10px;
+    font-size: 1.5em;
+  }
+
+  #login-form {
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+  }
+  #help {
+    margin: 0;
+  }
+}
+
+@media screen and (min-device-width: 1600px) {
+  .login-form-container {
+    padding: 10% 30%;
+    background-image: url(../images/microphone.png);
+    background-size: cover;
+  }
+  #login-form input[type="text"],
+  [type="password"] {
+    width: 100%;
+    height: 30px;
+    background-color: lightgray;
+    font-size: 13px;
+    margin: 10px 0;
+  }
+  #show-password {
+    font-size: 0.8em;
+  }
+  #help {
+    margin: 0;
+  }
+}

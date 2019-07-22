@@ -1,0 +1,31 @@
+/* form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: -40px;
+} */
+
+#signup-form input,
+textarea {
+  background-color: #cccc;
+  padding: 5px;
+  display: inline-block;
+  margin-left: 100px;
+}
+
+#button {
+  align-self: center;
+}
+
+.text-input {
+  display: inline-block;
+}
+
+#sign-form label {
+  margin-right: 100px;
+}
+
+.push {
+  height: 40px;
+}

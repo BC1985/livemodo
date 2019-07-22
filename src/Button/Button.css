@@ -1,0 +1,47 @@
+#button {
+  border: 1px solid #202530;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+  text-decoration: none;
+  display: inline-block;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #373f51;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#646d7e),
+    to(#22242e)
+  );
+
+  cursor: pointer;
+}
+
+#button:hover {
+  background-color: #222733;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#373f51),
+    to(#060c0f)
+  );
+}
+
+/* ------ iPhone 6, 6S, 7, 8--------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  #greeting {
+    margin: 0 20% 0 20%;
+    padding: 20px 0 20px 0;
+  }
+  #button {
+    width: 100%;
+    margin: 0px;
+  }
+}

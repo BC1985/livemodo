@@ -1,0 +1,110 @@
+/* ----Global settings----- */
+* {
+  box-sizing: border-box;
+}
+
+.nav-wrapper {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 0 1;
+  height: 50px;
+}
+
+.nav-links {
+  justify-content: space-evenly;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  background-color: #373f51;
+  color: white;
+  align-items: center;
+  justify-items: center;
+}
+
+li {
+  list-style-type: none;
+}
+
+.nav-links ul {
+  display: flex;
+  justify-content: center;
+  padding-inline-start: 0px;
+  margin-right: 10px;
+}
+
+.nav-links li {
+  font-size: 1.2em;
+}
+
+.nav-links a {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links a::after {
+  content: "";
+  width: 0;
+  height: 1px;
+  display: inline-block;
+  background: white;
+  position: absolute;
+  /* left: 0px;
+  bottom: 0px; */
+  transition: 0.3s ease-in;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .nav-links {
+    display: none;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .nav-wrapper > a {
+    display: none;
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 480px) and (max-device-width: 1024px) {
+  .hamburger-icon {
+    display: none;
+  }
+  .spacer {
+    flex: 1;
+  }
+}
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .nav-links a {
+    font-size: 1.2em;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1024px) {
+  .hamburger-icon {
+    display: none;
+  }
+  .spacer {
+    flex: 1;
+  }
+}
