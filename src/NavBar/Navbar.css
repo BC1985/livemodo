@@ -19,7 +19,7 @@
 nav {
   display: flex;
   flex-direction: row;
-  background-color: #373f51;
+  background-image: linear-gradient(to left, rgb(58, 69, 83), rgb(18, 18, 19));
   color: white;
   align-items: center;
   justify-items: center;
