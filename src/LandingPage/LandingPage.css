@@ -24,7 +24,7 @@
   .container {
     display: flex;
     flex-direction: column;
-    background: url(../images/portrait-mode.png);
+    /* background: url(../images/portrait-mode.png); */
     background-size: cover;
     background-repeat: no-repeat;
     min-width: 100%;
@@ -44,7 +44,7 @@
 /* Landscape */
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
   .container {
-    background-image: url(../images/concert.png);
+    background-image: url(../images/Resized/concert.png);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -116,7 +116,7 @@
 /* Landscape */
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
   .container {
-    background-image: url(../images/concert.png);
+    background-image: url(../images/Resized/concert.png);
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -135,7 +135,7 @@
     margin-top: 30%;
   }
   .container {
-    background-image: url(../images/concert.png);
+    background-image: url(../images/Resized/concert.png);
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -149,10 +149,35 @@
 /* Portrait */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
   .container {
-    background-image: url(../images/concert.png);
+    display: block;
+    width: 100%;
+    background: url(../images/Resized/stage-small.png);
     background-size: cover;
-    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+    animation: slide 20s infinite;
   }
+
+  @keyframes slide {
+    25% {
+      background-image: url(../images/Resized/singer.png);
+      background-position: center;
+    }
+    50% {
+      background-image: url(../images/Resized/indie-band.png);
+      background-position: top;
+    }
+    75% {
+      background-image: url(../images/Original-size/audience-backlit-blue-2078071.jpg);
+      background-position: left;
+    }
+    100% {
+      background-image: url(../images/Resized/concert.png);
+      background-position: center;
+    }
+  }
+
   .header {
     padding-top: 20%;
   }
@@ -170,7 +195,7 @@
 /* Landscape */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
   .container {
-    background-image: url(../images/concert.png);
+    background-image: url(../images/Resized/concert.png);
     background-size: cover;
     background-position: center;
   }
@@ -183,32 +208,77 @@
 
 /* ----------Laptops and desktops----------- */
 
-/* ----------- Non-Retina Screens ----------- */
+/* ------- Non-Retina Screens ------- */
 @media screen and (min-device-width: 1024px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) {
   .container {
-    background-image: url(../images/concert.png);
-    background-size: cover;
-    background-position: center;
+    display: block;
+    width: 100%;
+    background: url(../images/Resized/stage-small.png);
+    overflow: hidden;
+
+    animation: slide 20s infinite;
   }
+
+  @keyframes slide {
+    25% {
+      background-image: url(../images/Resized/singer.png);
+      background-position: center;
+    }
+    50% {
+      background-image: url(../images/Resized/indie-band.png);
+      background-position: top;
+    }
+    75% {
+      background-image: url(../images/Original-size/audience-backlit-blue-2078071.jpg);
+      background-position: left;
+    }
+    100% {
+      background-image: url(../images/Resized/concert.png);
+      background-position: center;
+    }
+  }
+
   .description {
-    font-size: 1.5em;
     line-height: 35px;
+    margin: 0 15% 10% 20%;
   }
   .header {
     padding-top: 10%;
   }
-
-  .description {
-    font-size: 1.5em;
-    line-height: 35px;
-  }
 }
 @media screen and (min-device-width: 1600px) {
   .container {
-    background-image: url(../images/concert.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    max-width: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/Resized/stage-small.png);
+    overflow: hidden;
+
+    animation: slide 25s infinite;
+  }
+
+  .description {
+    margin: 0 15% 10% 20%;
+
+    line-height: 35px;
+  }
+
+  @keyframes slide {
+    25% {
+      background-image: url(../images/Resized/singer.png);
+      background-position: center;
+    }
+    50% {
+      background-image: url(../images/Resized/indie-band.png);
+      background-position: top;
+    }
+    75% {
+      background-image: url(../images/Original-size/audience-backlit-blue-2078071.jpg);
+      background-position: left;
+    }
+    100% {
+      background-image: url(../images/Resized/concert.png);
+      background-position: center;
+    }
   }
 }
