@@ -18,9 +18,9 @@ class LoginForm extends Component {
   handeSubmitJwtAuth = e => {
     e.preventDefault();
     const { username, password } = e.target;
-    TokenService.saveAuthToken(
-      TokenService.makeBasicAuthToken(username.value, password.value)
-    );
+
+    TokenService.makeBasicAuthToken(username.value, password.value);
+
     this.postLogin({
       username: username.value,
       password: password.value
