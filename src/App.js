@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Navbar from "./NavBar/Navbar";
-// import Footer from "./Footer/Footer";
+import Footer from "./Footer/Footer";
 import LandingPage from "./LandingPage/LandingPage";
 import SignupForm from "./SignupForm/SignupForm";
 import BrowseReviewsPage from "./BrowseReviews/BrowseReviewsPage";
@@ -142,7 +142,7 @@ export default class App extends Component {
             <Redirect from="/forgot-password" to="/confirmation" />
             <Route path="/confirmation" component={PasswordConfirmation} />
           </Switch>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </Router>
     );
