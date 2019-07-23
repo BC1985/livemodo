@@ -15,7 +15,7 @@ class SignupForm extends Component {
 
   onChange = e => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = e.target.type === "radio" ? e.target.checked : e.target.value;
     this.setState({
       [name]: value
     });
@@ -47,13 +47,13 @@ class SignupForm extends Component {
   };
   render() {
     const spanStyle = {
-      color: "gray",
+      color: "whiteSmoke",
       fontStyle: "italic",
       fontSize: "12px"
     };
 
     return (
-      <>
+      <div className="signup-container">
         <div className="call-to-action">
           <h2>Join the Livemodo community!</h2>
         </div>
@@ -103,11 +103,11 @@ class SignupForm extends Component {
               />
             </div>
             <div className="text-input">
-              <label>*Password</label>
+              <label>*Password </label>
               <input
                 type="text"
                 name="password"
-                value={this.state.password.value}
+                value={this.state.password}
                 onChange={this.onChange}
                 required
               />
@@ -120,24 +120,39 @@ class SignupForm extends Component {
             </p>
             <div className="form-buttons">
               <div>
-                <input type="radio" value="homebody" />
+                <input
+                  type="radio"
+                  value="homebody"
+                  name="button"
+                  onChange={this.onChange}
+                />
                 Homebody
               </div>
               <div>
-                <input type="radio" />
+                <input
+                  type="radio"
+                  value="Occasiona concertgoer"
+                  name="button"
+                  onChange={this.onChange}
+                />
                 Occasional concertgoer
               </div>
               <div>
-                <input type="radio" />
+                <input
+                  type="radio"
+                  name="button"
+                  value="Concert Connuiseur"
+                  onChange={this.onChange}
+                />
                 Concert Connuiseur
               </div>
 
               <Button type="submit">Submit</Button>
             </div>
           </form>
-          <div className="push" />
+          <div className="register-push" />
         </div>
-      </>
+      </div>
     );
   }
 }
