@@ -1,31 +1,429 @@
-/* form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: -40px;
-} */
+.call-to-action h2 {
+  margin: 0;
+  padding: 20px;
+}
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+/* Portrait */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .signup-container {
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .signup-form {
+    padding: 0 10%;
+  }
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+  }
 
-#signup-form input,
-textarea {
-  background-color: #cccc;
-  padding: 5px;
-  display: inline-block;
-  margin-left: 100px;
+  #signup input[type="text"] {
+    border-radius: 3px;
+
+    background-color: #cccc;
+    padding: 5px;
+    width: 100%;
+    display: inline-block;
+    color: black;
+  }
+
+  #button {
+    align-self: center;
+  }
+
+  #signup label {
+    display: inline-block;
+    padding: 5px 0 5px 0;
+  }
+
+  .push {
+    height: 40px;
+  }
 }
 
-#button {
-  align-self: center;
+/* Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .signup-container {
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .signup-form {
+    padding: 0 10%;
+  }
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  #signup input[type="text"] {
+    border-radius: 3px;
+
+    background-color: #cccc;
+    padding: 5px;
+    width: 100%;
+    display: inline-block;
+    color: black;
+  }
+
+  #button {
+    align-self: center;
+  }
+
+  #signup label {
+    display: inline-block;
+    padding: 5px 0 5px 0;
+  }
+
+  .push {
+    height: 40px;
+  }
 }
 
-.text-input {
-  display: inline-block;
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .signup-container {
+    font-size: 1.2em;
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-size: cover;
+    background-position: center;
+  }
+  .signup-form {
+    padding: 0 10%;
+  }
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  #signup input[type="text"] {
+    border-radius: 3px;
+
+    background-color: #cccc;
+    padding: 5px;
+    width: 100%;
+    display: inline-block;
+    color: black;
+  }
+
+  #button {
+    align-self: center;
+  }
+
+  #signup label {
+    display: inline-block;
+    padding: 5px 0 5px 0;
+  }
+
+  .push {
+    height: 40px;
+  }
 }
 
-#sign-form label {
-  margin-right: 100px;
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .signup-container {
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-size: cover;
+    background-position: center;
+    font-size: 1.2em;
+  }
+  .signup-form {
+    padding: 0 20%;
+  }
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  #signup input[type="text"] {
+    border-radius: 3px;
+
+    background-color: #cccc;
+    padding: 5px;
+    width: 100%;
+    display: inline-block;
+    color: black;
+  }
+
+  #button {
+    align-self: center;
+  }
+
+  #signup label {
+    display: inline-block;
+    padding: 5px 0 5px 0;
+  }
+
+  .push {
+    height: 40px;
+  }
 }
 
-.push {
-  height: 40px;
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .signup-container {
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-size: cover;
+    background-position: center;
+    font-size: 1.2em;
+  }
+  .signup-form {
+    padding: 0 20%;
+  }
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  #signup input[type="text"] {
+    border-radius: 3px;
+
+    background-color: #cccc;
+    padding: 5px;
+    width: 100%;
+    display: inline-block;
+    color: black;
+  }
+
+  #button {
+    align-self: center;
+  }
+
+  #signup label {
+    display: inline-block;
+    padding: 5px 0 5px 0;
+  }
+
+  .push {
+    height: 40px;
+  }
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .signup-container {
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-size: cover;
+    background-position: center;
+    font-size: 1.2em;
+  }
+  .signup-form {
+    padding: 0 10%;
+  }
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .signup-container {
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-size: cover;
+    background-position: center;
+    font-size: 1.2em;
+  }
+  .signup-form {
+    padding: 0 15%;
+  }
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+  }
+  #signup input[type="text"] {
+    border-radius: 3px;
+
+    background-color: #cccc;
+    padding: 5px;
+    width: 100%;
+    display: inline-block;
+    color: black;
+  }
+}
+
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .signup-container {
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-size: cover;
+    background-position: center;
+    font-size: 1.2em;
+  }
+  .call-to-action > h2 {
+    padding-top: 40px;
+  }
+  .signup-form {
+    padding: 0 15%;
+  }
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 10px 50px;
+  }
+  #signup input[type="text"] {
+    border-radius: 3px;
+
+    background-color: #cccc;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    display: inline-block;
+    color: black;
+  }
+  .register-push {
+    height: 200px;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .signup-container {
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-size: cover;
+    background-position: center;
+    font-size: 1.2em;
+  }
+  .signup-form {
+    padding: 0 15%;
+  }
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+  }
+  #signup input[type="text"] {
+    border-radius: 3px;
+
+    background-color: #cccc;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    display: inline-block;
+    color: black;
+  }
+  .register-push {
+    height: 200px;
+  }
+}
+
+/* ----------- Laptops and desktops ------------ */
+
+/* ----- Non-Retina Screens ---- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .signup-container {
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-size: cover;
+    background-position: center;
+  }
+  .call-to-action > h2 {
+    padding-top: 40px;
+  }
+  .signup-form {
+    padding: 0 15%;
+  }
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+  }
+  #signup input[type="text"] {
+    border-radius: 3px;
+
+    background-color: #cccc;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    display: inline-block;
+    color: black;
+  }
+  .register-push {
+    height: 200px;
+  }
+}
+
+/* ----- Retina Screens ------ */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .signup-container {
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-size: cover;
+    background-position: center;
+  }
+  .signup-form {
+    padding: 0 15%;
+  }
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+  }
+  #signup input[type="text"] {
+    border-radius: 3px;
+
+    background-color: #cccc;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    display: inline-block;
+    color: black;
+  }
+  .register-push {
+    height: 200px;
+  }
+}
+
+@media screen and (min-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .signup-container {
+    background: url(../images/Resized/stage-small-B&W.png);
+    background-size: cover;
+    background-position: center;
+  }
+  .signup-form {
+    padding: 0 25%;
+  }
+
+  #signup {
+    background-color: rgba(39, 37, 37, 0.6);
+    border-radius: 10px;
+    padding: 10% 15%;
+  }
+  label {
+    display: block;
+  }
+  #signup input[type="text"] {
+    border-radius: 3px;
+    justify-content: center;
+    background-color: #cccc;
+    padding: 5px;
+    margin: 10px 0;
+    width: 100%;
+    display: inline-block;
+    color: black;
+  }
+  .register-push {
+    height: 200px;
+  }
 }
