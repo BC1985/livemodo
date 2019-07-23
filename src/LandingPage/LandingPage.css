@@ -203,6 +203,7 @@
   .header {
     font-size: 1.5em;
     line-height: 35px;
+    letter-spacing: 3px;
   }
 }
 
@@ -245,6 +246,51 @@
   .header {
     padding-top: 10%;
   }
+  .push {
+    height: 200px;
+  }
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .container {
+    display: block;
+    width: 100%;
+    background: url(../images/Resized/stage-small.png);
+    overflow: hidden;
+
+    animation: slide 20s infinite;
+  }
+
+  @keyframes slide {
+    25% {
+      background-image: url(../images/Resized/singer.png);
+      background-position: center;
+    }
+    50% {
+      background-image: url(../images/Resized/indie-band.png);
+      background-position: top;
+    }
+    75% {
+      background-image: url(../images/Original-size/audience-backlit-blue-2078071.jpg);
+      background-position: left;
+    }
+    100% {
+      background-image: url(../images/Resized/concert.png);
+      background-position: center;
+    }
+  }
+
+  .description {
+    line-height: 35px;
+    margin: 0 15% 10% 20%;
+  }
+  .header {
+    padding-top: 10%;
+  }
+  .push {
+    height: 200px;
+  }
 }
 @media screen and (min-device-width: 1600px) {
   .container {
@@ -258,9 +304,10 @@
   }
 
   .description {
-    margin: 0 15% 10% 20%;
-
-    line-height: 35px;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    justify-content: center;
+    margin: 0 30% 10% 30%;
   }
 
   @keyframes slide {
