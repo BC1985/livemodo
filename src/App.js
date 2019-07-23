@@ -63,6 +63,8 @@ export default class App extends Component {
     });
   };
   drawerToggleClickHandler = () => {
+    if (!this.state.sideDrawerOpen) {
+    }
     this.setState(prevState => {
       return {
         sideDrawerOpen: !prevState.sideDrawerOpen

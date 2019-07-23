@@ -7,6 +7,7 @@ import BrowseForm from "../BrowseForm/BrowseForm";
 
 class Navbar extends Component {
   render() {
+    // const loginOrOut=TokenService.hasAuthToken? 'Log in':'Log out'
     return (
       <div className="container">
         <nav className="nav-wrapper">
@@ -24,11 +25,12 @@ class Navbar extends Component {
                 <NavLink to="/browse">Browse reviews</NavLink>
               </li>
               <li>
-                <NavLink to="/login">Log in</NavLink>
+                {TokenService.hasAuthToken() ? (
+                  <NavLink to="/login">Log in</NavLink>
+                ) : (
+                  this.props.renderLoggedInLinks()
+                )}
               </li>
-              {TokenService.hasAuthToken()
-                ? this.props.renderLoggedInLinks()
-                : null}
             </ul>
           </div>
         </nav>
