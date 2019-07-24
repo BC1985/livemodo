@@ -37,9 +37,28 @@
   cursor: pointer;
   color: orangered;
 }
-@media only screen and (min-device-width: 480px) and (max-device-width: 1224px) {
-  .side-drawer {
-    width: 40%;
+
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .side-drawer.open {
+    display: none;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .side-drawer.open {
+    display: none;
+  }
+}
+
+/* Laptops */
+
+@media screen and (min-device-width: 1600px) {
+  .side-drawer.open {
+    display: none;
   }
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */

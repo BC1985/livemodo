@@ -1,14 +1,11 @@
 /* --------Gloabal settings-------- */
 
-*,
-a {
-  color: whitesmoke;
-}
-
 h1 {
   text-align: center;
 }
-
+#login-form {
+  color: white;
+}
 #login-form input[type="text"],
 [type="password"] {
   width: 100%;
@@ -167,9 +164,7 @@ h1 {
     background-size: cover;
     background-position-y: -40vh;
   }
-  #login-form {
-    /* margin: 0 20% 0 20%; */
-  }
+
   #help {
     margin: 0px 20%;
   }
@@ -179,6 +174,11 @@ h1 {
 
 /* Portrait */
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  #login-form input[type="text"],
+  [type="password"] {
+    font-size: 15px;
+    background-color: lightgray;
+  }
   #help {
     margin: 0px;
     font-size: 1.2em;
@@ -189,7 +189,6 @@ h1 {
   #login-form {
     display: flex;
     margin: 0;
-
     flex-direction: column;
     margin: 0;
   }

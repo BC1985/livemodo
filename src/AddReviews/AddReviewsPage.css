@@ -1,63 +1,338 @@
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+/* Global settings */
+#add-review-form input {
+  color: black;
+}
+
+h2 {
+  color: whitesmoke;
+}
+.add-review-container form {
+  color: whitesmoke;
+  margin: 0 auto;
+}
+.add-reviews-push {
+  height: 150px;
+}
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
   .add-review-container form {
-    width: 100%;
+    width: 80%;
     padding: 10px;
-    border-radius: 10px;
   }
+
   #add-review-form input {
     width: 100%;
+    font-size: 15px;
     display: block;
+    padding: 5px;
     margin: 10px 0px 10px 0px;
     background-color: #cccc;
+    color: black;
   }
-  #add-review-form {
+  #add-review-form label {
+    font-size: 20px;
+  }
+
+  #add-review-form > input[type="radio"] {
+    width: 1.2em;
+  }
+
+  .react-calendar {
+    color: black;
+    width: 250px;
+    margin-top: 10px;
+  }
+  #required-fields {
+    font-size: 1.1em;
+  }
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
+  #rating > label {
+    margin: 5px;
+  }
+
+  #rating > label {
+    margin: 5px;
+  }
+
+  /* input[type="radio"] {
+    width: 15px;
+    height: 15px;
+  } */
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .add-review-container form {
+    width: 80%;
+    padding: 10px;
+  }
+
+  #add-review-form input {
+    width: 100%;
+    font-size: 15px;
+    display: block;
+    padding: 5px;
+    margin: 10px 0px 10px 0px;
+    background-color: #cccc;
+    color: black;
+  }
+  #add-review-form label {
+    font-size: 20px;
+  }
+  .react-calendar {
+    margin: 10px 0 20px 0;
+    color: black;
+  }
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
+  #rating > label {
+    margin: 5px;
+  }
+  input[type="radio"] {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .add-review-container form {
+    width: 70%;
+    padding: 10px;
+  }
+  .react-calendar {
+    margin-bottom: 20px;
+  }
+
+  input[type="radio"] {
+    width: 20px;
+    height: 20px;
+  }
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .add-review-container form {
+    width: 80%;
+    padding: 10px;
+  }
+
+  #add-review-form input {
+    width: 100%;
+    font-size: 15px;
+    display: block;
+    padding: 5px;
+    margin: 10px 0px 10px 0px;
+    background-color: #cccc;
+    color: black;
+  }
+  #add-review-form label {
+    font-size: 20px;
+  }
+
+  .react-calendar {
+    margin: 10px 0 20px 0;
+    color: black;
+  }
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
+  #rating > label {
+    margin: 5px;
+  }
+  /* input[type="radio"] {
+    width: 15px;
+    height: 15px;
+  } */
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .add-review-container form {
+    width: 80%;
+    padding: 10px;
+  }
+
+  #add-review-form input {
+    width: 100%;
+    font-size: 15px;
+    display: block;
+    padding: 5px;
+    margin: 10px 0px 10px 0px;
+    background-color: #cccc;
+    color: black;
+  }
+  #add-review-form label {
+    font-size: 20px;
+  }
+  .react-calendar {
+    margin: 10px 0 20px 0;
+    color: black;
+  }
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
+  input[type="radio"] {
+    width: 20px;
+    height: 20px;
+  }
+  #rating > label {
+    margin: 5px;
+  }
+  #calendar {
+    widows: 100px;
+    height: 100%;
+  }
+  /* input[type="radio"] {
+    width: 15px;
+    height: 15px;
+  } */
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .add-review-container form {
+    width: 80%;
+    padding: 10px;
+  }
+
+  #add-review-form input {
+    width: 100%;
+    font-size: 15px;
+    display: block;
+    padding: 5px;
+    margin: 10px 0px 10px 0px;
+    background-color: #cccc;
+    color: black;
+  }
+  #add-review-form label {
+    font-size: 20px;
+  }
+  .react-calendar {
+    margin: 10px 0 20px 0;
+    color: black;
+  }
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
+  #rating > label {
+    margin: 5px;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .add-review-container form {
     width: 70%;
   }
-}
-/* Laptops and desktops */
-@media only screen and (min-width: 1224px) {
-  .add-review-container form {
-    width: 60%;
-    padding: 10px;
-    border-radius: 10px;
-  }
-
   #add-review-form input {
-    width: 100%;
+    font-size: 15px;
     display: block;
+    padding: 10px;
     margin: 10px 0px 10px 0px;
     background-color: #cccc;
+    color: black;
   }
-  .add-review-container form {
-    width: 40%;
-    padding: 10px;
-    border-radius: 10px;
+  #add-review-form label {
+    font-size: 20px;
+  }
+  .react-calendar {
+    margin: 10px 0 20px 0;
+    color: black;
+  }
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
+  input[type="radio"] {
+    width: 20px;
+    height: 20px;
+  }
+  #rating > label {
+    margin: 5px;
   }
 }
-/* ^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
-/* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1224px) {
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .add-review-container {
+    min-height: 50%;
+    margin-bottom: -50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .add-review-container form {
-    width: 40%;
+    width: 70%;
     padding: 10px;
-    border-radius: 10px;
+  }
+
+  .react-calendar {
+    margin: 10px 0 20px 0;
+    color: black;
+  }
+
+  #add-review-form label {
+    font-size: 1.3em;
   }
   #add-review-form input {
+    font-size: 1.1em;
     width: 100%;
     display: block;
-    margin: 10px 0px 10px 0px;
+    padding: 10px;
     background-color: #cccc;
   }
-}
-/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+  input[type="radio"] {
+    width: 20px;
+    height: 20px;
+  }
 
-.add-review-container {
-  min-height: 50%;
-  margin-bottom: -50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
 }
 
 h2 {
@@ -69,6 +344,7 @@ h2 {
 
 .react-calendar {
   width: 250px;
+  margin-top: 10px;
 }
 
 #add-review-form input {
@@ -77,19 +353,177 @@ h2 {
   margin: 10px 0px 10px 0px;
   background-color: #cccc;
 }
-#radio-buttons {
-  width: 150px;
-  display: flex;
-  justify-items: center;
-  flex-direction: row;
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
+#button {
+  font-size: 1em;
+}
+.add-reviews-push {
+  height: 200px;
 }
 
-.react-calendar {
-  margin-top: 10px;
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .add-review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .add-review-container form {
+    width: 70%;
+    padding: 10px;
+  }
+
+  .react-calendar {
+    margin: 10px 0 20px 0;
+    color: black;
+  }
+  #add-review-form label {
+    font-size: 1.3em;
+  }
+  #add-review-form input {
+    font-size: 1.1em;
+
+    width: 100%;
+    padding: 10px;
+    display: block;
+    margin: 10px 0px 10px 0px;
+    background-color: #cccc;
+  }
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
+  #button {
+    font-size: 1em;
+  }
+}
+/* ----------- Laptops and desktops -------------- */
+/* ------ Non-Retina Screens ------ */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .add-review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .add-review-container form {
+    width: 40%;
+    padding: 10px;
+  }
+
+  .react-calendar {
+    margin: 10px 0 20px 0;
+
+    color: black;
+  }
+  #add-review-form label {
+    font-size: 0.8em;
+  }
+  #add-review-form input {
+    width: 100%;
+    /* padding: 10px; */
+    display: block;
+    margin: 10px 0px 10px 0px;
+    background-color: #cccc;
+  }
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
+  #required-fields {
+    font-size: 0.7em;
+  }
+  #button {
+    padding: 3px;
+    font-size: 0.7em;
+  }
 }
 
-/* #add-review-form input {
-  height: 28px;
-  display: flex;
-  width: 400px;
-} */
+/* ------ Retina Screens ------ */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .add-review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .add-review-container form {
+    width: 40%;
+    padding: 10px;
+  }
+
+  .react-calendar {
+    margin: 10px 0 20px 0;
+
+    color: black;
+  }
+  #add-review-form label {
+    font-size: 0.8em;
+  }
+  #add-review-form input {
+    width: 100%;
+    /* padding: 10px; */
+    display: block;
+    margin: 10px 0px 10px 0px;
+    background-color: #cccc;
+  }
+  #required-fields {
+    font-size: 0.7em;
+  }
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
+  #button {
+    padding: 3px;
+    font-size: 0.7em;
+  }
+}
+/* Large screens ----------- */
+@media screen and (min-device-width: 1600px) {
+  .add-review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .add-review-container form {
+    width: 40%;
+    padding: 10px;
+  }
+
+  .react-calendar {
+    margin: 10px 0 20px 0;
+
+    color: black;
+  }
+  #add-review-form label {
+    font-size: 0.8em;
+  }
+  #add-review-form input {
+    width: 100%;
+    /* padding: 10px; */
+    display: block;
+    margin: 10px 0px 10px 0px;
+    background-color: #cccc;
+  }
+  #required-fields {
+    font-size: 0.7em;
+  }
+  #rating {
+    width: 70%;
+    display: flex;
+    margin: 5% auto 0 0;
+    flex-direction: row;
+  }
+  #button {
+    padding: 3px;
+    font-size: 0.7em;
+  }
+}

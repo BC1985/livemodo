@@ -12,9 +12,12 @@
 }
 
 .header {
-  padding-top: 10%;
+  color: whitesmoke;
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
+}
+#greeting {
+  color: whitesmoke;
 }
 
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
@@ -103,9 +106,6 @@
 
 /* Portrait */
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-  .header {
-    margin-top: 40%;
-  }
   #button {
     margin-bottom: 20px;
   }
@@ -183,7 +183,6 @@
   }
   .description,
   .header {
-    font-size: 1.5em;
     line-height: 35px;
   }
 
@@ -198,12 +197,6 @@
     background-image: url(../images/Resized/concert.png);
     background-size: cover;
     background-position: center;
-  }
-  .description,
-  .header {
-    font-size: 1.5em;
-    line-height: 35px;
-    letter-spacing: 3px;
   }
 }
 
@@ -299,13 +292,13 @@
     height: 100%;
     background: url(../images/Resized/stage-small.png);
     overflow: hidden;
-
     animation: slide 25s infinite;
   }
-
+  .header {
+    padding-top: 10%;
+  }
   .description {
-    font-size: 1.2em;
-    line-height: 1.5em;
+    font-size: 0.8em;
     justify-content: center;
     margin: 0 30% 10% 30%;
   }

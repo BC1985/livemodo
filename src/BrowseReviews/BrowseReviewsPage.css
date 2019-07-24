@@ -1,47 +1,290 @@
-.tagline {
-  color: gray;
-  font-style: italic;
-}
-.band-search {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: center;
+/* Global settings */
+
+.reviews-container {
+  color: whitesmoke;
+  padding: 5% 10%;
+  background-color: rgb(37, 36, 36);
 }
 .band-name {
   text-align: left;
 }
-.reviews-container {
-  margin: 0px 100px 0px 100px;
 
-  text-align: left;
-}
-.user-name {
-  font-weight: bold;
-}
-.user-status {
-  font-style: italic;
-  font-weight: normal;
+.tagline {
   color: gray;
+  font-style: italic;
 }
 .review {
-  margin-bottom: 50px;
+  margin-bottom: 10%;
+}
+.review > * {
+  margin: 6px;
+}
+.review {
+  margin-bottom: 20%;
+}
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .reviews-container {
+    color: whitesmoke;
+  }
+
+  .username {
+    margin: 10px;
+    font-size: 1.5em;
+  }
+
+  .user-thumbnail {
+    font-size: 50px;
+  }
+
+  .push {
+    height: 50px;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 20%;
+  }
 }
 
-.user-thumbnail {
-  font-size: 50px;
+/* Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .user-thumbnail {
+    font-size: 50px;
+  }
+  .username {
+    margin: 10px;
+    font-size: 1.5em;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 20%;
+  }
 }
 
-footer {
-  position: sticky;
-  bottom: 0;
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .reviews-container {
+    font-size: 1.1em;
+  }
+  .user-thumbnail {
+    font-size: 50px;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 20%;
+  }
 }
-.browse-reviews-container {
-  min-height: 100%;
-  display: flex;
-  margin-bottom: -50px;
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .reviews-container {
+    font-size: 1.1em;
+  }
+  .user-thumbnail {
+    font-size: 50px;
+  }
+  .username {
+    margin: 10px;
+    font-size: 1.5em;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 20%;
+  }
 }
-.push {
-  height: 50px;
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .reviews-container {
+    font-size: 1.1em;
+  }
+  .user-thumbnail {
+    font-size: 50px;
+  }
+  .username {
+    margin: 10px;
+    font-size: 1.5em;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 20%;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .reviews-container {
+    font-size: 1.1em;
+    padding: 5% 20% 5% 10%;
+  }
+  .user-thumbnail {
+    font-size: 50px;
+  }
+  .username {
+    margin: 10px;
+    font-size: 1.5em;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 20%;
+  }
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .reviews-container {
+    padding: 5% 15%;
+  }
+  .user-thumbnail {
+    font-size: 50px;
+  }
+  .username {
+    margin: 10px;
+    font-size: 1.5em;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .reviews-container {
+    padding: 5% 20% 15% 10%;
+    font-size: 1.2em;
+  }
+  .user-thumbnail {
+    font-size: 50px;
+  }
+  .username {
+    margin: 10px;
+    font-size: 1.5em;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 20%;
+  }
+}
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .reviews-container {
+    padding: 5% 15%;
+    font-size: 1.2em;
+  }
+  .user-thumbnail {
+    font-size: 50px;
+  }
+  .username {
+    margin: 10px;
+    font-size: 1.5em;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 10%;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .reviews-container {
+    padding: 5% 25% 5% 10%;
+    font-size: 1.2em;
+  }
+  .user-thumbnail {
+    font-size: 50px;
+  }
+  .username {
+    margin: 10px;
+    font-size: 1.5em;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 10%;
+  }
+}
+
+/* ----------- Non-Retina Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .reviews-container {
+    font-size: 1.1em;
+  }
+  .user-thumbnail {
+    font-size: 50px;
+  }
+  .username {
+    margin: 10px;
+    font-size: 1.5em;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 10%;
+  }
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .reviews-container {
+    font-size: 1.1em;
+  }
+  .user-thumbnail {
+    font-size: 50px;
+  }
+  .username {
+    margin: 10px;
+    font-size: 1.5em;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (min-device-width: 1600px) {
+  .reviews-container {
+    padding: 5% 25% 5% 10%;
+    line-height: 20px;
+    font-size: 0.7em;
+  }
+  .user-thumbnail {
+    font-size: 3em;
+  }
+  .username {
+    margin: 10px;
+    font-size: 1.3em;
+  }
+  .review > * {
+    margin: 6px;
+  }
+  .review {
+    margin-bottom: 10%;
+  }
 }
