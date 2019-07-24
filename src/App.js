@@ -3,8 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-  NavLink
+  Redirect
 } from "react-router-dom";
 import "./App.css";
 import Navbar from "./NavBar/Navbar";
@@ -29,18 +28,11 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
+      isLoggedIn: TokenService.hasAuthToken(),
       isEmptyState: true,
       sideDrawerOpen: false
     };
   }
-
-  changeLoginState = () => {
-    this.setState({
-      ...this.state,
-      isLoggedIn: true
-    });
-  };
-
   changeState = () => {
     this.setState({
       ...this.state,
@@ -52,10 +44,19 @@ export default class App extends Component {
       isThankYouPage: false
     });
   };
+  changeLoginState = () => {
+    this.setState({
+      ...this.state,
+      isLoggedIn: true
+    });
+  };
 
   handleLogOut = () => {
     TokenService.clearAuthToken();
     this.drawerToggleClickHandler();
+    this.setState({
+      isLoggedIn: false
+    });
   };
   backdropClickHandler = () => {
     this.setState({
@@ -63,8 +64,6 @@ export default class App extends Component {
     });
   };
   drawerToggleClickHandler = () => {
-    if (!this.state.sideDrawerOpen) {
-    }
     this.setState(prevState => {
       return {
         sideDrawerOpen: !prevState.sideDrawerOpen
@@ -72,22 +71,6 @@ export default class App extends Component {
     });
   };
 
-  renderLoggedInLinks = () => {
-    return (
-      <>
-        <li>
-          <NavLink to="/add" onClick={this.drawerToggleClickHandler}>
-            Add review
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/" onClick={this.handleLogOut}>
-            Log out
-          </NavLink>
-        </li>
-      </>
-    );
-  };
   render() {
     const {
       isLoggedIn,
@@ -101,22 +84,61 @@ export default class App extends Component {
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
+    const routes = [
+      {
+        to: "/",
+        name: "Home",
+        onClick: this.drawerToggleClickHandler
+      },
+      {
+        to: "/browse",
+        name: "Browse Reviews",
+        onClick: this.drawerToggleClickHandler
+      },
+      {
+        to: "/login",
+        name: "Log in",
+        onClick: this.drawerToggleClickHandler
+      }
+    ];
+    const authenticateRoutes = [
+      {
+        to: "/",
+        name: "Home",
+        onClick: this.drawerToggleClickHandler
+      },
+      {
+        to: "/browse",
+        name: "Browse Reviews",
+        onClick: this.drawerToggleClickHandler
+      },
+      {
+        to: "/add",
+        name: "Add Review",
+        onClick: this.drawerToggleClickHandler
+      },
+      {
+        to: "/",
+        name: "Log out",
+        onClick: this.handleLogOut
+      }
+    ];
     return (
       <Router>
         {this.state.sideDrawerOpen && (
           <SideDrawer
             show={this.state.sideDrawerOpen}
-            renderLoggedInLinks={this.renderLoggedInLinks}
             drawerToggleClickHandler={this.drawerToggleClickHandler}
+            routes={isLoggedIn ? authenticateRoutes : routes}
           />
         )}
         <div className="App">
           <Navbar
             isLoggedIn={isLoggedIn}
+            routes={isLoggedIn ? authenticateRoutes : routes}
             userName={userName}
             changeLoginState={this.changeLoginState}
             drawerToggleClickHandler={this.drawerToggleClickHandler}
-            renderLoggedInLinks={this.renderLoggedInLinks}
           />
           {backdrop}
           <Switch>
@@ -134,9 +156,9 @@ export default class App extends Component {
             <LoginForm path="/login" changeLoginState={this.changeLoginState} />
             {isEmptyState && (
               <AddReviewsPage
-                changeState={this.changeState}
                 errorMessage={ErrorMessage}
                 Calendar={Calendar}
+                changeState={this.changeState}
               />
             )}
 

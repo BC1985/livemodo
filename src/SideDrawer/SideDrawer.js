@@ -1,7 +1,6 @@
 import React from "react";
 import "./SideDrawer.css";
 import { NavLink } from "react-router-dom";
-import { TokenService } from "../utils/token-service";
 
 const sideDrawer = props => {
   let drawerClasses = "side-drawer";
@@ -11,22 +10,13 @@ const sideDrawer = props => {
   return (
     <nav className={drawerClasses}>
       <ul>
-        <li>
-          <NavLink to="/" onClick={props.drawerToggleClickHandler}>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/browse" onClick={props.drawerToggleClickHandler}>
-            Browse reviews
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login" onClick={props.drawerToggleClickHandler}>
-            Log in
-          </NavLink>
-        </li>
-        {TokenService.hasAuthToken() ? props.renderLoggedInLinks() : null}
+        {props.routes.map(route => (
+          <li key={route.name}>
+            <NavLink to={route.to} onClick={route.onClick}>
+              {route.name}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
