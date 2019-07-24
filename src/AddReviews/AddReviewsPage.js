@@ -60,19 +60,25 @@ class AddReviewsPage extends Component {
         authorization: `bearer ${TokenService.getAuthToken()}`
       }
     })
-      .then(res => res.json())
-      .then(review => {
-        this.addReview(review);
-      });
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => Promise.reject(error));
+        }
+        return res.json().then(review => {
+          this.addReview(review);
+        });
+      })
+
+      .catch(this.setState({ errorMessage: true }));
   };
 
   addReview = review => {
-    console.log(review);
     this.setState({
       reviews: [...this.state.reviews, review]
     });
     this.props.changeState();
   };
+
   changeHandler = e => {
     const name = e.target.name;
     const value = e.target.type === "radio" ? e.target.checked : e.target.value;
@@ -115,8 +121,7 @@ class AddReviewsPage extends Component {
 
     const spanStyle = {
       color: "smokewhite",
-      fontStyle: "italic",
-      fontSize: "12px"
+      fontStyle: "italic"
     };
 
     return (
@@ -183,41 +188,37 @@ class AddReviewsPage extends Component {
               <p style={spanStyle}>(* indicates required field)</p>
             </div>
 
-            <div id="error-message">
-              {this.state.errorMessage && <ErrorMessage />}
-            </div>
-
             <label>Rate your experience of the show*</label>
-            <div id="radio-buttons">
-              1
+            <div id="rating">
+              <label>1</label>
               <input
                 type="radio"
                 name="button"
                 value="1"
                 onChange={this.checkItem}
               />
-              2
+              <label>2</label>
               <input
                 type="radio"
                 name="button"
                 value="2"
                 onChange={this.checkItem}
               />
-              3
+              <label>3</label>
               <input
                 type="radio"
                 name="button"
                 value="3"
                 onChange={this.checkItem}
               />
-              4
+              <label>4</label>
               <input
                 type="radio"
                 name="button"
                 value="4"
                 onChange={this.checkItem}
               />
-              5
+              <label>5</label>
               <input
                 type="radio"
                 name="button"
@@ -234,8 +235,11 @@ class AddReviewsPage extends Component {
               Submit
             </Button>
           </form>
+          <div id="error-message">
+            {this.state.errorMessage && <ErrorMessage />}
+          </div>
         </div>
-        <div className="push" />
+        <div className="add-reviews-push" />
       </>
     );
   }
