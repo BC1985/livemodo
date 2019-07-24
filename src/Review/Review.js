@@ -10,20 +10,23 @@ class Review extends Component {
     const star = <FontAwesomeIcon icon={faStar} />;
     const userThumbnail = <FontAwesomeIcon icon={faPortrait} />;
     const review = this.props;
+
     return (
       <>
-        <h2 className="band-name">{review.band_name}</h2>
-        <p>Venue: {review.venue}</p>
-        <p>Date:{parseDate(review.show_date)}</p>
-        {star}
-        {star}
-        <h4 className="tagline">{review.tagline}</h4>
-        <p>posted: {parseDate(review.posted)}</p>
-        <p className="user-name">
-          <span className="user-thumbnail">{userThumbnail}</span>{" "}
-          <span style={{ color: "#1B4079" }}>{review.username}</span>
-        </p>
-        <div className="review">{review.content}</div>
+        <div className="review">
+          <p className="user-name">
+            <span className="user-thumbnail">{userThumbnail}</span>{" "}
+            <span className="username"> {review.username}</span>
+          </p>
+          <p>posted: {parseDate(review.posted)}</p>
+          <h2 className="band-name">{review.band_name}</h2>
+          <h4 className="tagline">{review.tagline}</h4>
+          <p>Venue: {review.venue}</p>
+          <p>Date: {parseDate(review.show_date)}</p>
+          {star}
+          {star}
+          <div className="review-content">{review.content}</div>
+        </div>
       </>
     );
   }
