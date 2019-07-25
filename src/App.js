@@ -16,7 +16,6 @@ import AddReviewsPage from "./AddReviews/AddReviewsPage";
 import ThankYouPage from "./ThankYouPage/ThankYouPage";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import Calendar from "react-calendar";
-// import BrowseForm from "./BrowseForm/BrowseForm";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import PasswordConfirmation from "./PasswordConfirmation/PasswodConfirmation";
 import SideDrawer from "./SideDrawer/SideDrawer";
@@ -33,17 +32,6 @@ export default class App extends Component {
       sideDrawerOpen: false
     };
   }
-  changeState = () => {
-    this.setState({
-      ...this.state,
-      isThankYouPage: true
-    });
-  };
-  thankYouRedirect = () => {
-    this.setState({
-      isThankYouPage: false
-    });
-  };
   changeLoginState = () => {
     this.setState({
       ...this.state,
@@ -72,13 +60,7 @@ export default class App extends Component {
   };
 
   render() {
-    const {
-      isLoggedIn,
-      userName,
-      isThankYouPage,
-      isEmptyState,
-      isNewUser
-    } = this.state;
+    const { isLoggedIn, userName, isEmptyState, isNewUser } = this.state;
 
     let backdrop;
     if (this.state.sideDrawerOpen) {
@@ -148,18 +130,12 @@ export default class App extends Component {
               isLoggedIn={isLoggedIn}
               isNewUser={isNewUser}
             />
-            {isThankYouPage && (
-              <ThankYouPage thankYouRedirect={this.thankYouRedirect} />
-            )}
-            <SignupForm path="/register" changeState={this.changeState} />
+            <Route path="/thank-you" component={ThankYouPage} />
+            <SignupForm path="/register" />
             <Route path="/browse" component={BrowseReviewsPage} />
             <LoginForm path="/login" changeLoginState={this.changeLoginState} />
             {isEmptyState && (
-              <AddReviewsPage
-                errorMessage={ErrorMessage}
-                Calendar={Calendar}
-                changeState={this.changeState}
-              />
+              <AddReviewsPage errorMessage={ErrorMessage} Calendar={Calendar} />
             )}
 
             <Route path="/forgot-password" component={ForgotPassword} />
