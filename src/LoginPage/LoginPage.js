@@ -11,12 +11,16 @@ class LoginForm extends Component {
     this.state = {
       username: "",
       password: "",
-      error: false
+      error: false,
+      isLoading: false
     };
   }
 
   handeSubmitJwtAuth = e => {
     e.preventDefault();
+    this.setState({
+      isLoading: true
+    });
     const { username, password } = e.target;
 
     TokenService.makeBasicAuthToken(username.value, password.value);
@@ -44,9 +48,9 @@ class LoginForm extends Component {
     }).then(res => {
       if (!res.ok) {
         this.setState({
-          error: true
+          error: true,
+          isLoading: false
         });
-        // res.json().then(e => Promise.reject(e));
       } else {
         this.props.history.push("/");
         this.props.changeLoginState();
@@ -119,6 +123,11 @@ class LoginForm extends Component {
             </Link>
           </div>
         </section>
+        {this.state.isLoading && (
+          <p style={{ color: "whiteSmoke", textAlign: "center" }}>
+            Please wait...
+          </p>
+        )}
         <div id="error">
           {this.state.error ? "Incorrect username or password" : ""}
         </div>
