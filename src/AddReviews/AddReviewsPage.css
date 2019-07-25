@@ -1,8 +1,13 @@
 /* Global settings */
-#add-review-form input {
+#add-review-form input[type="number"] {
+  color: black;
+  width: 20%;
+  background: #cccc;
+}
+#add-review-form input[type="text"],
+[type="password"] {
   color: black;
 }
-
 h2 {
   color: whitesmoke;
 }
@@ -13,6 +18,59 @@ h2 {
 .add-reviews-push {
   height: 150px;
 }
+#submit-review-button:enabled {
+  display: flex;
+  display: inline-block;
+  margin: 20% auto 0;
+  height: 25px;
+  width: 100%;
+  border: 1px solid #6e7175;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+
+  border-radius: 5px;
+  color: #fff;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#646d7e),
+    to(#22242e)
+  );
+  cursor: pointer;
+}
+.react-calendar {
+  margin: 10px 0 20px 0;
+  color: black;
+}
+
+#submit-review-button:enabled:hover {
+  color: #fff;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#373f51),
+    to(#060c0f)
+  );
+  cursor: pointer;
+}
+#submit-review-button:disabled {
+  display: flex;
+  display: inline-block;
+  margin: 20% auto 0;
+  height: 25px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  background-color: gray;
+  color: rgb(197, 195, 195);
+}
+/* button:disabled, */
+#submit-review-button[disabled]:hover {
+  background-color: #999;
+  color: rgb(197, 195, 195);
+}
+
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
 
 /* Portrait */
@@ -34,16 +92,6 @@ h2 {
   #add-review-form label {
     font-size: 20px;
   }
-
-  #add-review-form > input[type="radio"] {
-    width: 1.2em;
-  }
-
-  .react-calendar {
-    color: black;
-    width: 250px;
-    margin-top: 10px;
-  }
   #required-fields {
     font-size: 1.1em;
   }
@@ -60,11 +108,6 @@ h2 {
   #rating > label {
     margin: 5px;
   }
-
-  /* input[type="radio"] {
-    width: 15px;
-    height: 15px;
-  } */
 }
 
 /* Landscape */
@@ -86,10 +129,6 @@ h2 {
   #add-review-form label {
     font-size: 20px;
   }
-  .react-calendar {
-    margin: 10px 0 20px 0;
-    color: black;
-  }
   #rating {
     width: 70%;
     display: flex;
@@ -98,10 +137,6 @@ h2 {
   }
   #rating > label {
     margin: 5px;
-  }
-  input[type="radio"] {
-    width: 15px;
-    height: 15px;
   }
 }
 
@@ -113,14 +148,7 @@ h2 {
     width: 70%;
     padding: 10px;
   }
-  .react-calendar {
-    margin-bottom: 20px;
-  }
 
-  input[type="radio"] {
-    width: 20px;
-    height: 20px;
-  }
   #rating {
     width: 70%;
     display: flex;
@@ -149,10 +177,6 @@ h2 {
     font-size: 20px;
   }
 
-  .react-calendar {
-    margin: 10px 0 20px 0;
-    color: black;
-  }
   #rating {
     width: 70%;
     display: flex;
@@ -162,10 +186,6 @@ h2 {
   #rating > label {
     margin: 5px;
   }
-  /* input[type="radio"] {
-    width: 15px;
-    height: 15px;
-  } */
 }
 
 /* ----------- iPhone 6+, 7+ and 8+ ----------- */
@@ -193,19 +213,11 @@ h2 {
   #add-review-form label {
     font-size: 20px;
   }
-  .react-calendar {
-    margin: 10px 0 20px 0;
-    color: black;
-  }
   #rating {
     width: 70%;
     display: flex;
     margin: 5% auto 0 0;
     flex-direction: row;
-  }
-  input[type="radio"] {
-    width: 20px;
-    height: 20px;
   }
   #rating > label {
     margin: 5px;
@@ -214,10 +226,6 @@ h2 {
     widows: 100px;
     height: 100%;
   }
-  /* input[type="radio"] {
-    width: 15px;
-    height: 15px;
-  } */
 }
 
 /* ----------- iPhone X ----------- */
@@ -240,10 +248,6 @@ h2 {
   }
   #add-review-form label {
     font-size: 20px;
-  }
-  .react-calendar {
-    margin: 10px 0 20px 0;
-    color: black;
   }
   #rating {
     width: 70%;
@@ -272,19 +276,11 @@ h2 {
   #add-review-form label {
     font-size: 20px;
   }
-  .react-calendar {
-    margin: 10px 0 20px 0;
-    color: black;
-  }
   #rating {
     width: 70%;
     display: flex;
     margin: 5% auto 0 0;
     flex-direction: row;
-  }
-  input[type="radio"] {
-    width: 20px;
-    height: 20px;
   }
   #rating > label {
     margin: 5px;
@@ -307,11 +303,6 @@ h2 {
     padding: 10px;
   }
 
-  .react-calendar {
-    margin: 10px 0 20px 0;
-    color: black;
-  }
-
   #add-review-form label {
     font-size: 1.3em;
   }
@@ -321,10 +312,6 @@ h2 {
     display: block;
     padding: 10px;
     background-color: #cccc;
-  }
-  input[type="radio"] {
-    width: 20px;
-    height: 20px;
   }
 
   #rating {
@@ -344,7 +331,6 @@ h2 {
 
 .react-calendar {
   width: 250px;
-  margin-top: 10px;
 }
 
 #add-review-form input {
@@ -352,13 +338,6 @@ h2 {
   display: block;
   margin: 10px 0px 10px 0px;
   background-color: #cccc;
-}
-input[type="radio"] {
-  width: 20px;
-  height: 20px;
-}
-#button {
-  font-size: 1em;
 }
 .add-reviews-push {
   height: 200px;
@@ -376,10 +355,6 @@ input[type="radio"] {
     padding: 10px;
   }
 
-  .react-calendar {
-    margin: 10px 0 20px 0;
-    color: black;
-  }
   #add-review-form label {
     font-size: 1.3em;
   }
@@ -398,7 +373,7 @@ input[type="radio"] {
     margin: 5% auto 0 0;
     flex-direction: row;
   }
-  #button {
+  #add-review-form > #submit-review-button {
     font-size: 1em;
   }
 }
@@ -415,11 +390,6 @@ input[type="radio"] {
     padding: 10px;
   }
 
-  .react-calendar {
-    margin: 10px 0 20px 0;
-
-    color: black;
-  }
   #add-review-form label {
     font-size: 0.8em;
   }
@@ -439,7 +409,7 @@ input[type="radio"] {
   #required-fields {
     font-size: 0.7em;
   }
-  #button {
+  #submit-review-button {
     padding: 3px;
     font-size: 0.7em;
   }
@@ -457,11 +427,6 @@ input[type="radio"] {
     padding: 10px;
   }
 
-  .react-calendar {
-    margin: 10px 0 20px 0;
-
-    color: black;
-  }
   #add-review-form label {
     font-size: 0.8em;
   }
@@ -481,7 +446,7 @@ input[type="radio"] {
     margin: 5% auto 0 0;
     flex-direction: row;
   }
-  #button {
+  #submit-review-button {
     padding: 3px;
     font-size: 0.7em;
   }
@@ -492,17 +457,13 @@ input[type="radio"] {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 0.8em;
   }
   .add-review-container form {
-    width: 40%;
+    width: 30%;
     padding: 10px;
   }
 
-  .react-calendar {
-    margin: 10px 0 20px 0;
-
-    color: black;
-  }
   #add-review-form label {
     font-size: 0.8em;
   }
@@ -522,7 +483,7 @@ input[type="radio"] {
     margin: 5% auto 0 0;
     flex-direction: row;
   }
-  #button {
+  #submit-review-button {
     padding: 3px;
     font-size: 0.7em;
   }

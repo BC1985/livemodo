@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import ErrorMessage from "../ErrorMessage";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 // import ThankYouPage from "./ThankYouPage";
 // import Calendar from "react-calendar";
 import Calendar from "react-calendar";
-import Button from "../Button/Button";
 import "./AddReviewsPage.css";
 import { TokenService } from "../utils/token-service";
 import config from "../config";
-function validate(venue, band_name) {
+function validate(venue, band_name, show_date, rating) {
   return {
     band_name: band_name.length === 0,
-    venue: venue.length === 0
+    venue: venue.length === 0,
+    show_date: show_date.length === 0,
+    rating: rating.length === 0
   };
 }
 class AddReviewsPage extends Component {
@@ -65,6 +66,14 @@ class AddReviewsPage extends Component {
           return res.json().then(error => Promise.reject(error));
         }
         return res.json().then(review => {
+          console.log(
+            "review--",
+            review,
+            "state--",
+            this.state,
+            "response---",
+            res
+          );
           this.addReview(review);
         });
       })
@@ -79,20 +88,16 @@ class AddReviewsPage extends Component {
     this.props.changeState();
   };
 
+  ratingChanged(rating) {
+    this.setState({
+      rating
+    });
+  }
   changeHandler = e => {
     const name = e.target.name;
-    const value = e.target.type === "radio" ? e.target.checked : e.target.value;
+    const value = e.target.value;
     this.setState({
       [name]: value
-    });
-  };
-  checkItem = e => {
-    let { selectedItem, rating } = this.state;
-    selectedItem = e.target.checked;
-    rating = e.target.value;
-    this.setState({
-      selectedItem,
-      rating
     });
   };
 
@@ -115,8 +120,8 @@ class AddReviewsPage extends Component {
       return hasErrors ? shouldShow : false;
     };
 
-    const { band_name, venue } = this.state;
-    const errors = validate(venue, band_name);
+    const { band_name, venue, show_date, rating } = this.state;
+    const errors = validate(venue, band_name, show_date, rating);
     const isEnabled = !Object.keys(errors).some(x => errors[x]);
 
     const spanStyle = {
@@ -137,7 +142,7 @@ class AddReviewsPage extends Component {
             </label>
             <input
               type="text"
-              placeholder="Write a short sentence describing your experiece from the show"
+              placeholder="One line to describe your experience"
               name="tagline"
               value={this.state.tagline}
               onChange={this.changeHandler}
@@ -187,53 +192,25 @@ class AddReviewsPage extends Component {
             <div id="required-fields">
               <p style={spanStyle}>(* indicates required field)</p>
             </div>
-
             <label>Rate your experience of the show*</label>
-            <div id="rating">
-              <label>1</label>
+            <div className="ratings">
               <input
-                type="radio"
-                name="button"
-                value="1"
-                onChange={this.checkItem}
-              />
-              <label>2</label>
-              <input
-                type="radio"
-                name="button"
-                value="2"
-                onChange={this.checkItem}
-              />
-              <label>3</label>
-              <input
-                type="radio"
-                name="button"
-                value="3"
-                onChange={this.checkItem}
-              />
-              <label>4</label>
-              <input
-                type="radio"
-                name="button"
-                value="4"
-                onChange={this.checkItem}
-              />
-              <label>5</label>
-              <input
-                type="radio"
-                name="button"
-                value="5"
-                onChange={this.checkItem}
+                type="number"
+                name="rating"
+                id="rating"
+                min="1"
+                max="5"
+                value={this.state.rating}
+                onChange={e => this.ratingChanged(e.target.value)}
               />
             </div>
-
-            <Button
-              type="submit"
+            <button
+              id="submit-review-button"
+              type={!isEnabled ? "disabled" : "submit"}
               disabled={!isEnabled}
-              // onClick={this.props.changeState}
             >
               Submit
-            </Button>
+            </button>
           </form>
           <div id="error-message">
             {this.state.errorMessage && <ErrorMessage />}
