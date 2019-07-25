@@ -5,9 +5,8 @@
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
-* [Screenshots](#screenshots)
 * [Upcoming Features](#upcoming-features)
-
+* [Screenshots](#screenshots)
 
 ### General Info
 Livemodo is a wiki database of live shows and concert reviews. Think of it as a kind of Yelp for live music aficionados. With this app registered users are able to submit detailed reviews of live shows attended for fellow music lovers who are interested in discovering new music and live show venues.
