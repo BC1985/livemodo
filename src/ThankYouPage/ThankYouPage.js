@@ -7,7 +7,6 @@ class ThankYouPage extends Component {
   componentDidMount() {
     const redirect = () => {
       this.props.history.push("/");
-      this.props.thankYouRedirect();
     };
     setTimeout(redirect, 3000);
   }
