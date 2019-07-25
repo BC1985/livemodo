@@ -14,7 +14,7 @@ import BrowseReviewsPage from "./BrowseReviews/BrowseReviewsPage";
 import LoginForm from "./LoginPage/LoginPage";
 import AddReviewsPage from "./AddReviews/AddReviewsPage";
 import ThankYouPage from "./ThankYouPage/ThankYouPage";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import Calendar from "react-calendar";
 // import BrowseForm from "./BrowseForm/BrowseForm";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
