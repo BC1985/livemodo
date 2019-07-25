@@ -473,6 +473,7 @@ h2 {
     display: block;
     margin: 10px 0px 10px 0px;
     background-color: #cccc;
+    font-size: 0.7em;
   }
   #required-fields {
     font-size: 0.7em;
