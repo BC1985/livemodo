@@ -6,14 +6,8 @@ import Calendar from "react-calendar";
 import "./AddReviewsPage.css";
 import { TokenService } from "../utils/token-service";
 import config from "../config";
-function validate(venue, band_name, show_date, rating) {
-  return {
-    band_name: band_name.length === 0,
-    venue: venue.length === 0,
-    show_date: show_date.length === 0,
-    rating: rating.length === 0
-  };
-}
+import { withRouter } from "react-router-dom";
+import { validateAddReview, shouldBeError } from "../Validation/validation";
 class AddReviewsPage extends Component {
   constructor() {
     super();
@@ -66,14 +60,6 @@ class AddReviewsPage extends Component {
           return res.json().then(error => Promise.reject(error));
         }
         return res.json().then(review => {
-          console.log(
-            "review--",
-            review,
-            "state--",
-            this.state,
-            "response---",
-            res
-          );
           this.addReview(review);
         });
       })
@@ -85,7 +71,7 @@ class AddReviewsPage extends Component {
     this.setState({
       reviews: [...this.state.reviews, review]
     });
-    this.props.changeState();
+    this.props.history.push("/thank-you");
   };
 
   ratingChanged(rating) {
@@ -114,14 +100,8 @@ class AddReviewsPage extends Component {
     });
   };
   render() {
-    const shouldBeError = field => {
-      const hasErrors = errors[field];
-      const shouldShow = this.state.touched[field];
-      return hasErrors ? shouldShow : false;
-    };
-
     const { band_name, venue, show_date, rating } = this.state;
-    const errors = validate(venue, band_name, show_date, rating);
+    const errors = validateAddReview(venue, band_name, show_date, rating);
     const isEnabled = !Object.keys(errors).some(x => errors[x]);
 
     const spanStyle = {
@@ -150,7 +130,11 @@ class AddReviewsPage extends Component {
 
             <label>Name of performer/ band*</label>
             <input
-              className={shouldBeError("band_name") ? "error" : null}
+              className={
+                shouldBeError("band_name", errors, this.state.touched)
+                  ? "error"
+                  : null
+              }
               placeholder="e.g The Hungry Caterpillars"
               name="band_name"
               value={this.state.band_name}
@@ -161,7 +145,11 @@ class AddReviewsPage extends Component {
 
             <label>Name of venue*</label>
             <input
-              className={shouldBeError("venue") ? "error" : null}
+              className={
+                shouldBeError("venue", errors, this.state.touched)
+                  ? "error"
+                  : null
+              }
               placeholder="e.g Yolanda's Prophylactic Emporium"
               name="venue"
               value={this.state.venue}
@@ -221,4 +209,4 @@ class AddReviewsPage extends Component {
     );
   }
 }
-export default AddReviewsPage;
+export default withRouter(AddReviewsPage);
