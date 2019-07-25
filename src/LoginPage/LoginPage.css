@@ -274,6 +274,12 @@ h1 {
     background-color: lightgray;
     font-size: 20px;
   }
+  #login-form {
+    margin: 0 10%;
+  }
+  #help {
+    margin: 0 10%;
+  }
   #show-password {
     font-size: 0.8em;
   }
