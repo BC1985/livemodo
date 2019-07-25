@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faPortrait } from "@fortawesome/free-solid-svg-icons";
 import "../BrowseReviews/BrowseReviewsPage.css";
 import { parseDate } from "../utils/parseDate";
+import Rating from "../Rating/Rating";
 
 class Review extends Component {
   render() {
-    const star = <FontAwesomeIcon icon={faStar} />;
     const userThumbnail = <FontAwesomeIcon icon={faPortrait} />;
     const review = this.props;
 
@@ -23,8 +22,7 @@ class Review extends Component {
           <h4 className="tagline">{review.tagline}</h4>
           <p>Venue: {review.venue}</p>
           <p>Date: {parseDate(review.show_date)}</p>
-          {star}
-          {star}
+          <Rating value={review.rating} />
           <div className="review-content">{review.content}</div>
         </div>
       </>
