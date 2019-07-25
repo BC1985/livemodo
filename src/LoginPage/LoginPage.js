@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
+import Spinner from "../Spinners/Spinner";
 // import LandingPage from "./LandingPage";
 import "./LoginPage.css";
 import { TokenService } from "../utils/token-service";
@@ -76,7 +77,8 @@ class LoginForm extends Component {
   };
   render() {
     const { username, password } = this.state;
-
+    const isLoading = this.state.isLoading && <Spinner />;
+    const error = this.state.error ? "Incorrect username or password" : "";
     const linkStyle = { color: "whiteSmoke" };
 
     return (
@@ -123,14 +125,7 @@ class LoginForm extends Component {
             </Link>
           </div>
         </section>
-        {this.state.isLoading && (
-          <p style={{ color: "whiteSmoke", textAlign: "center" }}>
-            Please wait...
-          </p>
-        )}
-        <div id="error">
-          {this.state.error ? "Incorrect username or password" : ""}
-        </div>
+        <div id="error">{this.state.isLoading ? isLoading : error}</div>
         <div className="push" />
       </div>
     );
