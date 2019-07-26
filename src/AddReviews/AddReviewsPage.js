@@ -24,10 +24,11 @@ class AddReviewsPage extends Component {
       rating: "",
       content: "",
       showThankYouPage: false,
-      errors: { venue: false, band_name: false },
+      errors: { venue: false, band_name: false, rating: false },
       touched: {
         venue: false,
-        band_name: false
+        band_name: false,
+        rating: false
       },
       errorMessage: false
     };
@@ -92,6 +93,7 @@ class AddReviewsPage extends Component {
       touched: { ...this.state.touched, [field]: true },
       ErrorMessage: true
     });
+    console.log(this.state.touched);
   };
 
   changeShowDate = value => {
@@ -100,7 +102,16 @@ class AddReviewsPage extends Component {
     });
   };
   render() {
-    const { band_name, venue, show_date, rating } = this.state;
+    const {
+      band_name,
+      venue,
+      show_date,
+      rating,
+      touched,
+      tagline,
+      content,
+      value
+    } = this.state;
     const errors = validateAddReview(venue, band_name, show_date, rating);
     const isEnabled = !Object.keys(errors).some(x => errors[x]);
 
@@ -124,20 +135,18 @@ class AddReviewsPage extends Component {
               type="text"
               placeholder="One line to describe your experience"
               name="tagline"
-              value={this.state.tagline}
+              value={tagline}
               onChange={this.changeHandler}
             />
 
             <label>Name of performer/ band*</label>
             <input
               className={
-                shouldBeError("band_name", errors, this.state.touched)
-                  ? "error"
-                  : null
+                shouldBeError("band_name", errors, touched) ? "error" : null
               }
               placeholder="e.g The Hungry Caterpillars"
               name="band_name"
-              value={this.state.band_name}
+              value={band_name}
               onChange={this.changeHandler}
               onBlur={this.handleBlur("band_name")}
               required
@@ -146,13 +155,11 @@ class AddReviewsPage extends Component {
             <label>Name of venue*</label>
             <input
               className={
-                shouldBeError("venue", errors, this.state.touched)
-                  ? "error"
-                  : null
+                shouldBeError("venue", errors, touched) ? "error" : null
               }
               placeholder="e.g Yolanda's Prophylactic Emporium"
               name="venue"
-              value={this.state.venue}
+              value={venue}
               onBlur={this.handleBlur("venue")}
               onChange={this.changeHandler}
               required
@@ -161,9 +168,9 @@ class AddReviewsPage extends Component {
             <label>Date of performace*</label>
             <div id="calendar">
               <Calendar
-                value={this.state.value}
+                value={value}
                 onChange={this.changeShowDate}
-                activeStartDate={this.state.value}
+                activeStartDate={value}
               />
             </div>
             <label>
@@ -173,7 +180,7 @@ class AddReviewsPage extends Component {
             <input
               type="text"
               name="content"
-              value={this.state.content}
+              value={content}
               onChange={this.changeHandler}
             />
 
@@ -183,12 +190,16 @@ class AddReviewsPage extends Component {
             <label>Rate your experience of the show*</label>
             <div className="ratings">
               <input
+                className={
+                  shouldBeError("rating", errors, touched) ? "error" : null
+                }
                 type="number"
                 name="rating"
                 id="rating"
                 min="1"
                 max="5"
-                value={this.state.rating}
+                value={rating}
+                onBlur={this.handleBlur("rating")}
                 onChange={e => this.ratingChanged(e.target.value)}
               />
             </div>

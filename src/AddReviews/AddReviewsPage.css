@@ -65,7 +65,9 @@ h2 {
   background-color: gray;
   color: rgb(197, 195, 195);
 }
-
+.error {
+  border: 2px solid red;
+}
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
 
 /* Portrait */
@@ -319,9 +321,6 @@ h2 {
 
 h2 {
   text-align: center;
-}
-.error {
-  border: 1px solid red;
 }
 
 .react-calendar {
