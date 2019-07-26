@@ -40,7 +40,7 @@ class LoginForm extends Component {
       });
   };
   postLogin(credentials) {
-    return fetch(`${config.API_ENDPOINT}/auth/login`, {
+    return fetch(`${config.API_BASE_URL}/auth/login`, {
       method: "POST",
       headers: {
         "content-type": "application/json"

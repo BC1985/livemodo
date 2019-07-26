@@ -47,7 +47,7 @@ class AddReviewsPage extends Component {
       content: this.state.content,
       rating: this.state.rating
     };
-    fetch(`${config.API_ENDPOINT}/reviews`, {
+    fetch(`${config.API_BASE_URL}/reviews`, {
       method: "POST",
       body: JSON.stringify(newReview),
       headers: {
