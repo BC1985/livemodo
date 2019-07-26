@@ -1,6 +1,11 @@
-.call-to-action h2 {
+.signup-container {
+  color: whitesmoke;
+  padding-bottom: 20%;
+}
+
+.call-to-action > h2 {
+  padding: 10% 0 5% 0;
   margin: 0;
-  padding: 20px;
 }
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
 /* Portrait */
@@ -37,10 +42,6 @@
   #signup label {
     display: inline-block;
     padding: 5px 0 5px 0;
-  }
-
-  .push {
-    height: 40px;
   }
 }
 
@@ -79,10 +80,6 @@
     display: inline-block;
     padding: 5px 0 5px 0;
   }
-
-  .push {
-    height: 40px;
-  }
 }
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
@@ -90,13 +87,13 @@
 /* Portrait */
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
   .signup-container {
-    font-size: 1.2em;
     background: url(../images/Resized/stage-small-B&W.png);
     background-size: cover;
     background-position: center;
+    padding-bottom: 20%;
   }
   .signup-form {
-    padding: 0 10%;
+    padding: 0 20%;
   }
   #signup {
     background-color: rgba(39, 37, 37, 0.6);
@@ -121,10 +118,6 @@
   #signup label {
     display: inline-block;
     padding: 5px 0 5px 0;
-  }
-
-  .push {
-    height: 40px;
   }
 }
 
@@ -134,7 +127,6 @@
     background: url(../images/Resized/stage-small-B&W.png);
     background-size: cover;
     background-position: center;
-    font-size: 1.2em;
   }
   .signup-form {
     padding: 0 20%;
@@ -163,16 +155,15 @@
     display: inline-block;
     padding: 5px 0 5px 0;
   }
-
-  .push {
-    height: 40px;
-  }
 }
 
 /* ----------- iPhone 6+, 7+ and 8+ ----------- */
 
 /* Portrait */
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .signup-container {
+    padding-bottom: 20%;
+  }
 }
 
 /* Landscape */
@@ -181,7 +172,6 @@
     background: url(../images/Resized/stage-small-B&W.png);
     background-size: cover;
     background-position: center;
-    font-size: 1.2em;
   }
   .signup-form {
     padding: 0 20%;
@@ -209,10 +199,6 @@
   #signup label {
     display: inline-block;
     padding: 5px 0 5px 0;
-  }
-
-  .push {
-    height: 40px;
   }
 }
 
@@ -224,7 +210,7 @@
     background: url(../images/Resized/stage-small-B&W.png);
     background-size: cover;
     background-position: center;
-    font-size: 1.2em;
+    padding: 10% 10% 30%;
   }
   .signup-form {
     padding: 0 10%;
@@ -232,7 +218,6 @@
   #signup {
     background-color: rgba(39, 37, 37, 0.6);
     border-radius: 10px;
-    padding: 15px;
   }
 }
 
@@ -242,7 +227,6 @@
     background: url(../images/Resized/stage-small-B&W.png);
     background-size: cover;
     background-position: center;
-    font-size: 1.2em;
   }
   .signup-form {
     padding: 0 15%;
@@ -262,7 +246,6 @@
     color: black;
   }
 }
-
 /* ----------- iPad 3, 4 and Pro 9.7" ----------- */
 
 /* Portrait */
@@ -271,18 +254,12 @@
     background: url(../images/Resized/stage-small-B&W.png);
     background-size: cover;
     background-position: center;
-    font-size: 1.2em;
-  }
-  .call-to-action > h2 {
-    padding-top: 40px;
-  }
-  .signup-form {
-    padding: 0 15%;
+    padding: 0 20% 30%;
   }
   #signup {
     background-color: rgba(39, 37, 37, 0.6);
     border-radius: 10px;
-    padding: 10px 50px;
+    padding: 15px;
   }
   #signup input[type="text"] {
     border-radius: 3px;
@@ -294,9 +271,6 @@
     display: inline-block;
     color: black;
   }
-  .register-push {
-    height: 200px;
-  }
 }
 
 /* Landscape */
@@ -305,7 +279,6 @@
     background: url(../images/Resized/stage-small-B&W.png);
     background-size: cover;
     background-position: center;
-    font-size: 1.2em;
   }
   .signup-form {
     padding: 0 15%;
@@ -324,9 +297,6 @@
     width: 100%;
     display: inline-block;
     color: black;
-  }
-  .register-push {
-    height: 200px;
   }
 }
 
@@ -340,15 +310,15 @@
     background-position: center;
   }
   .call-to-action > h2 {
-    padding-top: 40px;
+    padding-top: 10%;
   }
   .signup-form {
-    padding: 0 15%;
+    padding: 0 10%;
   }
   #signup {
     background-color: rgba(39, 37, 37, 0.6);
     border-radius: 10px;
-    padding: 15px;
+    /* padding: 15px; */
   }
   #signup input[type="text"] {
     border-radius: 3px;
@@ -359,9 +329,6 @@
     width: 100%;
     display: inline-block;
     color: black;
-  }
-  .register-push {
-    height: 200px;
   }
 }
 
@@ -390,9 +357,6 @@
     display: inline-block;
     color: black;
   }
-  .register-push {
-    height: 200px;
-  }
 }
 
 @media screen and (min-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
@@ -406,24 +370,31 @@
   }
 
   #signup {
+    font-size: 0.7em;
     background-color: rgba(39, 37, 37, 0.6);
     border-radius: 10px;
-    padding: 10% 15%;
+    padding: 15px;
+    width: 50%;
+    margin: 0 auto;
   }
   label {
     display: block;
   }
   #signup input[type="text"] {
     border-radius: 3px;
+    font-size: 0.8em;
     justify-content: center;
     background-color: #cccc;
-    padding: 5px;
-    margin: 10px 0;
+    margin: 5px 0;
     width: 100%;
     display: inline-block;
     color: black;
   }
-  .register-push {
-    height: 200px;
+  #required-fields {
+    font-size: 0.8em;
+  }
+  #signup > button {
+    font-size: 0.8em;
+    display: inline-block;
   }
 }
