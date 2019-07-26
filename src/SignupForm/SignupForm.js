@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./SignupForm.css";
 import Button from "../Button/Button";
 import AuthApiService from "../services/auth-api-service";
+import { withRouter } from "react-router-dom";
 
 class SignupForm extends Component {
   state = {
@@ -43,7 +44,7 @@ class SignupForm extends Component {
         this.setState({ error: res.error });
       });
 
-    this.props.changeState();
+    this.props.history.push("thank-you");
   };
   render() {
     const spanStyle = {
@@ -124,4 +125,4 @@ class SignupForm extends Component {
   }
 }
 
-export default SignupForm;
+export default withRouter(SignupForm);
