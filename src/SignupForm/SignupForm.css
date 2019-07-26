@@ -7,6 +7,52 @@
   padding: 10% 0 5% 0;
   margin: 0;
 }
+
+.error {
+  border: 2px solid red;
+}
+#register-button:enabled {
+  display: flex;
+  display: inline-block;
+  margin: 5% auto 0;
+  height: 25px;
+  width: 100%;
+  border: 1px solid #6e7175;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+
+  border-radius: 5px;
+  color: #fff;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#646d7e),
+    to(#22242e)
+  );
+  cursor: pointer;
+}
+#register-button:enabled:hover {
+  color: #fff;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#373f51),
+    to(#060c0f)
+  );
+  cursor: pointer;
+}
+#register-button:disabled {
+  display: flex;
+  display: inline-block;
+  margin: 5% auto 0;
+  height: 25px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  background-color: gray;
+  color: rgb(197, 195, 195);
+}
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
 /* Portrait */
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
@@ -263,9 +309,9 @@
   }
   #signup input[type="text"] {
     border-radius: 3px;
-
     background-color: #cccc;
     padding: 10px;
+    font-size: 1em;
     margin: 10px 0;
     width: 100%;
     display: inline-block;
@@ -290,6 +336,7 @@
   }
   #signup input[type="text"] {
     border-radius: 3px;
+    font-size: 1em;
 
     background-color: #cccc;
     padding: 10px;
