@@ -8,7 +8,7 @@ export default function Rating(props) {
     i < props.value ? (
       <span key={i}>{starRating}</span>
     ) : (
-      <span key={i}>{starRating}</span>
+      <span key={i}>{null}</span>
     )
   );
   return <div className="rating">{stars}</div>;
