@@ -32,6 +32,7 @@ class BrowseReviewsPage extends Component {
         venue={review.venue}
         content={review.content}
         username={review.username}
+        rating={review.rating}
       />
     ));
     return (
