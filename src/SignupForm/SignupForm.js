@@ -49,7 +49,7 @@ class SignupForm extends Component {
     const spanStyle = {
       color: "whiteSmoke",
       fontStyle: "italic",
-      fontSize: "12px"
+      fontSize: "0.8em"
     };
 
     return (
@@ -113,42 +113,9 @@ class SignupForm extends Component {
               />
             </div>
 
-            <p style={spanStyle}>(* indicates required field)</p>
-            <p>
-              Pick the option that best describes your concergoing habits{" "}
-              <span style={spanStyle}>(optional)</span>
-            </p>
-            <div className="form-buttons">
-              <div>
-                <input
-                  type="radio"
-                  value="homebody"
-                  name="button"
-                  onChange={this.onChange}
-                />
-                Homebody
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="Occasiona concertgoer"
-                  name="button"
-                  onChange={this.onChange}
-                />
-                Occasional concertgoer
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="button"
-                  value="Concert Connuiseur"
-                  onChange={this.onChange}
-                />
-                Concert Connuiseur
-              </div>
+            <p style={spanStyle}>* indicates required field</p>
 
-              <Button type="submit">Submit</Button>
-            </div>
+            <Button type="submit">Submit</Button>
           </form>
           <div className="register-push" />
         </div>
