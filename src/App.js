@@ -20,6 +20,8 @@ import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import PasswordConfirmation from "./PasswordConfirmation/PasswodConfirmation";
 import SideDrawer from "./SideDrawer/SideDrawer";
 import { TokenService } from "./utils/token-service";
+import IdleService from "./services/idle-service";
+import AuthApiService from "./services/auth-api-service";
 import Backdrop from "./Backdrop/Backdrop";
 require("dotenv").config();
 
@@ -41,6 +43,8 @@ export default class App extends Component {
 
   handleLogOut = () => {
     TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
     this.drawerToggleClickHandler();
     this.setState({
       isLoggedIn: false
@@ -58,7 +62,26 @@ export default class App extends Component {
       };
     });
   };
+  componentDidMount() {
+    IdleService.setIdleCallback(this.logoutFromIdle);
+    if (TokenService.hasAuthToken()) {
+      IdleService.regiserIdleTimerResets();
+      TokenService.queueCallbackBeforeExpiry(() => {
+        AuthApiService.postRefreshToken();
+      });
+    }
+  }
+  componentWillUnmount() {
+    IdleService.unRegisterIdleResets();
+    TokenService.clearCallbackBeforeExpiry();
+  }
+  logoutFromIdle = () => {
+    TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
 
+    this.forceUpdate();
+  };
   render() {
     const { isLoggedIn, userName, isEmptyState, isNewUser } = this.state;
 
