@@ -43,6 +43,15 @@
   .header {
     margin: 5% 20% 0 20%;
   }
+  .landing-page-push {
+    height: 60px;
+  }
+}
+/* Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .header {
+    margin-top: 50px;
+  }
 }
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
@@ -56,10 +65,16 @@
     display: flex;
     flex-direction: column;
   }
+  .header {
+    margin-top: 50px;
+  }
 
   .description {
     margin: 0 20%;
     line-height: 25px;
+  }
+  .landing-page-push {
+    height: 60px;
   }
 }
 
@@ -114,6 +129,9 @@
   }
   #greeting {
     padding-bottom: 0px;
+  }
+  .landing-page-push {
+    height: 100px;
   }
 }
 /* Landscape */
@@ -189,7 +207,7 @@
     line-height: 35px;
   }
 
-  .push {
+  .landing-page-push {
     height: 300px;
   }
 }
@@ -202,6 +220,39 @@
     background-position: center;
   }
 }
+/* ----------- iPad Pro 10.5" ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 834px) and (max-device-width: 1112px) and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* Portrait */
+
+@media only screen and (min-device-width: 834px) and (max-device-width: 834px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* Landscape */
+
+@media only screen and (min-device-width: 1112px) and (max-device-width: 1112px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .landing-page-push {
+    height: 50%;
+  }
+}
+
+/* ----------- iPad Pro 12.9" ----------- */
+
+/* Portrait */
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .landing-page-push {
+    height: 50%;
+  }
+}
+
+/* Landscape */
+
+@media only screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+}
 
 /* ----------Laptops and desktops----------- */
 
@@ -209,8 +260,10 @@
 @media screen and (min-device-width: 1024px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) {
   .container {
     display: block;
+    font-size: 1.2em;
     width: 100%;
     background: url(../images/Resized/stage-small.png);
+    background-size: cover;
     overflow: hidden;
 
     animation: slide 20s infinite;
@@ -237,13 +290,13 @@
 
   .description {
     line-height: 35px;
-    margin: 0 15% 10% 20%;
+    margin: 0 15% 30% 20%;
   }
   .header {
-    padding-top: 10%;
+    padding-top: 30%;
   }
-  .push {
-    height: 200px;
+  .landing-page-push {
+    height: 320px;
   }
 }
 
@@ -253,6 +306,7 @@
     display: block;
     width: 100%;
     background: url(../images/Resized/stage-small.png);
+    background-size: cover;
     overflow: hidden;
 
     animation: slide 20s infinite;
@@ -282,10 +336,10 @@
     margin: 0 15% 10% 20%;
   }
   .header {
-    padding-top: 10%;
+    padding-top: 15%;
   }
-  .push {
-    height: 200px;
+  .landing-page-push {
+    height: 300px;
   }
 }
 @media screen and (min-device-width: 1600px) {
