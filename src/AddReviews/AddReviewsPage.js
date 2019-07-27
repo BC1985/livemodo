@@ -93,7 +93,6 @@ class AddReviewsPage extends Component {
       touched: { ...this.state.touched, [field]: true },
       ErrorMessage: true
     });
-    console.log(this.state.touched);
   };
 
   changeShowDate = value => {
