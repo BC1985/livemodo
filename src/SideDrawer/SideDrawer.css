@@ -52,9 +52,38 @@
     display: none;
   }
 }
+/* ----------- iPad Pro 10.5" ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 834px) and (max-device-width: 1112px) and (-webkit-min-device-pixel-ratio: 2) {
+  .side-drawer.open {
+    display: none;
+  }
+}
+
+/* ----------- iPad Pro 12.9" ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+  .side-drawer.open {
+    display: none;
+  }
+}
 
 /* Laptops */
+/* ----------- Non-Retina Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .side-drawer.open {
+    display: none;
+  }
+}
 
+/* ----------- Retina Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .side-drawer.open {
+    display: none;
+  }
+}
 @media screen and (min-device-width: 1600px) {
   .side-drawer.open {
     display: none;
