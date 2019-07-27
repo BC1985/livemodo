@@ -64,7 +64,7 @@ export default class LandingPage extends Component {
         <div className="description">
           <Description />
         </div>
-        <div className="push" />
+        <div className="landing-page-push" />
       </div>
     );
   }
