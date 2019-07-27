@@ -36,35 +36,57 @@ class SignupForm extends Component {
       [name]: value
     });
   };
+
+  validatePassword = () => {
+    const { password } = this.state;
+    const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[\S]+/;
+    if (password.length < 8) {
+      return "password must be at least 8 characters";
+    }
+    if (password.length > 72) {
+      return "password must be less than 72 characters";
+    }
+    if (password.startsWith(" ") || password.endsWith(" ")) {
+      return "Password must not start or end with empty spaces";
+    }
+    if (!REGEX_UPPER_LOWER_NUMBER_SPECIAL.test(password)) {
+      return "Password must contain one upper case, lower case, number and special character";
+    }
+    return null;
+  };
+
   handleSubmit = e => {
     e.preventDefault();
-    const { first_name, last_name, email, username, password } = e.target;
+    const passwordNotValid = this.validatePassword();
 
-    this.setState({ error: null });
-    AuthApiService.postUser({
-      first_name: first_name.value,
-      last_name: last_name.value,
-      username: username.value,
-      password: password.value,
-      email: email.value
-    })
-      .then(user => {
-        first_name.value = "";
-        last_name.value = "";
-        username.value = "";
-        password.value = "";
-        email.value = "";
+    if (passwordNotValid) {
+      alert(passwordNotValid);
+    } else {
+      const { first_name, last_name, email, username, password } = e.target;
+      AuthApiService.postUser({
+        first_name: first_name.value,
+        last_name: last_name.value,
+        username: username.value,
+        password: password.value,
+        email: email.value
       })
-      .catch(res => {
-        this.setState({ error: res.error });
-      });
+        .then(user => {
+          first_name.value = "";
+          last_name.value = "";
+          username.value = "";
+          password.value = "";
+          email.value = "";
+        })
+        .catch(res => {
+          this.setState({ error: res.error });
+        });
 
-    this.props.history.push("thank-you");
+      this.props.history.push("thank-you");
+    }
   };
   handleBlur = field => e => {
     this.setState({
-      touched: { ...this.state.touched, [field]: true },
-      ErrorMessage: true
+      touched: { ...this.state.touched, [field]: true }
     });
   };
 
@@ -170,6 +192,7 @@ class SignupForm extends Component {
                 onChange={this.onChange}
                 required
               />
+              {/* {some conditional rendering} */}
             </div>
 
             <p style={spanStyle}>* indicates required field</p>
