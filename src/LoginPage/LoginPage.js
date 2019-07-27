@@ -126,7 +126,7 @@ class LoginForm extends Component {
           </div>
         </section>
         <div id="error">{this.state.isLoading ? isLoading : error}</div>
-        <div className="push" />
+        <div className="login-push" />
       </div>
     );
   }
