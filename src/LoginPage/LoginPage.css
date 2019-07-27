@@ -122,8 +122,8 @@ h1 {
     margin: 0px 20%;
     height: 0px;
   }
-  .push {
-    height: -50px;
+  .login-push {
+    height: 100px;
   }
 }
 
@@ -131,6 +131,9 @@ h1 {
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
   #login-form {
     margin: 0% 20%;
+  }
+  .login-push {
+    height: 150px;
   }
 }
 
@@ -160,7 +163,7 @@ h1 {
     height: 50px;
   }
 
-  .push {
+  .login-push {
     height: -20%;
   }
 }
@@ -201,9 +204,9 @@ h1 {
     margin: 0;
   }
   .login-form-container {
-    padding: 0 20%;
+    padding: 10% 20%;
   }
-  .push {
+  .login-push {
     height: 200px;
   }
 }
@@ -235,11 +238,11 @@ h1 {
     background-image: url(../images/Resized/microphone-small-reduced.png);
     background-position: center;
   }
-  .push {
+  .login-push {
     height: 400px;
   }
   #login-form {
-    margin: 0 20%;
+    margin: 10% 20%;
   }
   #login-form input[type="text"],
   [type="password"] {
@@ -282,9 +285,36 @@ h1 {
   #show-password {
     font-size: 0.8em;
   }
-  .push {
+  .login-push {
     height: 240px;
   }
+}
+
+/* ----------- iPad Pro 10.5" ----------- */
+
+/* Portrait */
+
+@media only screen and (min-device-width: 834px) and (max-device-width: 834px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* Landscape */
+
+@media only screen and (min-device-width: 1112px) and (max-device-width: 1112px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* ----------- iPad Pro 12.9" ----------- */
+
+/* Portrait */
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .login-push {
+    height: 600px;
+  }
+}
+
+/* Landscape */
+
+@media only screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
 }
 /*-------------- Desktop and laptops ---------------- */
 
@@ -318,7 +348,7 @@ h1 {
     margin: 100px;
   }
   #help {
-    margin: 0% 20%;
+    margin: 0 100px;
   }
 }
 
