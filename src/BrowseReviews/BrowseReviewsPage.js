@@ -2,23 +2,31 @@ import React, { Component } from "react";
 import "./BrowseReviewsPage.css";
 import Review from "../Review/Review";
 import config from "../config";
+import Spinner from "../Spinners/Spinner";
 
 class BrowseReviewsPage extends Component {
   constructor() {
     super();
     this.state = {
-      reviews: []
+      reviews: [],
+      isLoading: false
     };
   }
   componentDidMount() {
+    this.setState({ isLoading: true });
     this.fetchReviews();
   }
   fetchReviews = async () => {
-    const data = await fetch(`${config.API_BASE_URL}/reviews`);
-    const reviews = await data.json();
-    this.setState({
-      reviews
-    });
+    try {
+      const data = await fetch(`${config.API_ENDPOINT}/reviews`);
+      const reviews = await data.json();
+      this.setState({
+        reviews,
+        isLoading: false
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
   render() {
     const { reviews } = this.state;
@@ -37,6 +45,7 @@ class BrowseReviewsPage extends Component {
     ));
     return (
       <div className="reviews-container">
+        {this.state.isLoading ? <Spinner /> : null}
         <div className="review">{reviewComponents}</div>
       </div>
     );
