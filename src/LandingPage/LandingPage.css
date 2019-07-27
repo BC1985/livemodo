@@ -360,6 +360,10 @@
     margin: 0 30% 10% 30%;
   }
 
+  .landing-page-push {
+    height: 100px;
+  }
+
   @keyframes slide {
     25% {
       background-image: url(../images/Resized/singer.png);
