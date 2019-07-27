@@ -18,7 +18,7 @@ class BrowseReviewsPage extends Component {
   }
   fetchReviews = async () => {
     try {
-      const data = await fetch(`${config.API_ENDPOINT}/reviews`);
+      const data = await fetch(`${config.API_BASE_URL}/reviews`);
       const reviews = await data.json();
       this.setState({
         reviews,
