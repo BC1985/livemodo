@@ -11,6 +11,11 @@
 .error {
   border: 2px solid red;
 }
+.errorMessage {
+  color: white;
+  font-size: 0.9em;
+  font-style: italic;
+}
 #register-button:enabled {
   display: flex;
   display: inline-block;
