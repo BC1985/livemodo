@@ -26,7 +26,8 @@ class SignupForm extends Component {
       password: false,
       email: false
     },
-    errorMessage: false
+    errorMessage: false,
+    passwordError: false
   };
 
   onChange = e => {
@@ -41,18 +42,24 @@ class SignupForm extends Component {
     const { password } = this.state;
     const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[\S]+/;
     if (password.length < 8) {
-      return "password must be at least 8 characters";
+      return "Password must be at least 8 characters";
     }
     if (password.length > 72) {
-      return "password must be less than 72 characters";
+      return "Password must be less than 72 characters";
     }
     if (password.startsWith(" ") || password.endsWith(" ")) {
       return "Password must not start or end with empty spaces";
     }
     if (!REGEX_UPPER_LOWER_NUMBER_SPECIAL.test(password)) {
-      return "Password must contain one upper case, lower case, number and special character";
+      return "Password must contain at least one upper case, lower case, number and special character";
     }
     return null;
+  };
+
+  renderError = e => {
+    this.setState({
+      passwordError: true
+    });
   };
 
   handleSubmit = e => {
@@ -60,7 +67,7 @@ class SignupForm extends Component {
     const passwordNotValid = this.validatePassword();
 
     if (passwordNotValid) {
-      alert(passwordNotValid);
+      this.setState({ error: true }, this.renderError());
     } else {
       const { first_name, last_name, email, username, password } = e.target;
       AuthApiService.postUser({
@@ -96,6 +103,9 @@ class SignupForm extends Component {
       fontStyle: "italic",
       fontSize: "0.8em"
     };
+    const ifPasswordError = {
+      border: "2px solid red"
+    };
     const {
       first_name,
       last_name,
@@ -112,7 +122,7 @@ class SignupForm extends Component {
       email
     );
     const isEnabled = !Object.keys(errors).some(x => errors[x]);
-
+    const errorMessage = this.validatePassword();
     return (
       <div className="signup-container">
         <div className="call-to-action">
@@ -191,8 +201,11 @@ class SignupForm extends Component {
                 onBlur={this.handleBlur("password", errors, touched)}
                 onChange={this.onChange}
                 required
+                style={this.state.passwordError ? ifPasswordError : null}
               />
-              {/* {some conditional rendering} */}
+              <span className="errorMessage">
+                {this.state.error ? errorMessage : ""}
+              </span>
             </div>
 
             <p style={spanStyle}>* indicates required field</p>
