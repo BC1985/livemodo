@@ -162,7 +162,7 @@ h1 {
   }
 
   .login-push {
-    height: -20%;
+    height: 20%;
   }
 }
 
@@ -337,6 +337,9 @@ h1 {
   #help {
     margin: 0 100px;
   }
+  .login-push {
+    height: 20%;
+  }
 }
 
 @media screen and (min-device-width: 1600px) {
@@ -365,5 +368,8 @@ h1 {
 
   #button {
     font-size: 0.7em;
+  }
+  .login-push {
+    height: 20%;
   }
 }
