@@ -8,12 +8,16 @@ h1 {
 }
 #login-form input[type="text"],
 [type="password"] {
+  padding: 5px;
   width: 100%;
   height: 30px;
   margin: 10px 0;
   background-color: lightgray;
 }
-
+#login-form input[type="checkbox"] {
+  margin-right: 10px;
+  padding: 0;
+}
 #help {
   height: 100px;
   display: flex;
@@ -22,7 +26,7 @@ h1 {
   margin: 0% 20%;
 }
 #show-password {
-  font-size: 0.5em;
+  font-size: 0.8em;
 }
 #button {
   border: 1px solid #202530;
@@ -70,9 +74,6 @@ h1 {
   [type="password"] {
     font-size: 15px;
   }
-  #show-password {
-    font-size: 0.8em;
-  }
   .login-form-container > #button {
     font-size: 0.9em;
   }
@@ -113,9 +114,6 @@ h1 {
     padding-top: 10%;
     margin: 0% 20% 0 20%;
     font-size: 1.2em;
-  }
-  #show-password {
-    font-size: 0.8em;
   }
 
   #help {
@@ -194,9 +192,6 @@ h1 {
   #help {
     margin: 0px;
   }
-  #show-password {
-    font-size: 0.7em;
-  }
   #login-form {
     display: flex;
     margin: 0;
@@ -218,9 +213,6 @@ h1 {
     background-image: url(../images/Resized/microphone-small-copy.png);
     background-size: cover;
     background-position: bottom;
-  }
-  #show-password {
-    font-size: 0.7em;
   }
   #login-form {
     margin: 0 20%;
@@ -254,9 +246,6 @@ h1 {
   #button {
     font-size: 0.8em;
   }
-  #show-password {
-    font-size: 0.8em;
-  }
 }
 
 /* Landscape */
@@ -281,9 +270,6 @@ h1 {
   }
   #help {
     margin: 0 10%;
-  }
-  #show-password {
-    font-size: 0.8em;
   }
   .login-push {
     height: 240px;
@@ -342,7 +328,6 @@ h1 {
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin: 10px;
   }
 
   #login-form {
@@ -372,9 +357,6 @@ h1 {
     background-color: lightgray;
     font-size: 10px;
     margin: 10px 0;
-  }
-  #show-password {
-    font-size: 0.8em;
   }
   #help {
     font-size: 0.8em;
