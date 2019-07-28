@@ -215,7 +215,7 @@ h1 {
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
   .login-form-container {
     padding: 5% 20%;
-    background-image: url(../images/Resized/microphone-small-reduced.png);
+    background-image: url(../images/Resized/microphone-small-copy.png);
     background-size: cover;
     background-position: bottom;
   }
@@ -235,7 +235,7 @@ h1 {
     padding: 20% 20% 0 20%;
     font-size: 1.1em;
     background-size: cover;
-    background-image: url(../images/Resized/microphone-small-reduced.png);
+    background-image: url(../images/Resized/microphone-small-copy.png);
     background-position: center;
   }
   .login-push {
@@ -265,7 +265,7 @@ h1 {
     padding: 10% 20% 0 20%;
     font-size: 1.1em;
     background-size: cover;
-    background-image: url(../images/Resized/microphone-small-reduced.png);
+    background-image: url(../images/Resized/microphone-small-copy.png);
     background-position: bottom;
   }
 
@@ -315,13 +315,16 @@ h1 {
 /* Landscape */
 
 @media only screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .login-push {
+    height: 20%;
+  }
 }
 /*-------------- Desktop and laptops ---------------- */
 
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
   .login-form-container {
     background-size: cover;
-    background-image: url(../images/Resized/microphone-small-reduced.png);
+    background-image: url(../images/Resized/microphone-small-copy.png);
     background-position: center;
     padding: 15% 20%;
     display: flex;
@@ -345,7 +348,6 @@ h1 {
   #login-form {
     display: flex;
     flex-direction: column;
-    margin: 100px;
   }
   #help {
     margin: 0 100px;
@@ -355,7 +357,7 @@ h1 {
 @media screen and (min-device-width: 1600px) {
   .login-form-container {
     padding: 10% 30%;
-    background-image: url(../images/Resized/microphone-small-reduced.png);
+    background-image: url(../images/Resized/microphone-small-copy.png);
     background-size: cover;
   }
   #login-form {
