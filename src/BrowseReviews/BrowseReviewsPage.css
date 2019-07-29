@@ -71,9 +71,6 @@
 
 /* Portrait */
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .reviews-container {
-    font-size: 1.1em;
-  }
   .user-thumbnail {
     font-size: 50px;
   }
@@ -88,7 +85,7 @@
 /* Landscape */
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
   .reviews-container {
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
   }
   .user-thumbnail {
     font-size: 50px;
@@ -110,7 +107,7 @@
 /* Portrait */
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
   .reviews-container {
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
   }
   .user-thumbnail {
     font-size: 50px;
@@ -130,7 +127,7 @@
 /* Landscape */
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
   .reviews-container {
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
     padding: 5% 20% 5% 10%;
   }
   .user-thumbnail {
@@ -168,7 +165,7 @@
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
   .reviews-container {
     padding: 5% 20% 15% 10%;
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
   }
   .user-thumbnail {
     font-size: 50px;
@@ -190,7 +187,7 @@
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
   .reviews-container {
     padding: 5% 15%;
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
   }
   .user-thumbnail {
     font-size: 50px;
@@ -211,7 +208,7 @@
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
   .reviews-container {
     padding: 5% 25% 5% 10%;
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
   }
   .user-thumbnail {
     font-size: 50px;
@@ -231,7 +228,7 @@
 /* ----------- Non-Retina Screens ----------- */
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
   .reviews-container {
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
   }
   .user-thumbnail {
     font-size: 50px;
@@ -251,7 +248,7 @@
 /* ----------- Retina Screens ----------- */
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
   .reviews-container {
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
   }
   .user-thumbnail {
     font-size: 50px;
@@ -271,8 +268,8 @@
 @media screen and (min-device-width: 1600px) {
   .reviews-container {
     padding: 5% 25% 5% 10%;
-    line-height: 20px;
-    font-size: 0.7em;
+    /* line-height: 20px;*/
+    font-size: 0.9em;
   }
   .user-thumbnail {
     font-size: 3em;
