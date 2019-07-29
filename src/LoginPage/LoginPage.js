@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import Spinner from "../Spinners/Spinner";
-// import LandingPage from "./LandingPage";
 import "./LoginPage.css";
 import { TokenService } from "../utils/token-service";
 import config from "../config";

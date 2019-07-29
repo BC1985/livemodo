@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { withRouter, Redirect } from "react-router-dom";
-// import PasswordConfirmation from './PasswodConfirmation'
-
 class ForgotPassword extends Component {
   state = {
     Redirect: false

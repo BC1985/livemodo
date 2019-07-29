@@ -30,7 +30,6 @@
   .container {
     display: flex;
     flex-direction: column;
-    /* background: url(../images/portrait-mode.png); */
     background-size: cover;
     background-repeat: no-repeat;
     min-width: 100%;

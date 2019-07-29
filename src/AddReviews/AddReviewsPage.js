@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-// import ThankYouPage from "./ThankYouPage";
-// import Calendar from "react-calendar";
 import Calendar from "react-calendar";
 import "./AddReviewsPage.css";
 import { TokenService } from "../utils/token-service";

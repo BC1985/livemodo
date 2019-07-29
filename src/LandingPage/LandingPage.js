@@ -3,7 +3,6 @@ import { Redirect, Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./LandingPage.css";
 import { TokenService } from "../utils/token-service";
-// import LoginForm from "./LoginPage";
 const landingPageStyle = {
   color: "whiteSmoke"
 };

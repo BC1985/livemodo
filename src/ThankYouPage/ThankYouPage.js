@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./ThankYouPage.css";
-// import LandingPage from "./LandingPage";
-
 class ThankYouPage extends Component {
   componentDidMount() {
     const redirect = () => {

@@ -31,8 +31,6 @@
   #search-form input {
     align-self: center;
     display: flex;
-    /* width: 150px; */
-    /* height: 28px; */
     background-color: #cccc;
     color: black;
     margin: 10px;
