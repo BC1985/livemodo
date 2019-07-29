@@ -259,7 +259,7 @@
 @media screen and (min-device-width: 1024px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) {
   .container {
     display: block;
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
     width: 100%;
     height: 100%;
     background: url(../images/Resized/stage-small-B&W.png);
