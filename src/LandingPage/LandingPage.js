@@ -27,8 +27,8 @@ const Description = () => {
             fontStyle: "italic"
           }}
         >
-          To log in with dummy credentials, enter username Johndoe and password
-          JohnDoe1%
+          To log in with dummy credentials, enter username JohnSmith and
+          password JohnSmith1!
         </span>
       </p>
     </div>
