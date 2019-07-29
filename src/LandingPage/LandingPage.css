@@ -243,9 +243,9 @@
 
 /* Portrait */
 
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
   .landing-page-push {
-    height: 50%;
+    height: 60%;
   }
 }
 
@@ -271,7 +271,7 @@
     animation: slide 25s ease-in infinite;
   }
   .header {
-    padding-top: 10%;
+    padding-top: 25%;
   }
   .description {
     font-size: 0.8em;
@@ -282,7 +282,7 @@
   }
 
   .landing-page-push {
-    height: 250px;
+    height: 350px;
   }
 
   @-webkit-keyframes slide {
