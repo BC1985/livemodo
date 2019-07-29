@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import "./Navbar.css";
-// import { TokenService } from "../utils/token-service";
 import DrawerToggleButton from "../DrawerToggleBottun/DrawerToggleButon";
-// import BrowseForm from "../BrowseForm/BrowseForm";
 class Navbar extends Component {
   render() {
     return (
@@ -12,7 +10,7 @@ class Navbar extends Component {
           <div className="hamburger-icon">
             <DrawerToggleButton click={this.props.drawerToggleClickHandler} />
           </div>
-          {/* <BrowseForm /> */}
+          <div id="logo">LIVEMODO</div>
           <div className="spacer" />
           <div className="nav-links">
             <ul>

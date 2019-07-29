@@ -59,6 +59,10 @@ li {
 .nav-links a:hover::after {
   width: 100%;
 }
+#logo {
+  color: rgb(182, 182, 192);
+  margin-left: 20px;
+}
 
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
 
@@ -66,6 +70,9 @@ li {
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
   .nav-links {
     display: none;
+  }
+  #logo {
+    margin: 0 23%;
   }
 }
 
@@ -85,6 +92,9 @@ li {
 
 /* Portrait */
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  #logo {
+    margin: 0 25%;
+  }
 }
 
 /* Landscape */
@@ -101,6 +111,9 @@ li {
 
 /* Portrait */
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  #logo {
+    margin: 0 30%;
+  }
 }
 
 /* Landscape */
