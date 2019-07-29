@@ -19,6 +19,18 @@ const Description = () => {
         Livemodo is the right tool for any music lover. Houndreds of reviews
         from fellow concertgoers will help you manage your expectations in your
         upcoming concert escapades.
+        <br />
+        <span
+          style={{
+            fontWeight: "bold",
+            color: "lightGray",
+            textDecoration: "underline",
+            fontStyle: "italic"
+          }}
+        >
+          To log in with dummy credentials, enter username Johndoe and password
+          JohnDoe1%
+        </span>
       </p>
     </div>
   );
