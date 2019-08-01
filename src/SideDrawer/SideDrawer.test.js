@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SideDrawer from "../SideDrawer/SideDrawer";
-import { MemoryRouter, NavLink } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
+import renderer from "react-test-renderer";
 const routes = [
   {
     to: "/",
@@ -25,4 +26,15 @@ it("renders without crashing", () => {
     div
   );
   ReactDOM.unmountComponentAtNode(div);
+});
+
+it("renders the UI as expected", () => {
+  const tree = renderer
+    .create(
+      <MemoryRouter>
+        <SideDrawer routes={routes} />
+      </MemoryRouter>
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
 });

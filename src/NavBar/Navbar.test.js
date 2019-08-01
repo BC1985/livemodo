@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { MemoryRouter } from "react-router-dom";
+import renderer from "react-test-renderer";
 import NavBar from "../NavBar/Navbar";
 const routes = [
   {
@@ -25,4 +26,15 @@ it("renders without crashing", () => {
     div
   );
   ReactDOM.unmountComponentAtNode(div);
+});
+
+it("renders UI as exptected", () => {
+  const tree = renderer
+    .create(
+      <MemoryRouter>
+        <NavBar routes={routes} />
+      </MemoryRouter>
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
 });
