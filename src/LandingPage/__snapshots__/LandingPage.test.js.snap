@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders UI as expected 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="header"
+  >
+    <h1>
+      Livemodo
+    </h1>
+    <h3>
+      Your wiki live shows resource
+    </h3>
+  </div>
+  <div
+    id="greeting"
+  />
+  <div
+    className="description"
+  >
+    <div>
+      <p
+        style={
+          Object {
+            "color": "whiteSmoke",
+          }
+        }
+      >
+        Have you ever bought a ticket to see your favorite band play live in your hometown only to have your experience ruined by the lead singer's lack of stage presence? Or maybe you're kicking yourself for missing out on catching that unknown band play at the block party right before they made it big and now the concert tickets are too expensive... If so, then Livemodo is the right tool for any music lover. Houndreds of reviews from fellow concertgoers will help you manage your expectations in your upcoming concert escapades.
+        <br />
+        <span
+          style={
+            Object {
+              "color": "lightGray",
+              "fontStyle": "italic",
+              "fontWeight": "bold",
+              "textDecoration": "underline",
+            }
+          }
+        >
+          To log in with dummy credentials, enter username JohnSmith and password JohnSmith1!
+        </span>
+      </p>
+    </div>
+  </div>
+  <div
+    className="landing-page-push"
+  />
+</div>
+`;

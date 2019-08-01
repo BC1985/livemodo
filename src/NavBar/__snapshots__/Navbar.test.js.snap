@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders UI as exptected 1`] = `
+<div
+  className="container"
+>
+  <nav
+    className="nav-wrapper"
+  >
+    <div
+      className="hamburger-icon"
+    >
+      <button
+        className="toggle_button"
+      >
+        <div
+          className="toggle_button_line"
+        />
+        <div
+          className="toggle_button_line"
+        />
+        <div
+          className="toggle_button_line"
+        />
+      </button>
+    </div>
+    <div
+      id="logo"
+    >
+      LIVEMODO
+    </div>
+    <div
+      className="spacer"
+    />
+    <div
+      className="nav-links"
+    >
+      <ul>
+        <li>
+          <a
+            aria-current="page"
+            className="active"
+            href="/"
+            onClick={[Function]}
+            style={Object {}}
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            href="/browse"
+            onClick={[Function]}
+          >
+            Browse Reviews
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            href="/login"
+            onClick={[Function]}
+          >
+            Log in
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+`;

@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders UI as expected 1`] = `
+<div
+  className="signup-container"
+>
+  <div
+    className="call-to-action"
+  >
+    <h2>
+      Join the Livemodo community!
+    </h2>
+  </div>
+  <div
+    className="signup-form"
+  >
+    <form
+      id="signup"
+      onSubmit={[Function]}
+    >
+      <div
+        className="text-input"
+      >
+        <label>
+          *First Name 
+        </label>
+        <input
+          className={null}
+          name="first_name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="e.g Tommy"
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="text-input"
+      >
+        <label>
+          *Last Name 
+        </label>
+        <input
+          className={null}
+          name="last_name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="e.g Wisseau"
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="text-input"
+      >
+        <label>
+          *Username 
+        </label>
+        <input
+          className={null}
+          name="username"
+          onBlur={[Function]}
+          onChange={[Function]}
+          required={true}
+          style={null}
+          type="text"
+          value=""
+        />
+        <span
+          className="errorMessage"
+        >
+          
+        </span>
+      </div>
+      <div
+        className="text-input"
+      >
+        <label>
+          *Email 
+        </label>
+        <input
+          className={null}
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="e.g tommy@theroom.com"
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="text-input"
+      >
+        <label>
+          *Password 
+        </label>
+        <input
+          className={null}
+          name="password"
+          onBlur={[Function]}
+          onChange={[Function]}
+          required={true}
+          style={null}
+          type="text"
+          value=""
+        />
+        <span
+          className="errorMessage"
+        >
+          
+        </span>
+      </div>
+      <p
+        style={
+          Object {
+            "color": "whiteSmoke",
+            "fontSize": "0.8em",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        * indicates required field
+      </p>
+      <button
+        disabled={true}
+        id="register-button"
+        type="disabled"
+      >
+        Submit
+      </button>
+    </form>
+    <div
+      className="register-push"
+    />
+  </div>
+</div>
+`;

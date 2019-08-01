@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<div
+  className="reviews-container"
+>
+  <div
+    className="spinner-3"
+  />
+  <div
+    className="review"
+  />
+</div>
+`;

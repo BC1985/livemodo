@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as exptected 1`] = `
+<div
+  style={
+    Object {
+      "color": "white",
+      "textAlign": "center",
+    }
+  }
+>
+  Something went wrong, please try again.
+</div>
+`;

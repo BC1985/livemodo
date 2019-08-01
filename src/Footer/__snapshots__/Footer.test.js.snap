@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders UI as expected 1`] = `
+<div>
+  <footer
+    className="footer"
+  >
+    ©All rights reserved to Ben Cohen 2019
+  </footer>
+</div>
+`;

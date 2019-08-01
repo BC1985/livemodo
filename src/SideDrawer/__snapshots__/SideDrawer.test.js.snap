@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<nav
+  className="side-drawer"
+>
+  <ul>
+    <li>
+      <a
+        aria-current="page"
+        className="active"
+        href="/"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Home
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={null}
+        href="/browse"
+        onClick={[Function]}
+      >
+        Browse Reviews
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={null}
+        href="/login"
+        onClick={[Function]}
+      >
+        Log in
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

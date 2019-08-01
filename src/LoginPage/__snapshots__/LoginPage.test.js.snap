@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders UI as expected 1`] = `
+<div
+  className="login-form-container"
+>
+  <form
+    id="login-form"
+    onSubmit={[Function]}
+  >
+    <label>
+      Username
+    </label>
+    <input
+      name="username"
+      onChange={[Function]}
+      required={true}
+      style={
+        Object {
+          "color": "black",
+        }
+      }
+      type="text"
+    />
+    <label>
+      Password
+    </label>
+    <input
+      id="password"
+      name="password"
+      onChange={[Function]}
+      required={true}
+      style={
+        Object {
+          "color": "black",
+        }
+      }
+      type="password"
+    />
+    <div
+      id="toggle-password"
+    >
+      <input
+        id="checkbox"
+        onClick={[Function]}
+        type="checkbox"
+      />
+      <span
+        id="show-password"
+      >
+        Show password
+      </span>
+    </div>
+    <button
+      id="button"
+    >
+      Log in
+    </button>
+  </form>
+  <section
+    id="help"
+  >
+    <div
+      id="forgot-password"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "whiteSmoke",
+          }
+        }
+      >
+        Forgot password?
+         
+      </a>
+    </div>
+    <div
+      id="register"
+    >
+      <a
+        href="/register"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "whiteSmoke",
+          }
+        }
+      >
+        Sign up
+      </a>
+    </div>
+  </section>
+  <div
+    id="error"
+  >
+    
+  </div>
+  <div
+    className="login-push"
+  />
+</div>
+`;
