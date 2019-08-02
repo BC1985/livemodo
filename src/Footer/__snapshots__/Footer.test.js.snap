@@ -4,6 +4,7 @@ exports[`renders UI as expected 1`] = `
 <div>
   <footer
     className="footer"
+    role="contentinfo"
   >
     ©All rights reserved to Ben Cohen 2019
   </footer>

@@ -6,6 +6,7 @@ exports[`renders UI as expected 1`] = `
 >
   <div
     className="header"
+    role="banner"
   >
     <h1>
       Livemodo

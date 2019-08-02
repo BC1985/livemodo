@@ -6,6 +6,7 @@ exports[`renders UI as exptected 1`] = `
 >
   <nav
     className="nav-wrapper"
+    role="navigation"
   >
     <div
       className="hamburger-icon"
