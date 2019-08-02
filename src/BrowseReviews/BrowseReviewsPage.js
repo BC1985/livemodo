@@ -47,6 +47,7 @@ class BrowseReviewsPage extends Component {
       <div className="reviews-container">
         {this.state.isLoading ? <Spinner /> : null}
         <main role="main">
+          <h1>Posted reviews</h1>
           <div className="review">{reviewComponents}</div>
         </main>
       </div>
