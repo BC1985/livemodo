@@ -10,6 +10,9 @@ exports[`renders the UI as expected 1`] = `
   <main
     role="main"
   >
+    <h1>
+      Posted reviews
+    </h1>
     <div
       className="review"
     />

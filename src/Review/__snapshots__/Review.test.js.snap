@@ -42,7 +42,7 @@ exports[`renders the UI as expected 1`] = `
   <h2
     className="band-name"
   />
-  <h4
+  <h3
     className="tagline"
   />
   <p>
