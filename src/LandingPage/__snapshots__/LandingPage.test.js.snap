@@ -10,9 +10,9 @@ exports[`renders UI as expected 1`] = `
     <h1>
       Livemodo
     </h1>
-    <h3>
+    <h2>
       Your wiki live shows resource
-    </h3>
+    </h2>
   </div>
   <div
     id="greeting"
