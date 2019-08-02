@@ -49,11 +49,13 @@ export default class LandingPage extends Component {
   };
   UserNotLoggedIn = () => {
     return (
-      <Link to="/login">
-        <Button id="login-button" onClick={this.redirect}>
-          Log in
-        </Button>
-      </Link>
+      <main>
+        <Link to="/login">
+          <Button id="login-button" onClick={this.redirect}>
+            Log in
+          </Button>
+        </Link>
+      </main>
     );
   };
   render() {
