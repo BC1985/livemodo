@@ -23,6 +23,7 @@ exports[`renders UI as expected 1`] = `
   >
     <div>
       <p
+        role="contentinfo"
         style={
           Object {
             "color": "whiteSmoke",
