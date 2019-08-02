@@ -24,6 +24,7 @@ exports[`renders UI as expected 1`] = `
         Username
       </label>
       <input
+        aria-label="username"
         name="username"
         onChange={[Function]}
         required={true}
@@ -38,6 +39,7 @@ exports[`renders UI as expected 1`] = `
         Password
       </label>
       <input
+        aria-label="password"
         id="password"
         name="password"
         onChange={[Function]}
@@ -53,6 +55,7 @@ exports[`renders UI as expected 1`] = `
         id="toggle-password"
       >
         <input
+          aria-label="checkbox"
           id="checkbox"
           onClick={[Function]}
           type="checkbox"
