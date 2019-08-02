@@ -9,7 +9,7 @@ const landingPageStyle = {
 const Description = () => {
   return (
     <div>
-      <p style={landingPageStyle}>
+      <p style={landingPageStyle} role="contentinfo">
         Have you ever bought a ticket to see your favorite band play live in
         your hometown only to have your experience ruined by the lead singer's
         lack of stage presence? Or maybe you're kicking yourself for missing out
