@@ -19,7 +19,7 @@ class Review extends Component {
           </p>
           <p>posted: {parseDate(review.posted)}</p>
           <h2 className="band-name">{review.band_name}</h2>
-          <h4 className="tagline">{review.tagline}</h4>
+          <h3 className="tagline">{review.tagline}</h3>
           <p>Venue: {review.venue}</p>
           <p>Date: {parseDate(review.show_date)}</p>
           <Rating value={review.rating} />
