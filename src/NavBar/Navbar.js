@@ -6,7 +6,7 @@ class Navbar extends Component {
   render() {
     return (
       <div className="container">
-        <nav className="nav-wrapper">
+        <nav className="nav-wrapper" role="navigation">
           <div className="hamburger-icon">
             <DrawerToggleButton click={this.props.drawerToggleClickHandler} />
           </div>

@@ -62,7 +62,7 @@ export default class LandingPage extends Component {
     }
     return (
       <div className="container">
-        <div className="header">
+        <div className="header" role="banner">
           <h1>Livemodo</h1>
           <h2>Your wiki live shows resource</h2>
         </div>
