@@ -64,7 +64,7 @@ export default class LandingPage extends Component {
       <div className="container">
         <div className="header">
           <h1>Livemodo</h1>
-          <h3>Your wiki live shows resource</h3>
+          <h2>Your wiki live shows resource</h2>
         </div>
         <div id="greeting">
           {TokenService.hasAuthToken() ? (
