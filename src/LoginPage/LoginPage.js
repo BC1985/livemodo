@@ -91,6 +91,7 @@ class LoginForm extends Component {
             </h1>
             <label>Username</label>
             <input
+              aria-label="username"
               style={{ color: "black" }}
               type="text"
               name="username"
@@ -100,6 +101,7 @@ class LoginForm extends Component {
             />
             <label>Password</label>
             <input
+              aria-label="password"
               style={{ color: "black" }}
               id="password"
               type="password"
@@ -110,6 +112,7 @@ class LoginForm extends Component {
             />
             <div id="toggle-password">
               <input
+                aria-label="checkbox"
                 type="checkbox"
                 onClick={this.showHidePassword}
                 id="checkbox"
