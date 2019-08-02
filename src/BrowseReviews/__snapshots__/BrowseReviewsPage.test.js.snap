@@ -7,8 +7,12 @@ exports[`renders the UI as expected 1`] = `
   <div
     className="spinner-3"
   />
-  <div
-    className="review"
-  />
+  <main
+    role="main"
+  >
+    <div
+      className="review"
+    />
+  </main>
 </div>
 `;
