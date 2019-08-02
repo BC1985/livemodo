@@ -82,50 +82,57 @@ class LoginForm extends Component {
 
     return (
       <div className="login-form-container">
-        <form id="login-form" onSubmit={this.handeSubmitJwtAuth}>
-          <label>Username</label>
-          <input
-            style={{ color: "black" }}
-            type="text"
-            name="username"
-            value={username.value}
-            onChange={this.changeHandler}
-            required
-          />
-          <label>Password</label>
-          <input
-            style={{ color: "black" }}
-            id="password"
-            type="password"
-            name="password"
-            value={password.value}
-            onChange={this.changeHandler}
-            required
-          />
-          <div id="toggle-password">
+        <main>
+          <form id="login-form" onSubmit={this.handeSubmitJwtAuth}>
+            <h1
+              style={{ color: "whiteSmoke", paddingTop: "0", marginTop: "0" }}
+            >
+              Log in to Livemodo
+            </h1>
+            <label>Username</label>
             <input
-              type="checkbox"
-              onClick={this.showHidePassword}
-              id="checkbox"
+              style={{ color: "black" }}
+              type="text"
+              name="username"
+              value={username.value}
+              onChange={this.changeHandler}
+              required
             />
-            <span id="show-password">Show password</span>
-          </div>
-          <button id="button">Log in</button>
-        </form>
-        <section id="help">
-          <div id="forgot-password">
-            <Link to="/" style={linkStyle}>
-              Forgot password?{" "}
-            </Link>
-          </div>
-          <div id="register">
-            <Link to="/register" style={linkStyle}>
-              Sign up
-            </Link>
-          </div>
-        </section>
-        <div id="error">{this.state.isLoading ? isLoading : error}</div>
-        <div className="login-push" />
+            <label>Password</label>
+            <input
+              style={{ color: "black" }}
+              id="password"
+              type="password"
+              name="password"
+              value={password.value}
+              onChange={this.changeHandler}
+              required
+            />
+            <div id="toggle-password">
+              <input
+                type="checkbox"
+                onClick={this.showHidePassword}
+                id="checkbox"
+              />
+              <span id="show-password">Show password</span>
+            </div>
+            <button id="button">Log in</button>
+          </form>
+          <section id="help">
+            <div id="forgot-password">
+              <Link to="/" style={linkStyle}>
+                Forgot password?{" "}
+              </Link>
+            </div>
+            <div id="register">
+              <Link to="/register" style={linkStyle}>
+                Sign up
+              </Link>
+            </div>
+          </section>
+          <div id="error">{this.state.isLoading ? isLoading : error}</div>
+          <div className="login-push" />
+        </main>
       </div>
     );
   }
