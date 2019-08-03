@@ -64,15 +64,9 @@ exports[`renders UI as expected 1`] = `
           onBlur={[Function]}
           onChange={[Function]}
           required={true}
-          style={null}
           type="text"
           value=""
         />
-        <span
-          className="errorMessage"
-        >
-          
-        </span>
       </div>
       <div
         className="text-input"

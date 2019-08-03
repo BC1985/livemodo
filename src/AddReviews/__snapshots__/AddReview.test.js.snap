@@ -378,7 +378,7 @@ Array [
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__tile--now react-calendar__month-view__days__day"
+                    className="react-calendar__tile react-calendar__month-view__days__day"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
@@ -399,7 +399,7 @@ Array [
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
+                    className="react-calendar__tile react-calendar__tile--now react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
