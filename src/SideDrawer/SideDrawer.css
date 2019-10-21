@@ -1,17 +1,17 @@
 .side-drawer {
-  height: 100%;
-  background-color: rgb(27, 27, 31);
-  box-shadow: 20px 0px 20px 2px rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  transform: translateX(-100%);
+  transition: 0.5s;
   position: fixed;
   top: 0;
   left: 0;
   width: 50%;
   max-width: 400px;
-  z-index: 200;
+  /* box-shadow: 200px 0px 10px 10px rgba(0, 0, 0, 0.5); */
 }
 .side-drawer.open {
   transform: translateX(0);
-  transition: 1s;
+  transition: 0.5s;
 }
 
 .side-drawer ul {
@@ -26,7 +26,7 @@
 }
 
 .side-drawer a {
-  color: rgb(184, 179, 179);
+  color: rgb(218, 209, 209);
   text-decoration: none;
   font-size: 1.2rem;
 }
