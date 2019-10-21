@@ -29,7 +29,7 @@ export default class App extends Component {
     this.state = {
       isLoggedIn: TokenService.hasAuthToken(),
       isEmptyState: true,
-      sideDrawerOpen: false
+      isSideDrawerOpen: false
     };
   }
   changeLoginState = () => {
@@ -48,56 +48,62 @@ export default class App extends Component {
   };
   backdropClickHandler = () => {
     this.setState({
-      sideDrawerOpen: false
+      isSideDrawerOpen: false
     });
   };
   drawerToggleClickHandler = () => {
     this.setState(prevState => {
       return {
-        sideDrawerOpen: !prevState.sideDrawerOpen
+        isSideDrawerOpen: !prevState.isSideDrawerOpen
       };
     });
   };
 
   render() {
-    const { isLoggedIn, userName, isEmptyState, isNewUser } = this.state;
+    const {
+      isLoggedIn,
+      userName,
+      isEmptyState,
+      isNewUser,
+      isSideDrawerOpen
+    } = this.state;
 
     let backdrop;
-    if (this.state.sideDrawerOpen) {
+    if (isSideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
     const routes = [
       {
         to: "/",
-        name: "Home",
-        onClick: this.drawerToggleClickHandler
+        name: "Home"
+        // onClick: this.drawerToggleClickHandler
       },
       {
         to: "/browse",
-        name: "Browse Reviews",
-        onClick: this.drawerToggleClickHandler
+        name: "Browse Reviews"
+        // onClick: this.drawerToggleClickHandler
       },
       {
         to: "/login",
-        name: "Log in",
-        onClick: this.drawerToggleClickHandler
+        name: "Log in"
+        // onClick: this.drawerToggleClickHandler
       }
     ];
     const authenticateRoutes = [
       {
         to: "/",
-        name: "Home",
-        onClick: this.drawerToggleClickHandler
+        name: "Home"
+        // onClick: this.drawerToggleClickHandler
       },
       {
         to: "/browse",
-        name: "Browse Reviews",
-        onClick: this.drawerToggleClickHandler
+        name: "Browse Reviews"
+        // onClick: this.drawerToggleClickHandler
       },
       {
         to: "/add",
-        name: "Add Review",
-        onClick: this.drawerToggleClickHandler
+        name: "Add Review"
+        // onClick: this.drawerToggleClickHandler
       },
       {
         to: "/",
@@ -107,13 +113,13 @@ export default class App extends Component {
     ];
     return (
       <Router>
-        {this.state.sideDrawerOpen && (
-          <SideDrawer
-            show={this.state.sideDrawerOpen}
-            drawerToggleClickHandler={this.drawerToggleClickHandler}
-            routes={isLoggedIn ? authenticateRoutes : routes}
-          />
-        )}
+        {/* {isSideDrawerOpen && ( */}
+        <SideDrawer
+          show={isSideDrawerOpen}
+          drawerToggleClickHandler={this.drawerToggleClickHandler}
+          routes={isLoggedIn ? authenticateRoutes : routes}
+        />
+        {/* )} */}
         <div className="App">
           <Navbar
             isLoggedIn={isLoggedIn}
@@ -121,6 +127,8 @@ export default class App extends Component {
             userName={userName}
             changeLoginState={this.changeLoginState}
             drawerToggleClickHandler={this.drawerToggleClickHandler}
+            // click={this.drawerToggleClickHandler}
+            isSideDrawerOpen={isSideDrawerOpen}
           />
           {backdrop}
           <Switch>
