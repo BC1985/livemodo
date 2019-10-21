@@ -8,7 +8,10 @@ class Navbar extends Component {
       <div className="container">
         <nav className="nav-wrapper" role="navigation">
           <div className="hamburger-icon">
-            <DrawerToggleButton click={this.props.drawerToggleClickHandler} />
+            <DrawerToggleButton
+              isSideDrawerOpen={this.props.isSideDrawerOpen}
+              click={this.props.drawerToggleClickHandler}
+            />
           </div>
           <div id="logo">LIVEMODO</div>
           <div className="spacer" />
@@ -16,7 +19,10 @@ class Navbar extends Component {
             <ul>
               {this.props.routes.map(route => (
                 <li key={route.name}>
-                  <NavLink to={route.to} onClick={route.onClick}>
+                  <NavLink
+                    to={route.to}
+                    // onClick={route.onClick}
+                  >
                     {route.name}
                   </NavLink>
                 </li>
