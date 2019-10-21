@@ -35,11 +35,10 @@ Clone this repo to your desktop and run `npm install` to install all the depende
 * Chat function
 
 #### Screenshots
-
-![screenshot1](https://user-images.githubusercontent.com/46656173/61904079-16d7b780-aef4-11e9-80c9-f8625b754a99.png)
-![screenshot4](https://user-images.githubusercontent.com/46656173/61904083-16d7b780-aef4-11e9-9ae0-21ea08c7fd20.png)
-![screenshot3](https://user-images.githubusercontent.com/46656173/61904081-16d7b780-aef4-11e9-99cf-fd88fdd7539e.png)
-![screenshot2](https://user-images.githubusercontent.com/46656173/61904080-16d7b780-aef4-11e9-9b8f-330e02ef98c1.png)
+<img src="src/images/screenshot1.png" width="600">
+<img src="src/images/screenshot2.png" width="600">
+<img src="src/images/screenshot3.png" width="600">
+<img src="src/images/screenshot4.png" width="300">
 
 
 
