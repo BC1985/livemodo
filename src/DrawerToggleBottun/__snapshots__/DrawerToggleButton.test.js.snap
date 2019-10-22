@@ -2,16 +2,48 @@
 
 exports[`renders the UI as expected 1`] = `
 <button
-  className="toggle_button"
+  id="toggle-button"
 >
   <div
-    className="toggle_button_line"
+    style={
+      Object {
+        "background": "white",
+        "height": "3px",
+        "marginBottom": "5px",
+        "transform": "none",
+        "transformOrigin": "top left",
+        "transition": "all 0.3s ease",
+        "width": "20px",
+        "zIndex": 10,
+      }
+    }
   />
   <div
-    className="toggle_button_line"
+    style={
+      Object {
+        "background": "white",
+        "height": "3px",
+        "opacity": 1,
+        "transform": "none",
+        "transition": "all 0.3s ease",
+        "width": "20px",
+        "zIndex": 10,
+      }
+    }
   />
   <div
-    className="toggle_button_line"
+    style={
+      Object {
+        "background": "white",
+        "height": "3px",
+        "marginTop": "5px",
+        "transform": "none",
+        "transformOrigin": "top left",
+        "transition": "all 0.3s ease",
+        "width": "20px",
+        "zIndex": 10,
+      }
+    }
   />
 </button>
 `;

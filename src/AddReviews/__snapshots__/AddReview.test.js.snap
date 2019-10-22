@@ -108,7 +108,7 @@ Array [
               }
               type="button"
             >
-              August 2019
+              October 2019
             </button>
             <button
               aria-label=""
@@ -309,51 +309,9 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="July 29, 2019"
-                    >
-                      29
-                    </abbr>
-                  </button>
-                  <button
-                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--neighboringMonth"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onMouseOver={null}
-                    style={
-                      Object {
-                        "flexBasis": "14.285714285714286%",
-                        "marginLeft": null,
-                        "maxWidth": "14.285714285714286%",
-                        "overflow": "hidden",
-                      }
-                    }
-                    type="button"
-                  >
-                    <abbr
-                      aria-label="July 30, 2019"
+                      aria-label="September 30, 2019"
                     >
                       30
-                    </abbr>
-                  </button>
-                  <button
-                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--neighboringMonth"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onMouseOver={null}
-                    style={
-                      Object {
-                        "flexBasis": "14.285714285714286%",
-                        "marginLeft": null,
-                        "maxWidth": "14.285714285714286%",
-                        "overflow": "hidden",
-                      }
-                    }
-                    type="button"
-                  >
-                    <abbr
-                      aria-label="July 31, 2019"
-                    >
-                      31
                     </abbr>
                   </button>
                   <button
@@ -372,7 +330,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 1, 2019"
+                      aria-label="October 1, 2019"
                     >
                       1
                     </abbr>
@@ -393,13 +351,13 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 2, 2019"
+                      aria-label="October 2, 2019"
                     >
                       2
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__tile--now react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
+                    className="react-calendar__tile react-calendar__month-view__days__day"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
@@ -414,9 +372,30 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 3, 2019"
+                      aria-label="October 3, 2019"
                     >
                       3
+                    </abbr>
+                  </button>
+                  <button
+                    className="react-calendar__tile react-calendar__month-view__days__day"
+                    onClick={[Function]}
+                    onFocus={null}
+                    onMouseOver={null}
+                    style={
+                      Object {
+                        "flexBasis": "14.285714285714286%",
+                        "marginLeft": null,
+                        "maxWidth": "14.285714285714286%",
+                        "overflow": "hidden",
+                      }
+                    }
+                    type="button"
+                  >
+                    <abbr
+                      aria-label="October 4, 2019"
+                    >
+                      4
                     </abbr>
                   </button>
                   <button
@@ -435,34 +414,13 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 4, 2019"
-                    >
-                      4
-                    </abbr>
-                  </button>
-                  <button
-                    className="react-calendar__tile react-calendar__month-view__days__day"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onMouseOver={null}
-                    style={
-                      Object {
-                        "flexBasis": "14.285714285714286%",
-                        "marginLeft": null,
-                        "maxWidth": "14.285714285714286%",
-                        "overflow": "hidden",
-                      }
-                    }
-                    type="button"
-                  >
-                    <abbr
-                      aria-label="August 5, 2019"
+                      aria-label="October 5, 2019"
                     >
                       5
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__month-view__days__day"
+                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
@@ -477,7 +435,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 6, 2019"
+                      aria-label="October 6, 2019"
                     >
                       6
                     </abbr>
@@ -498,7 +456,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 7, 2019"
+                      aria-label="October 7, 2019"
                     >
                       7
                     </abbr>
@@ -519,7 +477,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 8, 2019"
+                      aria-label="October 8, 2019"
                     >
                       8
                     </abbr>
@@ -540,13 +498,13 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 9, 2019"
+                      aria-label="October 9, 2019"
                     >
                       9
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
+                    className="react-calendar__tile react-calendar__month-view__days__day"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
@@ -561,12 +519,33 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 10, 2019"
+                      aria-label="October 10, 2019"
                     >
                       10
                     </abbr>
                   </button>
                   <button
+                    className="react-calendar__tile react-calendar__month-view__days__day"
+                    onClick={[Function]}
+                    onFocus={null}
+                    onMouseOver={null}
+                    style={
+                      Object {
+                        "flexBasis": "14.285714285714286%",
+                        "marginLeft": null,
+                        "maxWidth": "14.285714285714286%",
+                        "overflow": "hidden",
+                      }
+                    }
+                    type="button"
+                  >
+                    <abbr
+                      aria-label="October 11, 2019"
+                    >
+                      11
+                    </abbr>
+                  </button>
+                  <button
                     className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
                     onClick={[Function]}
                     onFocus={null}
@@ -582,34 +561,13 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 11, 2019"
-                    >
-                      11
-                    </abbr>
-                  </button>
-                  <button
-                    className="react-calendar__tile react-calendar__month-view__days__day"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onMouseOver={null}
-                    style={
-                      Object {
-                        "flexBasis": "14.285714285714286%",
-                        "marginLeft": null,
-                        "maxWidth": "14.285714285714286%",
-                        "overflow": "hidden",
-                      }
-                    }
-                    type="button"
-                  >
-                    <abbr
-                      aria-label="August 12, 2019"
+                      aria-label="October 12, 2019"
                     >
                       12
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__month-view__days__day"
+                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
@@ -624,7 +582,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 13, 2019"
+                      aria-label="October 13, 2019"
                     >
                       13
                     </abbr>
@@ -645,7 +603,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 14, 2019"
+                      aria-label="October 14, 2019"
                     >
                       14
                     </abbr>
@@ -666,7 +624,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 15, 2019"
+                      aria-label="October 15, 2019"
                     >
                       15
                     </abbr>
@@ -687,13 +645,13 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 16, 2019"
+                      aria-label="October 16, 2019"
                     >
                       16
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
+                    className="react-calendar__tile react-calendar__month-view__days__day"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
@@ -708,12 +666,33 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 17, 2019"
+                      aria-label="October 17, 2019"
                     >
                       17
                     </abbr>
                   </button>
                   <button
+                    className="react-calendar__tile react-calendar__month-view__days__day"
+                    onClick={[Function]}
+                    onFocus={null}
+                    onMouseOver={null}
+                    style={
+                      Object {
+                        "flexBasis": "14.285714285714286%",
+                        "marginLeft": null,
+                        "maxWidth": "14.285714285714286%",
+                        "overflow": "hidden",
+                      }
+                    }
+                    type="button"
+                  >
+                    <abbr
+                      aria-label="October 18, 2019"
+                    >
+                      18
+                    </abbr>
+                  </button>
+                  <button
                     className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
                     onClick={[Function]}
                     onFocus={null}
@@ -729,34 +708,13 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 18, 2019"
-                    >
-                      18
-                    </abbr>
-                  </button>
-                  <button
-                    className="react-calendar__tile react-calendar__month-view__days__day"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onMouseOver={null}
-                    style={
-                      Object {
-                        "flexBasis": "14.285714285714286%",
-                        "marginLeft": null,
-                        "maxWidth": "14.285714285714286%",
-                        "overflow": "hidden",
-                      }
-                    }
-                    type="button"
-                  >
-                    <abbr
-                      aria-label="August 19, 2019"
+                      aria-label="October 19, 2019"
                     >
                       19
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__month-view__days__day"
+                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
@@ -771,7 +729,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 20, 2019"
+                      aria-label="October 20, 2019"
                     >
                       20
                     </abbr>
@@ -792,13 +750,13 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 21, 2019"
+                      aria-label="October 21, 2019"
                     >
                       21
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__month-view__days__day"
+                    className="react-calendar__tile react-calendar__tile--now react-calendar__month-view__days__day"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
@@ -813,7 +771,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 22, 2019"
+                      aria-label="October 22, 2019"
                     >
                       22
                     </abbr>
@@ -834,13 +792,13 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 23, 2019"
+                      aria-label="October 23, 2019"
                     >
                       23
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
+                    className="react-calendar__tile react-calendar__month-view__days__day"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
@@ -855,12 +813,33 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 24, 2019"
+                      aria-label="October 24, 2019"
                     >
                       24
                     </abbr>
                   </button>
                   <button
+                    className="react-calendar__tile react-calendar__month-view__days__day"
+                    onClick={[Function]}
+                    onFocus={null}
+                    onMouseOver={null}
+                    style={
+                      Object {
+                        "flexBasis": "14.285714285714286%",
+                        "marginLeft": null,
+                        "maxWidth": "14.285714285714286%",
+                        "overflow": "hidden",
+                      }
+                    }
+                    type="button"
+                  >
+                    <abbr
+                      aria-label="October 25, 2019"
+                    >
+                      25
+                    </abbr>
+                  </button>
+                  <button
                     className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
                     onClick={[Function]}
                     onFocus={null}
@@ -876,34 +855,13 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 25, 2019"
-                    >
-                      25
-                    </abbr>
-                  </button>
-                  <button
-                    className="react-calendar__tile react-calendar__month-view__days__day"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onMouseOver={null}
-                    style={
-                      Object {
-                        "flexBasis": "14.285714285714286%",
-                        "marginLeft": null,
-                        "maxWidth": "14.285714285714286%",
-                        "overflow": "hidden",
-                      }
-                    }
-                    type="button"
-                  >
-                    <abbr
-                      aria-label="August 26, 2019"
+                      aria-label="October 26, 2019"
                     >
                       26
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__month-view__days__day"
+                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
@@ -918,7 +876,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 27, 2019"
+                      aria-label="October 27, 2019"
                     >
                       27
                     </abbr>
@@ -939,7 +897,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 28, 2019"
+                      aria-label="October 28, 2019"
                     >
                       28
                     </abbr>
@@ -960,7 +918,7 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 29, 2019"
+                      aria-label="October 29, 2019"
                     >
                       29
                     </abbr>
@@ -981,13 +939,13 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 30, 2019"
+                      aria-label="October 30, 2019"
                     >
                       30
                     </abbr>
                   </button>
                   <button
-                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend"
+                    className="react-calendar__tile react-calendar__month-view__days__day"
                     onClick={[Function]}
                     onFocus={null}
                     onMouseOver={null}
@@ -1002,9 +960,30 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="August 31, 2019"
+                      aria-label="October 31, 2019"
                     >
                       31
+                    </abbr>
+                  </button>
+                  <button
+                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--neighboringMonth"
+                    onClick={[Function]}
+                    onFocus={null}
+                    onMouseOver={null}
+                    style={
+                      Object {
+                        "flexBasis": "14.285714285714286%",
+                        "marginLeft": null,
+                        "maxWidth": "14.285714285714286%",
+                        "overflow": "hidden",
+                      }
+                    }
+                    type="button"
+                  >
+                    <abbr
+                      aria-label="November 1, 2019"
+                    >
+                      1
                     </abbr>
                   </button>
                   <button
@@ -1023,9 +1002,30 @@ Array [
                     type="button"
                   >
                     <abbr
-                      aria-label="September 1, 2019"
+                      aria-label="November 2, 2019"
                     >
-                      1
+                      2
+                    </abbr>
+                  </button>
+                  <button
+                    className="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend react-calendar__month-view__days__day--neighboringMonth"
+                    onClick={[Function]}
+                    onFocus={null}
+                    onMouseOver={null}
+                    style={
+                      Object {
+                        "flexBasis": "14.285714285714286%",
+                        "marginLeft": null,
+                        "maxWidth": "14.285714285714286%",
+                        "overflow": "hidden",
+                      }
+                    }
+                    type="button"
+                  >
+                    <abbr
+                      aria-label="November 3, 2019"
+                    >
+                      3
                     </abbr>
                   </button>
                 </div>
