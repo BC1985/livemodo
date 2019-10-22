@@ -20,7 +20,6 @@ import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import PasswordConfirmation from "./PasswordConfirmation/PasswodConfirmation";
 import SideDrawer from "./SideDrawer/SideDrawer";
 import { TokenService } from "./utils/token-service";
-import Backdrop from "./Backdrop/Backdrop";
 require("dotenv").config();
 
 export default class App extends Component {
@@ -68,42 +67,38 @@ export default class App extends Component {
       isSideDrawerOpen
     } = this.state;
 
-    let backdrop;
-    if (isSideDrawerOpen) {
-      backdrop = <Backdrop click={this.backdropClickHandler} />;
-    }
     const routes = [
       {
         to: "/",
-        name: "Home"
-        // onClick: this.drawerToggleClickHandler
+        name: "Home",
+        onClick: this.drawerToggleClickHandler
       },
       {
         to: "/browse",
-        name: "Browse Reviews"
-        // onClick: this.drawerToggleClickHandler
+        name: "Browse Reviews",
+        onClick: this.drawerToggleClickHandler
       },
       {
         to: "/login",
-        name: "Log in"
-        // onClick: this.drawerToggleClickHandler
+        name: "Log in",
+        onClick: this.drawerToggleClickHandler
       }
     ];
     const authenticateRoutes = [
       {
         to: "/",
-        name: "Home"
-        // onClick: this.drawerToggleClickHandler
+        name: "Home",
+        onClick: this.drawerToggleClickHandler
       },
       {
         to: "/browse",
-        name: "Browse Reviews"
-        // onClick: this.drawerToggleClickHandler
+        name: "Browse Reviews",
+        onClick: this.drawerToggleClickHandler
       },
       {
         to: "/add",
-        name: "Add Review"
-        // onClick: this.drawerToggleClickHandler
+        name: "Add Review",
+        onClick: this.drawerToggleClickHandler
       },
       {
         to: "/",
@@ -113,37 +108,39 @@ export default class App extends Component {
     ];
     return (
       <Router>
-        {/* {isSideDrawerOpen && ( */}
-        <SideDrawer
-          show={isSideDrawerOpen}
-          drawerToggleClickHandler={this.drawerToggleClickHandler}
-          routes={isLoggedIn ? authenticateRoutes : routes}
-        />
-        {/* )} */}
         <div className="App">
+          <SideDrawer
+            show={isSideDrawerOpen}
+            drawerToggleClickHandler={this.drawerToggleClickHandler}
+            routes={isLoggedIn ? authenticateRoutes : routes}
+          />
           <Navbar
             isLoggedIn={isLoggedIn}
             routes={isLoggedIn ? authenticateRoutes : routes}
             userName={userName}
             changeLoginState={this.changeLoginState}
             drawerToggleClickHandler={this.drawerToggleClickHandler}
-            // click={this.drawerToggleClickHandler}
+            click={this.drawerToggleClickHandler}
             isSideDrawerOpen={isSideDrawerOpen}
           />
-          {backdrop}
           <Switch>
-            <LandingPage
+            <Route
+              component={LandingPage}
               exact
               path="/"
               isLoggedIn={isLoggedIn}
               isNewUser={isNewUser}
             />
             <Route path="/thank-you" component={ThankYouPage} />
-            <SignupForm path="/register" />
+            <Route component={SignupForm} path="/register" />
             <Route path="/browse" component={BrowseReviewsPage} />
             <LoginForm path="/login" changeLoginState={this.changeLoginState} />
             {isEmptyState && (
-              <AddReviewsPage errorMessage={ErrorMessage} Calendar={Calendar} />
+              <Route
+                component={AddReviewsPage}
+                errorMessage={ErrorMessage}
+                Calendar={Calendar}
+              />
             )}
 
             <Route path="/forgot-password" component={ForgotPassword} />
