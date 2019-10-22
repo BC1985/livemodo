@@ -147,9 +147,7 @@ li {
   .nav-links a {
     font-size: 1.2em;
   }
-  /* .nav-wrapper {
-    height: 30px;
-  } */
+
   .spacer {
     flex: 1;
   }
@@ -166,6 +164,9 @@ li {
   .spacer {
     flex: 1;
   }
+  .nav-links a:focus {
+    color: #f3d112;
+  }
 }
 
 @media screen and (min-device-width: 1600px) {
@@ -175,6 +176,9 @@ li {
 
   .nav-links li {
     font-size: 0.8em;
+  }
+  .nav-links a:focus {
+    color: #f3d112;
   }
 
   .hamburger-icon {
