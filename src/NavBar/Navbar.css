@@ -64,6 +64,9 @@ li {
   color: rgb(182, 182, 192);
   margin-left: 20px;
 }
+#toggle-button:focus {
+  outline-color: transparent;
+}
 
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
 
