@@ -37,7 +37,7 @@ exports[`renders the UI as expected 1`] = `
   </p>
   <p>
     posted: 
-    NaN/NaN/NaN
+    NaN/NaN/NaN at NaN: NaN
   </p>
   <h2
     className="band-name"
