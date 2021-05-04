@@ -33,20 +33,17 @@ class AddReviewsPage extends Component {
   }
 
   handleSubmit = e => {
-    const { id } = this.state;
     e.preventDefault();
     const newReview = {
-      id: parseInt(id),
       tagline: this.state.tagline,
       band_name: this.state.band_name,
       venue: this.state.venue,
       username: this.props.username,
       show_date: this.state.show_date,
-      posted: new Date(),
       content: this.state.content,
       rating: this.state.rating
     };
-    fetch(`${config.API_BASE_URL}/reviews`, {
+    fetch(`${config.API_BASE_URL}/reviews/post`, {
       method: "POST",
       body: JSON.stringify(newReview),
       headers: {

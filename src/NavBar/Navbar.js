@@ -21,7 +21,7 @@ class Navbar extends Component {
                 <li key={route.name}>
                   <NavLink
                     to={route.to}
-                    // onClick={route.onClick}
+                    onClick={route.onClick}
                   >
                     {route.name}
                   </NavLink>

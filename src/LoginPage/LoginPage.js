@@ -1,72 +1,53 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 import Spinner from "../Spinners/Spinner";
 import "./LoginPage.css";
 import { TokenService } from "../utils/token-service";
 import config from "../config";
 
-class LoginForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: "",
-      password: "",
-      error: false,
-      isLoading: false
-    };
+const LoginForm =(props)=> {
+  const [input, setInput] = useState({
+    email: "john@smith.com",
+    password: "JohnSmith1!",
+  });
+  const [isLoading, setIsLoading] =useState(false)
+  const [error, setError] =useState("")
+
+  const { email, password } = input;
+
+  const handleSubmit=(e)=>{
+    setIsLoading(true)
+    e.preventDefault()
+    postLogin({ email: email.trim().toLowerCase(), password: password.trim() })
   }
-
-  handeSubmitJwtAuth = e => {
-    e.preventDefault();
-    this.setState({
-      isLoading: true
-    });
-    const { username, password } = e.target;
-
-    TokenService.makeBasicAuthToken(username.value, password.value);
-
-    this.postLogin({
-      username: username.value,
-      password: password.value
-    })
-      .then(res => {
-        username.value = "";
-        password.value = "";
-        TokenService.saveAuthToken(res.authToken);
-      })
-      .catch(res => {
-        this.setState({ error: true });
-      });
-  };
-  postLogin(credentials) {
-    return fetch(`${config.API_BASE_URL}/auth/login`, {
+   const postLogin=async(credentials)=> {
+    const url = `${config.API_BASE_URL}/login`;
+    const res = await fetch(url, {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(credentials)
-    }).then(res => {
-      if (!res.ok) {
-        this.setState({
-          error: true,
-          isLoading: false
-        });
-      } else {
-        this.props.history.push("/");
-        this.props.changeLoginState();
-        return res.json();
-      }
+      body: JSON.stringify(credentials),
     });
-  }
-  changeHandler = e => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({
-      [name]: value
-    });
-  };
 
-  showHidePassword = () => {
+    const data = await res.json();
+    
+    if (!res.ok) {
+      setError(data.error)
+      // setError(data)
+    } else {
+      // get jwt from successful login
+      localStorage.setItem("jwt token", data);
+      props.history.push("/");
+      props.changeLoginState();
+
+    }
+  }
+  const changeHandler = e => {
+    const { name, value } = e.target;
+    setInput(input => ({ ...input, [name]: value }));
+  };
+  const showHidePassword = () => {
     const input = document.getElementById("password");
     if (input.type === "password") {
       input.type = "text";
@@ -74,29 +55,29 @@ class LoginForm extends Component {
       input.type = "password";
     }
   };
-  render() {
-    const { username, password } = this.state;
-    const isLoading = this.state.isLoading && <Spinner />;
-    const error = this.state.error ? "Incorrect username or password" : "";
+
+
+    // isLoading && <Spinner />;
+    // error ? "Incorrect email or password" : "";
     const linkStyle = { color: "whiteSmoke" };
 
     return (
       <div className="login-form-container">
         <main>
-          <form id="login-form" onSubmit={this.handeSubmitJwtAuth}>
+          <form id="login-form" onSubmit={handleSubmit}>
             <h1
               style={{ color: "whiteSmoke", paddingTop: "0", marginTop: "0" }}
             >
               Log in to Livemodo
             </h1>
-            <label>Username</label>
+            <label>Email</label>
             <input
-              aria-label="username"
+              aria-label="email"
               style={{ color: "black" }}
               type="text"
-              name="username"
-              value={username.value}
-              onChange={this.changeHandler}
+              name="email"
+              value={email}
+              onChange={changeHandler}
               required
             />
             <label>Password</label>
@@ -106,21 +87,22 @@ class LoginForm extends Component {
               id="password"
               type="password"
               name="password"
-              value={password.value}
-              onChange={this.changeHandler}
+              value={password}
+              onChange={changeHandler}
               required
             />
             <div id="toggle-password">
               <input
                 aria-label="checkbox"
                 type="checkbox"
-                onClick={this.showHidePassword}
+                onClick={showHidePassword}
                 id="checkbox"
               />
               <span id="show-password">Show password</span>
             </div>
             <button id="button">Log in</button>
           </form>
+          <p style={{ color: "red", paddingTop: "0", marginTop: "0" }}>{error}</p>
           <section id="help">
             <div id="forgot-password">
               <Link to="/" style={linkStyle}>
@@ -133,11 +115,11 @@ class LoginForm extends Component {
               </Link>
             </div>
           </section>
-          <div id="error">{this.state.isLoading ? isLoading : error}</div>
+          <div id="error">{isLoading ? isLoading : error}</div>
           <div className="login-push" />
         </main>
       </div>
     );
-  }
+  
 }
 export default withRouter(LoginForm);

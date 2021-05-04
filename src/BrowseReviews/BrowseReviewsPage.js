@@ -1,42 +1,34 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import "./BrowseReviewsPage.css";
 import Review from "../Review/Review";
 import config from "../config";
 import Spinner from "../Spinners/Spinner";
 
-class BrowseReviewsPage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      reviews: [],
-      isLoading: false
+function BrowseReviewsPage() {
+  const [reviews, setReviews] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  useEffect(() =>{
+    const fetchReviews = async () => {
+      try {
+        const data = await fetch(`${config.API_BASE_URL}/reviews/all`);
+        const reviews = await data.json();
+        setReviews(reviews);   
+        console.log(reviews)
+        setIsLoading(false);
+      } catch (e) {
+        console.log(e);
+      }
     };
-  }
-  componentDidMount() {
-    this.setState({ isLoading: true });
-    this.fetchReviews();
-  }
-  fetchReviews = async () => {
-    try {
-      const data = await fetch(`${config.API_BASE_URL}/reviews`);
-      const reviews = await data.json();
-      this.setState({
-        reviews,
-        isLoading: false
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  render() {
-    const { reviews } = this.state;
-    const reviewComponents = reviews.map(review => (
+    fetchReviews();
+  },[])
+    
+    const allReviews = reviews.map(review => (
       <Review
-        key={review.id}
+        key={review._id}
         band_name={review.band_name}
         show_date={review.show_date}
         tagline={review.tagline}
-        posted={review.posted}
+        posted={review.createdAt}
         venue={review.venue}
         content={review.content}
         username={review.username}
@@ -45,13 +37,13 @@ class BrowseReviewsPage extends Component {
     ));
     return (
       <div className="reviews-container">
-        {this.state.isLoading ? <Spinner /> : null}
+        {isLoading ? <Spinner /> : null}
         <main role="main">
           <h1>Posted reviews</h1>
-          <div className="review">{reviewComponents}</div>
+          <div className="review">{allReviews}</div>
         </main>
       </div>
     );
-  }
+  
 }
 export default BrowseReviewsPage;
