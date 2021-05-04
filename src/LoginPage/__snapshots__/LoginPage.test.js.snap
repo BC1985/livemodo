@@ -21,11 +21,11 @@ exports[`renders UI as expected 1`] = `
         Log in to Livemodo
       </h1>
       <label>
-        Username
+        Email
       </label>
       <input
-        aria-label="username"
-        name="username"
+        aria-label="email"
+        name="email"
         onChange={[Function]}
         required={true}
         style={
@@ -34,6 +34,7 @@ exports[`renders UI as expected 1`] = `
           }
         }
         type="text"
+        value="john@smith.com"
       />
       <label>
         Password
@@ -50,6 +51,7 @@ exports[`renders UI as expected 1`] = `
           }
         }
         type="password"
+        value="JohnSmith1!"
       />
       <div
         id="toggle-password"
@@ -72,6 +74,17 @@ exports[`renders UI as expected 1`] = `
         Log in
       </button>
     </form>
+    <p
+      style={
+        Object {
+          "color": "red",
+          "marginTop": "0",
+          "paddingTop": "0",
+        }
+      }
+    >
+      
+    </p>
     <section
       id="help"
     >
