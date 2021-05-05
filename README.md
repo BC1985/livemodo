@@ -9,18 +9,18 @@
 * [Screenshots](#screenshots)
 
 ### General Info
-Livemodo is a wiki database of live shows and concert reviews. Think of it as a kind of Yelp for live music aficionados. With this app registered users are able to submit detailed reviews of live shows attended for fellow music lovers who are interested in discovering new music and live show venues. The database was created with Express and PostgreSQL and can be found at [this repo](https://github.com/BC1985/livemodo_db).
+Livemodo is a wiki database of live shows and concert reviews. Think of it as a kind of Yelp for live music aficionados. With this app registered users are able to submit detailed reviews of live shows attended for fellow music lovers who are interested in discovering new music and live show venues. The backend was created with NodeJS, Express and the database was created with MongoDB
 
-## [Live app](https://livemodo.benjcohen1985.now.sh/)
+## [Live app](https://livemodo-benjcohen1985.vercel.app/)
 
 
 ### Technologies
 Project is created with:
 * React
 * CSS3
-
-### Setup
-Clone this repo to your desktop and run `npm install` to install all the dependencies. When you're done, type `npm start`.
+* MongoDB
+* NodeJS
+* Express
 
 ### Features 
 * Register as user
@@ -30,9 +30,8 @@ Clone this repo to your desktop and run `npm install` to install all the depende
 * Responsive layout
 
 ### Upcoming features
-* Geo location
-* Video search using Youtube API
-* Chat function
+* Geo location using Google Maps
+
 
 #### Screenshots
 <img src="src/images/screenshot1.png" width="600">
