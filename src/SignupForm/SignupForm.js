@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SignupForm.css";
 import AuthApiService from "../services/auth-api-service";
 import { withRouter } from "react-router-dom";
 // import { inputIsEmpty, shouldBeError } from "../Validation/validation";
 import { makeStyles } from "@material-ui/core/styles";
-import { useState } from "react";
-import { TextField, Button, Container } from "@material-ui/core";
+import {
+  TextField,
+  Button,
+  Container,
+  FormControlLabel,
+  Checkbox,
+} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
@@ -34,59 +39,63 @@ function SignupForm(props) {
     password: false,
     repeatPassword: false,
   });
+  const [checked, setChecked] = useState(Boolean);
   const [errors, setErrors] = useState({
-    first_name: false,
-    last_name: false,
-    username: false,
-    email: false,
-    password: false,
-    repeatPassword: false,
+    first_name: "",
+    last_name: "",
+    username: "",
+    email: "",
+    password: "",
+    repeatPassword: "",
   });
-  const [passwordError, setPasswordError] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  // const [errors, setErrors] = useState({});
-  // state = {
-  //   error: null,
-
-  //   errorMessage: false,
-  //   passwordError: false
-  // };
+  const [hasErrors, setHasErrors] = useState(false);
 
   const onChange = e => {
     const { name, value } = e.target;
+
     setInput(input => ({ ...input, [name]: value }));
   };
 
-  const validatePassword = () => {
-    const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[\S]+/;
-    if (password.length < 8) {
-      return "Password must be at least 8 characters";
-    }
-    if (password.length > 72) {
-      return "Password must be less than 72 characters";
-    }
-    if (password.startsWith(" ") || password.endsWith(" ")) {
-      return "Password must not start or end with empty spaces";
-    }
-    if (!REGEX_UPPER_LOWER_NUMBER_SPECIAL.test(password)) {
-      return "Password must contain at least one upper case, lower case, number and special character";
-    }
-    return null;
-  };
+  const validate = e => {
+    const passwordValid = new RegExp(
+      /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[\S]+/
+    ).test(password);
 
-  const renderError = e => {
-    setPasswordError(true);
+    if (password.length < 6) {
+      setErrors({
+        password: "Password must be at least six characters long",
+      });
+    } else {
+      if (!passwordValid) {
+        setErrors({
+          password:
+            "Password must contain at least one upper case, lower case, number and special character",
+        });
+      } else {
+        setErrors({ password: "" });
+      }
+    }
+    if (username.length < 3) {
+      setErrors({
+        username: "username must be at least three characters long",
+      });
+    } else {
+    }
+    if (repeatPassword !== password) {
+      setErrors({ repeatPassword: "Passwords don't match" });
+    }
   };
 
   const handleSubmit = async e => {
+    const invalidInputMessage = validate();
     e.preventDefault();
     try {
-      const passwordNotValid = validatePassword();
-
-      if (passwordNotValid) {
-        setHasError(true);
-        renderError();
+      if (invalidInputMessage) {
+        setHasErrors(true);
+        console.log("error");
       } else {
+        setHasErrors(false);
+        console.log("ok");
         AuthApiService.postUser({
           first_name,
           last_name,
@@ -94,75 +103,17 @@ function SignupForm(props) {
           password,
           email,
         });
-        setInput(input => ({ ...(input === "") }));
-        // props.history.push("thank-you");
+        props.history.push("thank-you");
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-
-  const handleBlur = field => e => {
+  const handleBlur = field => {
     setTouched({ ...touched, [field]: true });
   };
 
-  const spanStyle = {
-    color: "whiteSmoke",
-    fontStyle: "italic",
-    fontSize: "0.8em",
-  };
-  const ifPasswordError = {
-    border: "2px solid red",
-  };
-  function inputIsEmpty(
-    first_name,
-    last_name,
-    username,
-    password,
-    email,
-    repeatPassword
-  ) {
-    return {
-      first_name: first_name.length === 0,
-      last_name: last_name.length === 0,
-      username: username.length === 0,
-      password: password.length === 0,
-      repeatPassword: repeatPassword.length === 0,
-      email: email.length === 0
-    };
-  }
-  const validationErrors = inputIsEmpty(
-    first_name,
-    last_name,
-    username,
-    password,
-    repeatPassword,
-    email
-  );
-  
-  const isEnabled = !Object.keys(validationErrors).some(
-    x => validationErrors[x]
-  );
-
-  const errorMessage = validatePassword();
-  // const useStyles = makeStyles({
-  //   root: {
-  //     minWidth: 275,
-  //   },
-  //   bullet: {
-  //     display: 'inline-block',
-  //     margin: '0 2px',
-  //     transform: 'scale(0.8)',
-  //   },
-  //   title: {
-  //     fontSize: 14,
-  //   },
-  //   pos: {
-  //     marginBottom: 12,
-  //   },
-  // });
-  // const classes = useStyles();
   const useStyles = makeStyles(theme => ({
     paper: {
       marginTop: theme.spacing(8),
@@ -182,6 +133,10 @@ function SignupForm(props) {
   }));
   const classes = useStyles();
 
+  const handleCheckbox = e => {
+    setChecked(checked => !checked);
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
@@ -192,7 +147,9 @@ function SignupForm(props) {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
+                error={touched.first_name && first_name.length === 0}
                 name="first_name"
+                onBlur={() => handleBlur("first_name")}
                 variant="outlined"
                 value={first_name}
                 required
@@ -202,23 +159,30 @@ function SignupForm(props) {
                 autoFocus
                 onChange={onChange}
               />
+              <p style={{ color: "red" }}>{errors.first_name}</p>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                error={touched.last_name && last_name.length === 0}
+                onBlur={() => handleBlur("last_name")}
                 variant="outlined"
                 value={last_name}
                 required
+                helperText={errors.last_name}
                 fullWidth
                 id="lastName"
                 label="Last Name"
                 name="last_name"
                 onChange={onChange}
               />
+              <p style={{ color: "red" }}>{errors.last_name}</p>
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onBlur={() => handleBlur("email")}
+                error={touched.email && email.length === 0}
                 variant="outlined"
-                type="email"
+                // type="email"
                 value={email}
                 required
                 fullWidth
@@ -227,9 +191,12 @@ function SignupForm(props) {
                 name="email"
                 onChange={onChange}
               />
+              <p style={{ color: "red" }}>{errors.email}</p>
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onBlur={() => handleBlur("username")}
+                error={touched.username && username.length === 0}
                 variant="outlined"
                 required
                 value={username}
@@ -239,9 +206,12 @@ function SignupForm(props) {
                 name="username"
                 onChange={onChange}
               />
+              <p style={{ color: "red" }}>{errors.username}</p>
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onBlur={() => handleBlur("password")}
+                error={touched.password && password.length === 0}
                 variant="outlined"
                 required
                 value={password}
@@ -249,13 +219,23 @@ function SignupForm(props) {
                 name="password"
                 helperText="Must contain uppercase, lowercase, numbers and special characters"
                 label="Password"
-                type="text"
+                type={checked ? "text" : "password"}
                 id="password"
                 onChange={onChange}
+              />
+              <p style={{ color: "red" }}>{errors.password}</p>
+              {password}
+              <FormControlLabel
+                value="Show password"
+                control={<Checkbox color="primary" />}
+                label="Show password"
+                checked={checked}
+                onChange={handleCheckbox}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onBlur={() => handleBlur("repeatPassword")}
                 variant="outlined"
                 value={repeatPassword}
                 required
@@ -266,12 +246,11 @@ function SignupForm(props) {
                 id="passwordRepeat"
                 onChange={onChange}
               />
+              <p style={{ color: "red" }}>{errors.repeatPassword}</p>
             </Grid>
           </Grid>
           <Button
-            disabled={!isEnabled && true}
             type="submit"
-            value={first_name}
             fullWidth
             variant="contained"
             color="default"
@@ -283,169 +262,6 @@ function SignupForm(props) {
       </div>
     </Container>
   );
-  // return (
-  //   // <Container>
-  //   <div className="signup-container">
-  //     <div className="call-to-action">
-  //       <h2>Join the Livemodo community</h2>
-  //     </div>
-  //     {/* <Container> */}
-  //     <div className="signup-form">
-  //       <Card>
-  //         <CardContent>
-  //           <FormGroup>
-  //             <form className={classes.root}>
-  //             {/* <div> */}
-  //               {/* <label>*First Name </label> */}
-  //               {/* <TextField
-  //             className={
-  //               shouldBeError("first_name", validationErrors, touched) ? "error" : null
-  //             }
-  //             type="text"
-  //             name="first_name"
-  //             placeholder="e.g Tommy"
-  //             value={first_name}
-  //             onBlur={handleBlur("first_name", validationErrors, touched)}
-  //             onChange={onChange}
-  //             required
-  //           /> */}
-  //               <TextField
-  //                 id="outlined-basic"
-  //                 label="First name"
-  //                 variant="outlined"
-  //                 name="first_name"
-  //                 required
-  //                 onChange={onChange}
-  //                 value={first_name}
-  //               />
-  //             {/* </div> */}
-  //             {/* <div> */}
-  //               <TextField
-  //                 id="outlined-basic"
-  //                 variant="outlined"
-  //                 label="Last name"
-  //                 name="last_name"
-  //                 required
-  //                 onChange={onChange}
-  //                 value={last_name}
-  //               />
-  //               {/* <label>*Last Name </label> */}
-  //               {/* <TextField
-  //             className={
-  //               shouldBeError("last_name", validationErrors, touched) ? "error" : null
-  //             }
-  //             type="text"
-  //             name="last_name"
-  //             placeholder="e.g Wisseau"
-  //             value={last_name}
-  //             onBlur={handleBlur("last_name", validationErrors, touched)}
-  //             onChange={onChange}
-  //             required
-  //           /> */}
-  //             {/* </div> */}
-  //             {/* <div> */}
-  //               {/* <label>*Username </label> */}
-  //               <TextField
-  //                 id="outlined-basic"
-  //                 label="username"
-  //                 variant="outlined"
-  //                 name="username"
-  //                 required
-  //                 onChange={onChange}
-  //                 value={username}
-  //               />
-  //               {/* <TextField
-  //             className={
-  //               shouldBeError("username", validationErrors, touched) ? "error" : null
-  //             }
-  //             type="text"
-  //             name="username"
-  //             value={username}
-  //             onBlur={handleBlur("username", validationErrors, touched)}
-  //             onChange={onChange}
-  //             required
-  //           /> */}
-  //             {/* </div> */}
-  //             {/* <div> */}
-  //               {/* <label>*Email </label> */}
-  //               <TextField
-  //                 id="outlined-basic"
-  //                 variant="outlined"
-  //                 label="email"
-  //                 name="email"
-  //                 required
-  //                 onChange={onChange}
-  //                 value={email}
-  //               />
-  //               {/* <TextField
-  //             className={
-  //               shouldBeError("email", validationErrors, touched) ? "error" : null
-  //             }
-  //             type="text"
-  //             name="email"
-  //             placeholder="e.g tommy@theroom.com"
-  //             value={email}
-  //             onBlur={handleBlur("email", validationErrors, touched)}
-  //             onChange={onChange}
-  //             required
-  //           /> */}
-  //             {/* </div> */}
-  //             {/* <div> */}
-  //               {/* <label>*Password </label> */}
-  //               <TextField
-  //                 id="outlined-basic"
-  //                 variant="outlined"
-  //                 label="Password"
-  //                 name="password"
-  //                 required
-  //                 onChange={onChange}
-  //                 value={password}
-  //               />
-  //               {/* <TextField
-  //             className={
-  //               shouldBeError("password", validationErrors, touched) ? "error" : null
-  //             }
-  //             type="text"
-  //             name="password"
-  //             value={password}
-  //             onBlur={handleBlur("password", validationErrors, touched)}
-  //             onChange={onChange}
-  //             required
-  //             style={passwordError ? ifPasswordError : null}
-  //           /> */}
-  //               <span className="errorMessage">
-  //                 {error ? errorMessage : ""}
-  //               </span>
-  //             {/* </div> */}
-
-  //             <p style={spanStyle}>* indicates required field</p>
-  //             <Button
-  //               variant="contained"
-  //               // id="register-button"
-  //               // type={!isEnabled ? "disabled" : "submit"}
-  //               // disabled={!isEnabled}
-  //             >
-  //               Sign up
-  //             </Button>
-  //             {/* <button
-  //           id="register-button"
-  //           type={!isEnabled ? "disabled" : "submit"}
-  //           disabled={!isEnabled}
-  //         >
-  //           Submit
-  //         </button> */}
-  //             </form>
-  //           </FormGroup>
-  //         </CardContent>
-  //       </Card>
-  //       <div className="register-push" />
-  //     </div>
-
-  {
-    /* </Container> */
-  }
-  // </div>
-  // );
 }
 
 export default withRouter(SignupForm);
