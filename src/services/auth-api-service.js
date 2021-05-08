@@ -1,8 +1,8 @@
 import config from "../config";
 
-const AuthApiService = {
+const apiService = {
   postUser(user) {
-    return fetch(`${config.API_BASE_URL}/users`, {
+    return fetch(`${config.API_BASE_URL}/users/add`, {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -18,4 +18,4 @@ const AuthApiService = {
   }
 };
 
-export default AuthApiService;
+export default apiService;
