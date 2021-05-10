@@ -1,228 +1,257 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./SignupForm.css";
 import AuthApiService from "../services/auth-api-service";
 import { withRouter } from "react-router-dom";
-import { validateRegisration, shouldBeError } from "../Validation/validation";
+import { TextField } from "formik-material-ui";
+import { Formik, Form, Field } from "formik";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Button,
+  Container,
+  FormControlLabel,
+  Checkbox,
+  CircularProgress,
+} from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
-class SignupForm extends Component {
-  state = {
-    error: null,
-    first_name: "",
-    last_name: "",
-    username: "",
-    password: "",
-    email: "",
-    errors: {
-      first_name: false,
-      last_name: false,
-      username: false,
-      password: false,
-      email: false
+function SignupForm({ history }) {
+  const [checked, setChecked] = useState(Boolean);
+  const [hasErrors, setHasErrors] = useState({});
+
+  const useStyles = makeStyles(theme => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      marginBottom: 100,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
-    touched: {
-      first_name: false,
-      last_name: false,
-      username: false,
-      password: false,
-      email: false
+    form: {
+      width: "100%",
+      marginTop: theme.spacing(8),
+      marginBottom: theme.spacing(8),
     },
-    errorMessage: false,
-    passwordError: false
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
+  const classes = useStyles();
+
+  const handleCheckbox = () => {
+    setChecked(checked => !checked);
   };
+  // show any error message if field is populated
+  const errorMessage = Object.values(hasErrors).filter(err => err.length !== 0);
 
-  onChange = e => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({
-      [name]: value
-    });
-  };
+  return (
+    <Container component="main" maxWidth="xs">
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h5" style={{ margin: "10% 0 15%" }}>
+          Join the Livemodo community
+        </Typography>
 
-  validatePassword = () => {
-    const { password } = this.state;
-    const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[\S]+/;
-    if (password.length < 8) {
-      return "Password must be at least 8 characters";
-    }
-    if (password.length > 72) {
-      return "Password must be less than 72 characters";
-    }
-    if (password.startsWith(" ") || password.endsWith(" ")) {
-      return "Password must not start or end with empty spaces";
-    }
-    if (!REGEX_UPPER_LOWER_NUMBER_SPECIAL.test(password)) {
-      return "Password must contain at least one upper case, lower case, number and special character";
-    }
-    return null;
-  };
+        <Formik
+          initialValues={{
+            first_name: "",
+            last_name: "",
+            username: "",
+            email: "",
+            password: "",
+            repeatPassword: "",
+          }}
+          enableReinitialize
+          validate={values => {
+            const {
+              email,
+              first_name,
+              last_name,
+              username,
+              password,
+              repeatPassword,
+            } = values;
+            const errors = {};
+            // // validate email
+            if (!email) {
+              errors.email = "Required";
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
+            ) {
+              errors.email = "Invalid email address";
+            }
+            // // // validate username
+            if (!username) {
+              errors.username = "Username is required";
+            } else if (username.length < 2) {
+              errors.username = "Username must be at least two characters.";
+            }
+            // // validate password
+            if (!password) {
+              errors.password = "Password is required.";
+            } else if (
+              !/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[\S]+/.test(
+                password
+              )
+            ) {
+              errors.password =
+                "Password must contain at least one upper case, lower case, number and special character.";
+            } else if (password.length < 6) {
+              errors.password = "Password must be at least six characters.";
+            }
+            // validate repeat password
+            if (repeatPassword.trim() === "") {
+              errors.repeatPassword = "Please type in password again.";
+            }
+            if (password !== repeatPassword) {
+              errors.repeatPassword = "Passwords don't match";
+            }
+            // validate first name
+            if (first_name.trim() === "") {
+              errors.first_name = `First name is required`;
+            } else if (/[^a-zA-Z -]/.test(first_name)) {
+              errors.first_name = "Invalid characters";
+            } else if (first_name.trim().length < 3) {
+              errors.first_name = `First name needs to be at least three characters`;
+            }
+            // validate last name
+            if (last_name.trim() === "") {
+              errors.last_name = `First name is required`;
+            } else if (/[^a-zA-Z -]/.test(last_name)) {
+              errors.last_name = "Invalid characters";
+            } else if (last_name.trim().length < 3) {
+              errors.last_name = `First name needs to be at least three characters`;
+            }
 
-  renderError = e => {
-    this.setState({
-      passwordError: true
-    });
-  };
+            return errors;
+          }}
+          onSubmit={async (values, actions) => {
+            actions.setSubmitting(true);
+            let apiCall = await AuthApiService.postUser({
+              first_name: values.first_name.trim(),
+              last_name: values.last_name.trim(),
+              username: values.username.trim(),
+              password: values.password.trim(),
+              email: values.email.trim(),
+            });
+            if (apiCall.errors) {
+              setHasErrors(apiCall.errors);
+              actions.setSubmitting(false);
+            } else {
+              actions.setSubmitting(true);
+              history.push("/");
+            }
+          }}
+        >
+          {({ submitForm, isSubmitting, isValid }) => (
+            <Form>
+              <div>
+                {isSubmitting && (
+                  <CircularProgress
+                    size={60}
+                    variant="indeterminate"
+                    id="spinner"
+                  />
+                )}
+              </div>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Field
+                    component={TextField}
+                    name="first_name"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Field
+                    component={TextField}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="last_name"
+                    label="Last Name"
+                    name="last_name"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    component={TextField}
+                    variant="outlined"
+                    type="email"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    component={TextField}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="username"
+                    label="Username"
+                    name="username"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    component={TextField}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="password"
+                    helperText="Must contain uppercase, lowercase, numbers and special characters"
+                    label="Password"
+                    type={checked ? "text" : "password"}
+                    id="password"
+                  />
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const passwordNotValid = this.validatePassword();
-
-    if (passwordNotValid) {
-      this.setState({ error: true }, this.renderError());
-    } else {
-      const { first_name, last_name, email, username, password } = e.target;
-      AuthApiService.postUser({
-        first_name: first_name.value,
-        last_name: last_name.value,
-        username: username.value,
-        password: password.value,
-        email: email.value
-      })
-        .then(user => {
-          first_name.value = "";
-          last_name.value = "";
-          username.value = "";
-          password.value = "";
-          email.value = "";
-        })
-        .catch(res => {
-          this.setState({ error: res.error });
-        });
-
-      this.props.history.push("thank-you");
-    }
-  };
-  handleBlur = field => e => {
-    this.setState({
-      touched: { ...this.state.touched, [field]: true }
-    });
-  };
-
-  render() {
-    const spanStyle = {
-      color: "whiteSmoke",
-      fontStyle: "italic",
-      fontSize: "0.8em"
-    };
-    const ifPasswordError = {
-      border: "2px solid red"
-    };
-    const {
-      first_name,
-      last_name,
-      username,
-      password,
-      email,
-      touched
-    } = this.state;
-    const errors = validateRegisration(
-      first_name,
-      last_name,
-      username,
-      password,
-      email
-    );
-    const isEnabled = !Object.keys(errors).some(x => errors[x]);
-    const errorMessage = this.validatePassword();
-    return (
-      <div className="signup-container">
-        <div className="call-to-action">
-          <h2>Join the Livemodo community!</h2>
-        </div>
-        <div className="signup-form">
-          <form id="signup" onSubmit={this.handleSubmit}>
-            <div className="text-input">
-              <label>*First Name </label>
-              <input
-                className={
-                  shouldBeError("first_name", errors, touched) ? "error" : null
-                }
-                type="text"
-                name="first_name"
-                placeholder="e.g Tommy"
-                value={first_name}
-                onBlur={this.handleBlur("first_name", errors, touched)}
-                onChange={this.onChange}
-                required
-              />
-            </div>
-            <div className="text-input">
-              <label>*Last Name </label>
-              <input
-                className={
-                  shouldBeError("last_name", errors, touched) ? "error" : null
-                }
-                type="text"
-                name="last_name"
-                placeholder="e.g Wisseau"
-                value={last_name}
-                onBlur={this.handleBlur("last_name", errors, touched)}
-                onChange={this.onChange}
-                required
-              />
-            </div>
-            <div className="text-input">
-              <label>*Username </label>
-              <input
-                className={
-                  shouldBeError("username", errors, touched) ? "error" : null
-                }
-                type="text"
-                name="username"
-                value={username}
-                onBlur={this.handleBlur("username", errors, touched)}
-                onChange={this.onChange}
-                required
-              />
-            </div>
-            <div className="text-input">
-              <label>*Email </label>
-              <input
-                className={
-                  shouldBeError("email", errors, touched) ? "error" : null
-                }
-                type="text"
-                name="email"
-                placeholder="e.g tommy@theroom.com"
-                value={email}
-                onBlur={this.handleBlur("email", errors, touched)}
-                onChange={this.onChange}
-                required
-              />
-            </div>
-            <div className="text-input">
-              <label>*Password </label>
-              <input
-                className={
-                  shouldBeError("password", errors, touched) ? "error" : null
-                }
-                type="text"
-                name="password"
-                value={password}
-                onBlur={this.handleBlur("password", errors, touched)}
-                onChange={this.onChange}
-                required
-                style={this.state.passwordError ? ifPasswordError : null}
-              />
-              <span className="errorMessage">
-                {this.state.error ? errorMessage : ""}
-              </span>
-            </div>
-
-            <p style={spanStyle}>* indicates required field</p>
-
-            <button
-              id="register-button"
-              type={!isEnabled ? "disabled" : "submit"}
-              disabled={!isEnabled}
-            >
-              Submit
-            </button>
-          </form>
-          <div className="register-push" />
-        </div>
+                  <FormControlLabel
+                    value="Show password"
+                    control={<Checkbox color="primary" />}
+                    label="Show password"
+                    checked={checked}
+                    onChange={handleCheckbox}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    component={TextField}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="repeatPassword"
+                    label="Repeat Password"
+                    type="password"
+                    id="passwordRepeat"
+                  />
+                </Grid>
+              </Grid>
+              <Button
+                onClick={submitForm}
+                type="submit"
+                fullWidth
+                disabled={!isValid || isSubmitting}
+                variant="contained"
+                color="default"
+                className={classes.submit}
+              >
+                Sign Up
+              </Button>
+            </Form>
+          )}
+        </Formik>
+        <p style={{ color: "red" }}>{errorMessage}</p>
       </div>
-    );
-  }
+    </Container>
+  );
 }
 
 export default withRouter(SignupForm);
