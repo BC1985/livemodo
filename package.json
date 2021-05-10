@@ -28,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prebuild": "CI=true --colors",
+    "prebuild": "CI=true",
     "predeploy": "npm run build",
     "deploy": "now ./build"
   },
