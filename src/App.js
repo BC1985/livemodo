@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect
 } from "react-router-dom";
+import MomentUtils from '@date-io/moment';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import "./App.css";
 import Navbar from "./NavBar/Navbar";
 import Footer from "./Footer/Footer";
@@ -14,134 +16,121 @@ import BrowseReviewsPage from "./BrowseReviews/BrowseReviewsPage";
 import LoginForm from "./LoginPage/LoginPage";
 import AddReviewsPage from "./AddReviews/AddReviewsPage";
 import ThankYouPage from "./ThankYouPage/ThankYouPage";
-import ErrorMessage from "./ErrorMessage/ErrorMessage";
-import Calendar from "react-calendar";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import PasswordConfirmation from "./PasswordConfirmation/PasswodConfirmation";
 import SideDrawer from "./SideDrawer/SideDrawer";
 import { TokenService } from "./utils/token-service";
 require("dotenv").config();
 
-export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLoggedIn: TokenService.hasAuthToken(),
-      isEmptyState: true,
-      isSideDrawerOpen: false
-    };
-  }
-  changeLoginState = () => {
-    this.setState({
-      ...this.state,
-      isLoggedIn: true
-    });
+function App(){
+  const [isLoggedIn , setIsloggedIn] = useState(TokenService.hasAuthToken())
+  const [isSideDrawerOpen, setIsSideDrawerOpen] = useState(false)
+
+  const changeLoginState = () => {
+    setIsloggedIn(state=>!state)
   };
 
-  handleLogOut = () => {
+  const [selectedDate, handleDateChange] = useState(new Date());
+ 
+  const handleLogOut = () => {
     TokenService.clearAuthToken();
-    this.drawerToggleClickHandler();
-    this.setState({
-      isLoggedIn: false
-    });
+    drawerToggleClickHandler();
+    // this.setState({
+    //   isLoggedIn: false
+    // });
+    setIsloggedIn(false)
   };
-  backdropClickHandler = () => {
-    this.setState({
-      isSideDrawerOpen: false
-    });
+  const backdropClickHandler = () => {
+    setIsSideDrawerOpen(false)
+    // this.setState({
+    //   isSideDrawerOpen: false
+    // });
   };
-  drawerToggleClickHandler = () => {
-    this.setState(prevState => {
-      return {
-        isSideDrawerOpen: !prevState.isSideDrawerOpen
-      };
-    });
+  const drawerToggleClickHandler = () => {
+    setIsSideDrawerOpen(state =>!state)
+  };
+  const loginProps = {
+    isLoggedIn,
+    changeLoginState
   };
 
-  render() {
-    const {
-      isLoggedIn,
-      userName,
-      isEmptyState,
-      isNewUser,
-      isSideDrawerOpen
-    } = this.state;
+    // const {
+    //   isLoggedIn,
+    //   userName,
+    //   isEmptyState,
+    //   isNewUser,
+    //   isSideDrawerOpen
+    // } = this.state;
 
     const routes = [
       {
         to: "/",
         name: "Home",
-        onClick: this.drawerToggleClickHandler
+        onClick: drawerToggleClickHandler
       },
       {
-        to: "/browse",
-        name: "Browse Reviews",
-        onClick: this.drawerToggleClickHandler
+        to: "/reviews",
+        name: "Reviews",
+        onClick: drawerToggleClickHandler
       },
       {
         to: "/login",
         name: "Log in",
-        onClick: this.drawerToggleClickHandler
+        onClick: drawerToggleClickHandler
       }
     ];
     const authenticateRoutes = [
       {
         to: "/",
         name: "Home",
-        onClick: this.drawerToggleClickHandler
+        onClick: drawerToggleClickHandler
       },
       {
         to: "/browse",
         name: "Browse Reviews",
-        onClick: this.drawerToggleClickHandler
+        onClick: drawerToggleClickHandler
       },
       {
         to: "/add",
         name: "Add Review",
-        onClick: this.drawerToggleClickHandler
+        onClick: drawerToggleClickHandler
       },
       {
         to: "/",
         name: "Log out",
-        onClick: this.handleLogOut
+        onClick: handleLogOut
       }
     ];
     return (
+      <MuiPickersUtilsProvider utils={MomentUtils}>
       <Router>
         <div className="App">
           <SideDrawer
             show={isSideDrawerOpen}
-            drawerToggleClickHandler={this.drawerToggleClickHandler}
+            drawerToggleClickHandler={drawerToggleClickHandler}
             routes={isLoggedIn ? authenticateRoutes : routes}
           />
           <Navbar
             isLoggedIn={isLoggedIn}
             routes={isLoggedIn ? authenticateRoutes : routes}
-            userName={userName}
-            changeLoginState={this.changeLoginState}
-            drawerToggleClickHandler={this.drawerToggleClickHandler}
-            click={this.drawerToggleClickHandler}
+            changeLoginState={changeLoginState}
+            drawerToggleClickHandler={drawerToggleClickHandler}
+            click={drawerToggleClickHandler}
             isSideDrawerOpen={isSideDrawerOpen}
           />
           <Switch>
             <Route
-              component={LandingPage}
-              exact
-              path="/"
-              isLoggedIn={isLoggedIn}
-              isNewUser={isNewUser}
+            exact path="/"
+             render={props => <LandingPage {...props} {...loginProps} />}
             />
             <Route path="/thank-you" component={ThankYouPage} />
             <Route component={SignupForm} path="/register" />
-            <Route path="/browse" component={BrowseReviewsPage} />
-            <LoginForm path="/login" changeLoginState={this.changeLoginState} />
-            {isEmptyState && (
+            <Route path="/reviews" component={BrowseReviewsPage} />
+            <Route path="/login" render={props=> <LoginForm {...props}{...loginProps}/>}/>
+            {/* {isEmptyState && ( */}
               <Route
-                component={AddReviewsPage}
-                errorMessage={ErrorMessage}
-                Calendar={Calendar}
+                path="/post"render={AddReviewsPage}
               />
-            )}
 
             <Route path="/forgot-password" component={ForgotPassword} />
             <Redirect from="/forgot-password" to="/confirmation" />
@@ -150,6 +139,7 @@ export default class App extends Component {
           <Footer />
         </div>
       </Router>
+      </MuiPickersUtilsProvider>
     );
-  }
 }
+export default App
