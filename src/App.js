@@ -5,8 +5,6 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import MomentUtils from '@date-io/moment';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import "./App.css";
 import Navbar from "./NavBar/Navbar";
 import Footer from "./Footer/Footer";
@@ -20,89 +18,71 @@ import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import PasswordConfirmation from "./PasswordConfirmation/PasswodConfirmation";
 import SideDrawer from "./SideDrawer/SideDrawer";
 import { TokenService } from "./utils/token-service";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import MomentUtils from "@date-io/moment";
 require("dotenv").config();
 
-function App(){
-  const [isLoggedIn , setIsloggedIn] = useState(TokenService.hasAuthToken())
-  const [isSideDrawerOpen, setIsSideDrawerOpen] = useState(false)
+function App() {
+  const [isLoggedIn, setIsloggedIn] = useState(TokenService.hasAuthToken());
+  const [isSideDrawerOpen, setIsSideDrawerOpen] = useState(false);
 
   const changeLoginState = () => {
-    setIsloggedIn(state=>!state)
+    setIsloggedIn(state => !state);
   };
 
-  const [selectedDate, handleDateChange] = useState(new Date());
- 
   const handleLogOut = () => {
     TokenService.clearAuthToken();
     drawerToggleClickHandler();
-    // this.setState({
-    //   isLoggedIn: false
-    // });
-    setIsloggedIn(false)
-  };
-  const backdropClickHandler = () => {
-    setIsSideDrawerOpen(false)
-    // this.setState({
-    //   isSideDrawerOpen: false
-    // });
+    setIsloggedIn(false);
   };
   const drawerToggleClickHandler = () => {
-    setIsSideDrawerOpen(state =>!state)
+    setIsSideDrawerOpen(state => !state);
   };
   const loginProps = {
     isLoggedIn,
     changeLoginState
   };
-
-    // const {
-    //   isLoggedIn,
-    //   userName,
-    //   isEmptyState,
-    //   isNewUser,
-    //   isSideDrawerOpen
-    // } = this.state;
-
-    const routes = [
-      {
-        to: "/",
-        name: "Home",
-        onClick: drawerToggleClickHandler
-      },
-      {
-        to: "/reviews",
-        name: "Reviews",
-        onClick: drawerToggleClickHandler
-      },
-      {
-        to: "/login",
-        name: "Log in",
-        onClick: drawerToggleClickHandler
-      }
-    ];
-    const authenticateRoutes = [
-      {
-        to: "/",
-        name: "Home",
-        onClick: drawerToggleClickHandler
-      },
-      {
-        to: "/browse",
-        name: "Browse Reviews",
-        onClick: drawerToggleClickHandler
-      },
-      {
-        to: "/add",
-        name: "Add Review",
-        onClick: drawerToggleClickHandler
-      },
-      {
-        to: "/",
-        name: "Log out",
-        onClick: handleLogOut
-      }
-    ];
-    return (
-      <MuiPickersUtilsProvider utils={MomentUtils}>
+  const routes = [
+    {
+      to: "/",
+      name: "Home",
+      onClick: drawerToggleClickHandler,
+    },
+    {
+      to: "/reviews",
+      name: "Reviews",
+      onClick: drawerToggleClickHandler,
+    },
+    {
+      to: "/login",
+      name: "Log in",
+      onClick: drawerToggleClickHandler,
+    },
+  ];
+  const authenticateRoutes = [
+    {
+      to: "/",
+      name: "Home",
+      onClick: drawerToggleClickHandler,
+    },
+    {
+      to: "/browse",
+      name: "Browse Reviews",
+      onClick: drawerToggleClickHandler,
+    },
+    {
+      to: "/post",
+      name: "Add Review",
+      onClick: drawerToggleClickHandler,
+    },
+    {
+      to: "/",
+      name: "Log out",
+      onClick: handleLogOut,
+    },
+  ];
+  return (
+    <MuiPickersUtilsProvider utils={MomentUtils}>
       <Router>
         <div className="App">
           <SideDrawer
@@ -120,17 +100,21 @@ function App(){
           />
           <Switch>
             <Route
-            exact path="/"
-             render={props => <LandingPage {...props} {...loginProps} />}
+              exact
+              path="/"
+              render={props => <LandingPage {...props} {...loginProps} />}
             />
             <Route path="/thank-you" component={ThankYouPage} />
-            <Route component={SignupForm} path="/register" />
+            <Route
+              path="/register"
+              render={props => <SignupForm {...props} {...loginProps} />}
+            />
             <Route path="/reviews" component={BrowseReviewsPage} />
-            <Route path="/login" render={props=> <LoginForm {...props}{...loginProps}/>}/>
-            {/* {isEmptyState && ( */}
-              <Route
-                path="/post"render={AddReviewsPage}
-              />
+            <Route
+              path="/login"
+              render={props => <LoginForm {...props} {...loginProps} />}
+            />
+            <Route path="/post" render={AddReviewsPage} />
 
             <Route path="/forgot-password" component={ForgotPassword} />
             <Redirect from="/forgot-password" to="/confirmation" />
@@ -139,7 +123,7 @@ function App(){
           <Footer />
         </div>
       </Router>
-      </MuiPickersUtilsProvider>
-    );
+    </MuiPickersUtilsProvider>
+  );
 }
-export default App
+export default App;
