@@ -15,7 +15,7 @@ import {
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
-function SignupForm({ history }) {
+function SignupForm({history}) {
   const [checked, setChecked] = useState(Boolean);
   const [hasErrors, setHasErrors] = useState({});
 
@@ -254,4 +254,4 @@ function SignupForm({ history }) {
   );
 }
 
-export default withRouter(SignupForm);
+export default SignupForm;
