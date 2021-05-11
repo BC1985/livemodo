@@ -7,8 +7,8 @@ const reviewSchema = new Schema(
       type: String,
       required: true,
     },
-    band_name: { type: String, required: true },
-    show_date: { type: Date, required: true },
+    bandName: { type: String, required: true },
+    showDate: { type: Date, required: true },
 
     content: {
       type: String,

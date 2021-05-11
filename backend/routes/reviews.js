@@ -52,9 +52,9 @@ router.route("/").get(async (req, res) => {
 router.route("/post").post(auth, async (req, res) => {
   const {
     tagline,
-    band_name,
+    bandName,
     venue,
-    show_date,
+    showDate,
     content,
     timestamps,
     rating,
@@ -62,9 +62,9 @@ router.route("/post").post(auth, async (req, res) => {
   try {
     const newReview = new Review({
       tagline,
-      band_name,
+      bandName,
       venue,
-      show_date,
+      showDate,
       content,
       rating,
       username: res.locals.user.username,
@@ -97,13 +97,13 @@ router.route("/:id").get(async (req, res) => {
 
 router.route("/update/:id").put(async (req, res) => {
   try {
-    const { tagline, band_name, venue, show_date, content, rating } = req.body;
+    const { tagline, bandName, venue, showDate, content, rating } = req.body;
     const filter = { _id: req.params.id };
     const update = {
       tagline: tagline,
-      band_name: band_name,
+      bandName: bandName,
       venue: venue,
-      show_date: show_date,
+      showDate: showDate,
       content: content,
       rating: rating,
     };

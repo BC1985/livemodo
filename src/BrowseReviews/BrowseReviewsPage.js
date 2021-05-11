@@ -25,8 +25,8 @@ function BrowseReviewsPage() {
     const allReviews = reviews.map(review => (
       <Review
         key={review._id}
-        band_name={review.band_name}
-        show_date={review.show_date}
+        bandName={review.bandName}
+        showDate={review.showDate}
         tagline={review.tagline}
         posted={review.createdAt}
         venue={review.venue}

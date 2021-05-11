@@ -3,9 +3,9 @@ const handleErrors = err => {
 
   let errors = {
     tagline: "",
-    band_name: "",
+    bandName: "",
     venue: "",
-    show_date: "",
+    showDate: "",
     content: "",
     rating: "",
   };
