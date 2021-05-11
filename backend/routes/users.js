@@ -45,8 +45,8 @@ router.route("/add").post(async (req, res) => {
     console.log(err.message, err.code);
 
     let errors = {
-      first_name: "",
-      last_name: "",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
       username: "",
@@ -60,10 +60,10 @@ router.route("/add").post(async (req, res) => {
     return errors;
   };
   try {
-    const { first_name, last_name, email, password, username } = req.body;
+    const { firstName, lastName, email, password, username } = req.body;
     const newUser = await User({
-      first_name,
-      last_name,
+      firstName,
+      lastName,
       email,
       password,
       username,

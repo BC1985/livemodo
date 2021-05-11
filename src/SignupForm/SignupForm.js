@@ -53,8 +53,8 @@ function SignupForm({ history }) {
 
         <Formik
           initialValues={{
-            first_name: "",
-            last_name: "",
+            firstName: "",
+            lastName: "",
             username: "",
             email: "",
             password: "",
@@ -64,8 +64,8 @@ function SignupForm({ history }) {
           validate={values => {
             const {
               email,
-              first_name,
-              last_name,
+              firstName,
+              lastName,
               username,
               password,
               repeatPassword,
@@ -106,20 +106,20 @@ function SignupForm({ history }) {
               errors.repeatPassword = "Passwords don't match";
             }
             // validate first name
-            if (first_name.trim() === "") {
-              errors.first_name = `First name is required`;
-            } else if (/[^a-zA-Z -]/.test(first_name)) {
-              errors.first_name = "Invalid characters";
-            } else if (first_name.trim().length < 3) {
-              errors.first_name = `First name needs to be at least three characters`;
+            if (firstName.trim() === "") {
+              errors.firstName = `First name is required`;
+            } else if (/[^a-zA-Z -]/.test(firstName)) {
+              errors.firstName = "Invalid characters";
+            } else if (firstName.trim().length < 3) {
+              errors.firstName = `First name needs to be at least three characters`;
             }
             // validate last name
-            if (last_name.trim() === "") {
-              errors.last_name = `First name is required`;
-            } else if (/[^a-zA-Z -]/.test(last_name)) {
-              errors.last_name = "Invalid characters";
-            } else if (last_name.trim().length < 3) {
-              errors.last_name = `First name needs to be at least three characters`;
+            if (lastName.trim() === "") {
+              errors.lastName = `First name is required`;
+            } else if (/[^a-zA-Z -]/.test(lastName)) {
+              errors.lastName = "Invalid characters";
+            } else if (lastName.trim().length < 3) {
+              errors.lastName = `First name needs to be at least three characters`;
             }
 
             return errors;
@@ -127,8 +127,8 @@ function SignupForm({ history }) {
           onSubmit={async (values, actions) => {
             actions.setSubmitting(true);
             let apiCall = await AuthApiService.postUser({
-              first_name: values.first_name.trim(),
-              last_name: values.last_name.trim(),
+              firstName: values.firstName.trim(),
+              lastName: values.lastName.trim(),
               username: values.username.trim(),
               password: values.password.trim(),
               email: values.email.trim(),
@@ -157,7 +157,7 @@ function SignupForm({ history }) {
                 <Grid item xs={12} sm={6}>
                   <Field
                     component={TextField}
-                    name="first_name"
+                    name="firstName"
                     variant="outlined"
                     required
                     fullWidth
@@ -172,9 +172,9 @@ function SignupForm({ history }) {
                     variant="outlined"
                     required
                     fullWidth
-                    id="last_name"
+                    id="lastName"
                     label="Last Name"
-                    name="last_name"
+                    name="lastName"
                   />
                 </Grid>
                 <Grid item xs={12}>

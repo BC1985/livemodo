@@ -10,11 +10,11 @@ mongoose.plugin(require("mongoose-unique-validator"), {
 });
 
 const userSchema = new Schema({
-  first_name: {
+  firstName: {
     type: String,
     required: [true, "Please enter first name"],
   },
-  last_name: {
+  lastName: {
     type: String,
     required: [true, "Please enter last name"],
   },
