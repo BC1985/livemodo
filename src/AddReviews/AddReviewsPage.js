@@ -154,7 +154,7 @@ function AddreviewsPage() {
                 onClick={submitForm}
                 type="submit"
                 fullWidth
-                disabled={!isValid || isSubmitting || !dirty}
+                disabled={!isValid || isSubmitting }
                 variant="contained"
                 color="default"
                 className={classes.submit}
