@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import {apiService} from "../services/auth-api-service";
-import { TextField } from "formik-material-ui";
+import { apiService } from "../services/auth-api-service";
+import { TextField, Select } from "formik-material-ui";
 import { Formik, Form, Field } from "formik";
+import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 import { Button, Container, CircularProgress } from "@material-ui/core";
@@ -90,7 +91,7 @@ function AddreviewsPage() {
             // }
           }}
         >
-          {({ submitForm, isSubmitting, isValid, dirty, setFieldValue }) => (
+          {({ submitForm, isSubmitting, isValid, setFieldValue }) => (
             <Form>
               <div>
                 {isSubmitting && (
@@ -129,6 +130,17 @@ function AddreviewsPage() {
                   <Field
                     component={TextField}
                     variant="outlined"
+                    required
+                    fullWidth
+                    id="venue"
+                    label="Venue"
+                    name="venue"
+                  />
+                </Grid>
+                <Grid item>
+                  <Field
+                    component={TextField}
+                    variant="outlined"
                     type="content"
                     required
                     fullWidth
@@ -136,6 +148,19 @@ function AddreviewsPage() {
                     label="What did you think?"
                     name="content"
                   />
+                  <Field
+                    component={Select}
+                    name="rating"
+                    inputProps={{
+                      id: "rating",
+                    }}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={3}>3</MenuItem>
+                    <MenuItem value={4}>4</MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
+                  </Field>
                 </Grid>
                 <Grid item>
                   <Field
