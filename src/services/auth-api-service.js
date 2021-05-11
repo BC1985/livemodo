@@ -11,7 +11,19 @@ const apiService = {
     });
     const data = await res.json();
     return data
-  }
+  },
+  logIn: async (credentials)=> {
+      const res  = await fetch(`${config.API_BASE_URL}/login`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(credentials),
+    });
+    const data = await res.json();
+    return data
+  },
+
 };
 
 export default apiService;
