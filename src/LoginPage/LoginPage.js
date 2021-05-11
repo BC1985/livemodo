@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import apiService from "../services/auth-api-service";
+import { apiService } from "../services/auth-api-service";
 
 function LoginForm({ history, changeLoginState }) {
   const [checked, setChecked] = useState(Boolean);
@@ -148,10 +148,7 @@ function LoginForm({ history, changeLoginState }) {
               >
                 Sign Up
               </Button>
-              <Typography
-                component="h5"
-                align="center"
-              >
+              <Typography component="h5" align="center">
                 Don't have an account? <Link to="/register">Sign up</Link>
               </Typography>
             </Form>
