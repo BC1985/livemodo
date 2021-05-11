@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./SignupForm.css";
-import AuthApiService from "../services/auth-api-service";
-import { withRouter } from "react-router-dom";
+import { apiService } from "../services/auth-api-service";
 import { TextField } from "formik-material-ui";
 import { Formik, Form, Field } from "formik";
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,7 +14,7 @@ import {
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
-function SignupForm({history}) {
+function SignupForm({history, changeLoginState}) {
   const [checked, setChecked] = useState(Boolean);
   const [hasErrors, setHasErrors] = useState({});
 
@@ -126,17 +125,19 @@ function SignupForm({history}) {
           }}
           onSubmit={async (values, actions) => {
             actions.setSubmitting(true);
-            let apiCall = await AuthApiService.postUser({
+            const postUser = await apiService.postUser({
               firstName: values.firstName.trim(),
               lastName: values.lastName.trim(),
               username: values.username.trim(),
               password: values.password.trim(),
               email: values.email.trim(),
             });
-            if (apiCall.errors) {
-              setHasErrors(apiCall.errors);
+            if (postUser.errors) {
+              setHasErrors(postUser.errors);
               actions.setSubmitting(false);
             } else {
+              changeLoginState();
+              localStorage.setItem("jwt token", postUser);
               actions.setSubmitting(true);
               history.push("/");
             }
