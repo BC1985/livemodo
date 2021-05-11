@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { TextField } from "formik-material-ui";
 import { Formik, Form, Field } from "formik";
 import { makeStyles } from "@material-ui/core/styles";
@@ -91,7 +91,7 @@ function LoginForm({ history, changeLoginState }) {
             }
           }}
         >
-          {({ submitForm, isSubmitting, isValid }) => (
+          {({ submitForm, isSubmitting, isValid, dirty }) => (
             <Form>
               <div>
                 {isSubmitting && (
@@ -141,13 +141,19 @@ function LoginForm({ history, changeLoginState }) {
                 onClick={submitForm}
                 type="submit"
                 fullWidth
-                disabled={!isValid || isSubmitting}
+                disabled={!isValid || isSubmitting || !dirty}
                 variant="contained"
                 color="default"
                 className={classes.submit}
               >
                 Sign Up
               </Button>
+              <Typography
+                component="h5"
+                align="center"
+              >
+                Don't have an account? <Link to="/register">Sign up</Link>
+              </Typography>
             </Form>
           )}
         </Formik>

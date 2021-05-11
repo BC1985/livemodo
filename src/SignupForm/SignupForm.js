@@ -142,7 +142,7 @@ function SignupForm({ history }) {
             }
           }}
         >
-          {({ submitForm, isSubmitting, isValid }) => (
+          {({ submitForm, isSubmitting, isValid, dirty }) => (
             <Form>
               <div>
                 {isSubmitting && (
@@ -238,7 +238,7 @@ function SignupForm({ history }) {
                 onClick={submitForm}
                 type="submit"
                 fullWidth
-                disabled={!isValid || isSubmitting}
+                disabled={!isValid || isSubmitting || !dirty}
                 variant="contained"
                 color="default"
                 className={classes.submit}
