@@ -1,125 +1,159 @@
-import React, { Component, useState } from "react";
-import { withRouter, Link } from "react-router-dom";
-import Spinner from "../Spinners/Spinner";
-import "./LoginPage.css";
-import { TokenService } from "../utils/token-service";
-import config from "../config";
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
+import { TextField } from "formik-material-ui";
+import { Formik, Form, Field } from "formik";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Button,
+  Container,
+  FormControlLabel,
+  Checkbox,
+  CircularProgress,
+} from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import apiService from "../services/auth-api-service";
 
-const LoginForm =(props)=> {
-  const [input, setInput] = useState({
-    email: "john@smith.com",
-    password: "JohnSmith1!",
-  });
-  const [isLoading, setIsLoading] =useState(false)
-  const [error, setError] =useState("")
+function LoginForm({ history, changeLoginState }) {
+  const [checked, setChecked] = useState(Boolean);
+  const [hasErrors, setHasErrors] = useState({});
 
-  const { email, password } = input;
+  const useStyles = makeStyles(theme => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      marginBottom: 100,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    form: {
+      width: "100%",
+      marginTop: theme.spacing(8),
+      marginBottom: theme.spacing(8),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
+  const classes = useStyles();
 
-  const handleSubmit=(e)=>{
-    setIsLoading(true)
-    e.preventDefault()
-    postLogin({ email: email.trim().toLowerCase(), password: password.trim() })
-  }
-   const postLogin=async(credentials)=> {
-    const url = `${config.API_BASE_URL}/login`;
-    const res = await fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(credentials),
-    });
-
-    const data = await res.json();
-    
-    if (!res.ok) {
-      setError(data.error)
-      // setError(data)
-    } else {
-      // get jwt from successful login
-      localStorage.setItem("jwt token", data);
-      props.history.push("/");
-      props.changeLoginState();
-
-    }
-  }
-  const changeHandler = e => {
-    const { name, value } = e.target;
-    setInput(input => ({ ...input, [name]: value }));
+  const handleCheckbox = () => {
+    setChecked(checked => !checked);
   };
-  const showHidePassword = () => {
-    const input = document.getElementById("password");
-    if (input.type === "password") {
-      input.type = "text";
-    } else {
-      input.type = "password";
-    }
-  };
+  // show any error message if field is populated
+  const errorMessage = Object.values(hasErrors).filter(err => err.length !== 0);
 
+  return (
+    <Container component="main" maxWidth="xs">
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h5" style={{ margin: "10% 0 15%" }}>
+          Login to Livemodo
+        </Typography>
 
-    // isLoading && <Spinner />;
-    // error ? "Incorrect email or password" : "";
-    const linkStyle = { color: "whiteSmoke" };
+        <Formik
+          initialValues={{
+            email: "john@smith.com",
+            password: "JohnSmith1!",
+          }}
+          enableReinitialize
+          validate={values => {
+            const { email, password } = values;
+            const errors = {};
+            // validate email
+            if (!email) {
+              errors.email = "Required";
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
+            ) {
+              errors.email = "Invalid email address";
+            }
+            // validate password
+            if (!password) {
+              errors.password = "Password is required.";
+            }
 
-    return (
-      <div className="login-form-container">
-        <main>
-          <form id="login-form" onSubmit={handleSubmit}>
-            <h1
-              style={{ color: "whiteSmoke", paddingTop: "0", marginTop: "0" }}
-            >
-              Log in to Livemodo
-            </h1>
-            <label>Email</label>
-            <input
-              aria-label="email"
-              style={{ color: "black" }}
-              type="text"
-              name="email"
-              value={email}
-              onChange={changeHandler}
-              required
-            />
-            <label>Password</label>
-            <input
-              aria-label="password"
-              style={{ color: "black" }}
-              id="password"
-              type="password"
-              name="password"
-              value={password}
-              onChange={changeHandler}
-              required
-            />
-            <div id="toggle-password">
-              <input
-                aria-label="checkbox"
-                type="checkbox"
-                onClick={showHidePassword}
-                id="checkbox"
-              />
-              <span id="show-password">Show password</span>
-            </div>
-            <button id="button">Log in</button>
-          </form>
-          <p style={{ color: "red", paddingTop: "0", marginTop: "0" }}>{error}</p>
-          <section id="help">
-            <div id="forgot-password">
-              <Link to="/" style={linkStyle}>
-                Forgot password?{" "}
-              </Link>
-            </div>
-            <div id="register">
-              <Link to="/register" style={linkStyle}>
-                Sign up
-              </Link>
-            </div>
-          </section>
-          <div id="error">{isLoading ? isLoading : error}</div>
-          <div className="login-push" />
-        </main>
+            return errors;
+          }}
+          onSubmit={async (values, actions) => {
+            actions.setSubmitting(true);
+            const submitLogin = await apiService.logIn({
+              password: values.password.trim(),
+              email: values.email.trim(),
+            });
+            if (submitLogin.error) {
+              setHasErrors(submitLogin.error);
+              actions.setSubmitting(false);
+            } else {
+              changeLoginState();
+              localStorage.setItem("jwt token", submitLogin);
+              actions.setSubmitting(true);
+              history.push("/");
+            }
+          }}
+        >
+          {({ submitForm, isSubmitting, isValid }) => (
+            <Form>
+              <div>
+                {isSubmitting && (
+                  <CircularProgress
+                    size={60}
+                    variant="indeterminate"
+                    id="spinner"
+                  />
+                )}
+              </div>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}></Grid>
+                <Grid item xs={12}>
+                  <Field
+                    component={TextField}
+                    variant="outlined"
+                    type="email"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    component={TextField}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type={checked ? "text" : "password"}
+                    id="password"
+                  />
+                  <FormControlLabel
+                    value="Show password"
+                    control={<Checkbox color="primary" />}
+                    label="Show password"
+                    checked={checked}
+                    onChange={handleCheckbox}
+                  />
+                </Grid>
+                <Grid item xs={12}></Grid>
+              </Grid>
+              <Button
+                onClick={submitForm}
+                type="submit"
+                fullWidth
+                disabled={!isValid || isSubmitting}
+                variant="contained"
+                color="default"
+                className={classes.submit}
+              >
+                Sign Up
+              </Button>
+            </Form>
+          )}
+        </Formik>
+        <p style={{ color: "red" }}>{errorMessage}</p>
       </div>
-    );
-  
+    </Container>
+  );
 }
 export default withRouter(LoginForm);
