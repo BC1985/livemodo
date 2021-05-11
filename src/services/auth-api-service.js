@@ -24,14 +24,18 @@ export const apiService = {
     return data
   },
   postReview: async (review)=> {
-      const res  = await fetch(`${config.API_BASE_URL}/reviews/post`, {
+    const token = localStorage.getItem("jwt token");    
+    console.log('token', token)
+    const res  = await fetch(`${config.API_BASE_URL}/reviews/post`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `bearer ${token}`
       },
       body: JSON.stringify(review),
     });
     const data = await res.json();
+    console.log(review)
     return data
   },
 
