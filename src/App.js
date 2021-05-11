@@ -19,7 +19,7 @@ import PasswordConfirmation from "./PasswordConfirmation/PasswodConfirmation";
 import SideDrawer from "./SideDrawer/SideDrawer";
 import { TokenService } from "./utils/token-service";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import MomentUtils from "@date-io/moment";
+import DateFnsUtils from '@date-io/date-fns';
 require("dotenv").config();
 
 function App() {
@@ -66,7 +66,7 @@ function App() {
       onClick: drawerToggleClickHandler,
     },
     {
-      to: "/browse",
+      to: "/reviews",
       name: "Browse Reviews",
       onClick: drawerToggleClickHandler,
     },
@@ -82,7 +82,7 @@ function App() {
     },
   ];
   return (
-    <MuiPickersUtilsProvider utils={MomentUtils}>
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Router>
         <div className="App">
           <SideDrawer
@@ -114,7 +114,7 @@ function App() {
               path="/login"
               render={props => <LoginForm {...props} {...loginProps} />}
             />
-            <Route path="/post" render={AddReviewsPage} />
+            <Route path="/post" render={props=><AddReviewsPage {...props} {...loginProps} />}  />
 
             <Route path="/forgot-password" component={ForgotPassword} />
             <Redirect from="/forgot-password" to="/confirmation" />

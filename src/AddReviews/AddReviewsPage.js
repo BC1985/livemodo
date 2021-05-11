@@ -1,25 +1,14 @@
 import React, { useState } from "react";
-import AuthApiService from "../services/auth-api-service";
-import { withRouter } from "react-router-dom";
+import {apiService} from "../services/auth-api-service";
 import { TextField } from "formik-material-ui";
 import { Formik, Form, Field } from "formik";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Button,
-  Container,
-  FormControlLabel,
-  Checkbox,
-  CircularProgress,
-} from "@material-ui/core";
-import { KeyboardDateTimePicker } from 'formik-material-ui-pickers';
-
+import { KeyboardDatePicker } from "@material-ui/pickers";
+import { Button, Container, CircularProgress } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import {
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-function SignupForm({ history }) {
-  const [checked, setChecked] = useState(Boolean);
+
+function AddreviewsPage() {
   const [hasErrors, setHasErrors] = useState({});
 
   const useStyles = makeStyles(theme => ({
@@ -40,10 +29,6 @@ function SignupForm({ history }) {
     },
   }));
   const classes = useStyles();
-
-  const handleCheckbox = () => {
-    setChecked(checked => !checked);
-  };
   // show any error message if field is populated
   const errorMessage = Object.values(hasErrors).filter(err => err.length !== 0);
 
@@ -88,13 +73,13 @@ function SignupForm({ history }) {
           }}
           onSubmit={async (values, actions) => {
             actions.setSubmitting(true);
-            const submitReview = await AuthApiService.postUser({
+            const submitReview = await apiService.postReview({
               tagline: values.tagline.trim(),
               bandName: values.bandName.trim(),
               venue: values.venue.trim(),
               content: values.content.trim(),
-              showDate:values.showDate.trim(),
-              rating:values.rating.trim() 
+              showDate: values.showDate.trim(),
+              rating: values.rating.trim(),
             });
             // if (submitReview.errors) {
             //   setHasErrors(apiCall.errors);
@@ -105,7 +90,7 @@ function SignupForm({ history }) {
             // }
           }}
         >
-          {({ submitForm, isSubmitting, isValid, dirty }) => (
+          {({ submitForm, isSubmitting, isValid, dirty, setFieldValue }) => (
             <Form>
               <div>
                 {isSubmitting && (
@@ -120,7 +105,7 @@ function SignupForm({ history }) {
                 <Grid item>
                   <Field
                     component={TextField}
-                    name="taglin"
+                    name="tagline"
                     variant="outlined"
                     placeholder="optional"
                     fullWidth
@@ -136,7 +121,7 @@ function SignupForm({ history }) {
                     required
                     fullWidth
                     id="bandName"
-                    label="Last Name"
+                    label="Name of artist or band"
                     name="bandName"
                   />
                 </Grid>
@@ -153,9 +138,16 @@ function SignupForm({ history }) {
                   />
                 </Grid>
                 <Grid item>
-                <Field component={KeyboardDatePicker} label="Show date" name="name" onChange={console.log('ok')} />
-                </Grid>
-                <Grid item xs={12}>                 
+                  <Field
+                    component={KeyboardDatePicker}
+                    label="Show date"
+                    name="showDate"
+                    disableFuture={true}
+                    onChange={val => {
+                      console.log(val);
+                      setFieldValue("dob", val);
+                    }}
+                  />
                 </Grid>
               </Grid>
               <Button
@@ -178,4 +170,4 @@ function SignupForm({ history }) {
   );
 }
 
-export default withRouter(SignupForm);
+export default AddreviewsPage;
