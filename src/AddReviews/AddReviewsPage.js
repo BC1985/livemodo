@@ -1,217 +1,181 @@
-import React, { Component } from "react";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import Calendar from "react-calendar";
-import "./AddReviewsPage.css";
-import { TokenService } from "../utils/token-service";
-import config from "../config";
+import React, { useState } from "react";
+import AuthApiService from "../services/auth-api-service";
 import { withRouter } from "react-router-dom";
-import { validateAddReview, shouldBeError } from "../Validation/validation";
-class AddReviewsPage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      reviews: [],
-      id: "",
-      tagline: "",
-      band_name: "",
-      venue: "",
-      username: "",
-      show_date: "",
-      posted: "",
-      selectedItem: "",
-      rating: "",
-      content: "",
-      showThankYouPage: false,
-      errors: { venue: false, band_name: false, rating: false },
-      touched: {
-        venue: false,
-        band_name: false,
-        rating: false
-      },
-      errorMessage: false
-    };
-  }
+import { TextField } from "formik-material-ui";
+import { Formik, Form, Field } from "formik";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Button,
+  Container,
+  FormControlLabel,
+  Checkbox,
+  CircularProgress,
+} from "@material-ui/core";
+import { KeyboardDateTimePicker } from 'formik-material-ui-pickers';
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const newReview = {
-      tagline: this.state.tagline,
-      band_name: this.state.band_name,
-      venue: this.state.venue,
-      username: this.props.username,
-      show_date: this.state.show_date,
-      content: this.state.content,
-      rating: this.state.rating
-    };
-    fetch(`${config.API_BASE_URL}/reviews/post`, {
-      method: "POST",
-      body: JSON.stringify(newReview),
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${TokenService.getAuthToken()}`
-      }
-    })
-      .then(res => {
-        if (!res.ok) {
-          return res.json().then(error => Promise.reject(error));
-        }
-        return res.json().then(review => {
-          this.addReview(review);
-        });
-      })
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import {
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+function SignupForm({ history }) {
+  const [checked, setChecked] = useState(Boolean);
+  const [hasErrors, setHasErrors] = useState({});
 
-      .catch(this.setState({ errorMessage: true }));
+  const useStyles = makeStyles(theme => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      marginBottom: 100,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    form: {
+      width: "100%",
+      marginTop: theme.spacing(8),
+      marginBottom: theme.spacing(8),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
+  const classes = useStyles();
+
+  const handleCheckbox = () => {
+    setChecked(checked => !checked);
   };
+  // show any error message if field is populated
+  const errorMessage = Object.values(hasErrors).filter(err => err.length !== 0);
 
-  addReview = review => {
-    this.setState({
-      reviews: [...this.state.reviews, review]
-    });
-    this.props.history.push("/thank-you");
-  };
+  return (
+    <Container component="main" maxWidth="xs">
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h5" style={{ margin: "10% 0 15%" }}>
+          Post your review
+        </Typography>
 
-  ratingChanged(rating) {
-    this.setState({
-      rating
-    });
-  }
-  changeHandler = e => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleBlur = field => e => {
-    this.setState({
-      touched: { ...this.state.touched, [field]: true },
-      ErrorMessage: true
-    });
-  };
-
-  changeShowDate = value => {
-    this.setState({
-      show_date: value
-    });
-  };
-  render() {
-    const {
-      band_name,
-      venue,
-      show_date,
-      rating,
-      touched,
-      tagline,
-      content,
-      value
-    } = this.state;
-    const errors = validateAddReview(venue, band_name, show_date, rating);
-    const isEnabled = !Object.keys(errors).some(x => errors[x]);
-
-    const spanStyle = {
-      color: "smokewhite",
-      fontStyle: "italic"
-    };
-
-    return (
-      <>
-        <div id="add-review-header">
-          <h2>Add review</h2>
-        </div>
-        <div className="add-review-container">
-          <div />
-          <form id="add-review-form" onSubmit={this.handleSubmit}>
-            <label>
-              Add tagline <span style={spanStyle}>(optional)</span>
-            </label>
-            <input
-              type="text"
-              placeholder="One line to describe your experience"
-              name="tagline"
-              value={tagline}
-              onChange={this.changeHandler}
-            />
-
-            <label>Name of performer/ band*</label>
-            <input
-              className={
-                shouldBeError("band_name", errors, touched) ? "error" : null
-              }
-              placeholder="e.g The Hungry Caterpillars"
-              name="band_name"
-              value={band_name}
-              onChange={this.changeHandler}
-              onBlur={this.handleBlur("band_name")}
-              required
-            />
-
-            <label>Name of venue*</label>
-            <input
-              className={
-                shouldBeError("venue", errors, touched) ? "error" : null
-              }
-              placeholder="e.g Yolanda's Prophylactic Emporium"
-              name="venue"
-              value={venue}
-              onBlur={this.handleBlur("venue")}
-              onChange={this.changeHandler}
-              required
-            />
-
-            <label>Date of performace*</label>
-            <div id="calendar">
-              <Calendar
-                value={value}
-                onChange={this.changeShowDate}
-                activeStartDate={value}
-              />
-            </div>
-            <label>
-              Anything you care to add?{" "}
-              <span style={spanStyle}>(optional)</span>
-            </label>
-            <input
-              type="text"
-              name="content"
-              value={content}
-              onChange={this.changeHandler}
-            />
-
-            <div id="required-fields">
-              <p style={spanStyle}>(* indicates required field)</p>
-            </div>
-            <label>Rate your experience of the show*</label>
-            <div className="ratings">
-              <input
-                className={
-                  shouldBeError("rating", errors, touched) ? "error" : null
-                }
-                type="number"
-                name="rating"
-                id="rating"
-                min="1"
-                max="5"
-                value={rating}
-                onBlur={this.handleBlur("rating")}
-                onChange={e => this.ratingChanged(e.target.value)}
-              />
-            </div>
-            <button
-              id="submit-review-button"
-              type={!isEnabled ? "disabled" : "submit"}
-              disabled={!isEnabled}
-            >
-              Submit
-            </button>
-          </form>
-          <div id="error-message">
-            {this.state.errorMessage && <ErrorMessage />}
-          </div>
-        </div>
-        <div className="add-reviews-push" />
-      </>
-    );
-  }
+        <Formik
+          initialValues={{
+            tagline: "",
+            bandName: "",
+            venue: "",
+            content: "",
+            showDate:"",
+            rating: ""
+          }}
+          enableReinitialize
+          validate={values => {
+            const {
+              email,
+              tagline,
+              bandName,
+              content,
+              rating,
+              showDate
+            } = values;
+            const errors = {};
+            // // validate email
+            // if (!email) {
+            //   errors.email = "Required";
+            // } 
+            // // // // validate username
+            // if (!content) {
+            //   errors.username = "Please type your review";
+            // } else if (content.length < 2) {
+            //   errors.username = "must be at least two characters.";
+            // }
+            // return errors;
+          }}
+          onSubmit={async (values, actions) => {
+            actions.setSubmitting(true);
+            const submitReview = await AuthApiService.postUser({
+              tagline: values.tagline.trim(),
+              bandName: values.bandName.trim(),
+              venue: values.venue.trim(),
+              content: values.content.trim(),
+              showDate:values.showDate.trim(),
+              rating:values.rating.trim() 
+            });
+            // if (submitReview.errors) {
+            //   setHasErrors(apiCall.errors);
+            //   actions.setSubmitting(false);
+            // } else {
+            //   actions.setSubmitting(true);
+            //   history.push("/");
+            // }
+          }}
+        >
+          {({ submitForm, isSubmitting, isValid, dirty }) => (
+            <Form>
+              <div>
+                {isSubmitting && (
+                  <CircularProgress
+                    size={60}
+                    variant="indeterminate"
+                    id="spinner"
+                  />
+                )}
+              </div>
+              <Grid container spacing={2}>
+                <Grid item>
+                  <Field
+                    component={TextField}
+                    name="taglin"
+                    variant="outlined"
+                    placeholder="optional"
+                    fullWidth
+                    id="tagline"
+                    label="tagline"
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Field
+                    component={TextField}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="bandName"
+                    label="Last Name"
+                    name="bandName"
+                  />
+                </Grid>
+                <Grid item>
+                  <Field
+                    component={TextField}
+                    variant="outlined"
+                    type="content"
+                    required
+                    fullWidth
+                    id="content"
+                    label="What did you think?"
+                    name="content"
+                  />
+                </Grid>
+                <Grid item>
+                <Field component={KeyboardDatePicker} label="Show date" name="name" onChange={console.log('ok')} />
+                </Grid>
+                <Grid item xs={12}>                 
+                </Grid>
+              </Grid>
+              <Button
+                onClick={submitForm}
+                type="submit"
+                fullWidth
+                disabled={!isValid || isSubmitting || !dirty}
+                variant="contained"
+                color="default"
+                className={classes.submit}
+              >
+                Sign Up
+              </Button>
+            </Form>
+          )}
+        </Formik>
+        <p style={{ color: "red" }}>{errorMessage}</p>
+      </div>
+    </Container>
+  );
 }
-export default withRouter(AddReviewsPage);
+
+export default withRouter(SignupForm);
