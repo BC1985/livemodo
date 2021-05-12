@@ -5,7 +5,6 @@ const reviewSchema = new Schema(
   {
     tagline: {
       type: String,
-      required: true,
     },
     bandName: { type: String, required: true },
     showDate: { type: Date, required: true },
