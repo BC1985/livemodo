@@ -5,6 +5,7 @@ import { Formik, Form, Field } from "formik";
 import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Container, CircularProgress } from "@material-ui/core";
+import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { KeyboardDatePicker } from "formik-material-ui-pickers";
@@ -20,14 +21,13 @@ function AddreviewsPage({ history }) {
       flexDirection: "column",
       alignItems: "center",
     },
-    form: {
-      width: "100%",
-      marginTop: theme.spacing(8),
-      marginBottom: theme.spacing(8),
-    },
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 100,
+    }
   }));
   const options = [1, 2, 3, 4, 5];
   const optionsMap = options.map(opt => {
@@ -110,7 +110,7 @@ function AddreviewsPage({ history }) {
                 )}
               </div>
               <Grid container spacing={2}>
-                <Grid item>
+                <Grid item xs={12}>
                   <Field
                     component={TextField}
                     name="tagline"
@@ -133,7 +133,7 @@ function AddreviewsPage({ history }) {
                     name="bandName"
                   />
                 </Grid>
-                <Grid item>
+                <Grid item xs={12} sm={6}>
                   <Field
                     component={TextField}
                     variant="outlined"
@@ -143,7 +143,20 @@ function AddreviewsPage({ history }) {
                     label="Venue"
                     name="venue"
                   />
-                  <Grid item xs={12} sm={6}>
+                </Grid>
+                      <Grid item sm={8}>
+                      <FormControl variant="outlined" className={classes.formControl}>
+                      {/* <InputLabel variant="filled" htmlFor="showDate">Show Date</InputLabel> */}
+                        <Field            
+                        label="Show date"            
+                          component={KeyboardDatePicker}
+                          invalidDateMessage="Invalid date"
+                          name="showDate"
+                        />
+                        </FormControl>
+                      </Grid>
+                  <Grid item sm={4}>
+                  <FormControl  className={classes.formControl}>
                     <InputLabel htmlFor="rating">Rating</InputLabel>
                     <Field
                       component={Select}
@@ -157,16 +170,8 @@ function AddreviewsPage({ history }) {
                     >
                       {optionsMap}
                     </Field>
+                    </FormControl>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Field
-                      component={KeyboardDatePicker}
-                      label="Show date"
-                      invalidDateMessage="Invalid date"
-                      name="showDate"
-                    />
-                  </Grid>
-                </Grid>
                 <Grid item xs={12} sm={12}>
                   <Field
                     component={TextField}
