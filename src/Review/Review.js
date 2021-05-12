@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPortrait } from "@fortawesome/free-solid-svg-icons";
 import "../BrowseReviews/BrowseReviewsPage.css";
-import { postedAt, showDate } from "../utils/parseDate";
+import { dateAndTime } from "../utils/parseDate";
 import Rating from "../Rating/Rating";
 
 function Review({
@@ -11,7 +11,7 @@ function Review({
   tagline,
   venue,
   rating,
-  posted,
+  createdAt,
   bandName,
   showDate
 }) {
@@ -23,11 +23,11 @@ function Review({
           <span className="user-thumbnail">{userThumbnail}</span>{" "}
           <span className="username"> {username}</span>
         </p>
-        <p>posted: { postedAt(posted) }</p>
+        <p>posted: {dateAndTime(createdAt, "PPPPp")}</p>
         <h2 className="band-name">{bandName}</h2>
+        <p>{dateAndTime(showDate, "PPPP")}</p>
         <h3 className="tagline">{tagline}</h3>
         <p>Venue: {venue}</p>
-        <p>Date: { showDate(showDate) }</p>
         <Rating value={rating} />
         <div className="review-content">{content}</div>
       </div>
