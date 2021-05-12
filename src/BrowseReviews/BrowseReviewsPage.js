@@ -28,7 +28,7 @@ function BrowseReviewsPage() {
         bandName={review.bandName}
         showDate={review.showDate}
         tagline={review.tagline}
-        posted={review.createdAt}
+        createdAt={review.createdAt}
         venue={review.venue}
         content={review.content}
         username={review.username}
