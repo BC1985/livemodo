@@ -4,14 +4,14 @@ import { TextField, Select } from "formik-material-ui";
 import { Formik, Form, Field } from "formik";
 import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
-import { KeyboardDatePicker } from "@material-ui/pickers";
 import { Button, Container, CircularProgress } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { KeyboardDatePicker } from "formik-material-ui-pickers";
+import InputLabel from "@material-ui/core/InputLabel";
 
-function AddreviewsPage() {
+function AddreviewsPage({ history }) {
   const [hasErrors, setHasErrors] = useState({});
-
   const useStyles = makeStyles(theme => ({
     paper: {
       marginTop: theme.spacing(8),
@@ -29,6 +29,14 @@ function AddreviewsPage() {
       margin: theme.spacing(3, 0, 2),
     },
   }));
+  const options = [1, 2, 3, 4, 5];
+  const optionsMap = options.map(opt => {
+    return (
+      <MenuItem key={opt} value={opt}>
+        {opt}
+      </MenuItem>
+    );
+  });
   const classes = useStyles();
   // show any error message if field is populated
   const errorMessage = Object.values(hasErrors).filter(err => err.length !== 0);
@@ -46,31 +54,30 @@ function AddreviewsPage() {
             bandName: "",
             venue: "",
             content: "",
-            showDate:"",
+            showDate: new Date(),
             rating: ""
           }}
           enableReinitialize
           validate={values => {
-            const {
-              email,
-              tagline,
-              bandName,
-              content,
-              rating,
-              showDate
-            } = values;
+            const { bandName, content, venue } = values;
             const errors = {};
-            // // validate email
-            // if (!email) {
-            //   errors.email = "Required";
-            // } 
-            // // // // validate username
-            // if (!content) {
-            //   errors.username = "Please type your review";
-            // } else if (content.length < 2) {
-            //   errors.username = "must be at least two characters.";
-            // }
-            // return errors;
+            // validate email
+            if (!bandName) {
+              errors.bandName = "Artist name is required";
+            }
+            // // // validate username
+            if (!content) {
+              errors.content = "Please type your review";
+            } else if (content.length < 2) {
+              errors.content = "mMst be at least two characters.";
+            }
+            // validate venue
+            if (!venue) {
+              errors.venue = "Venue is required";
+            } else if (venue.length < 2) {
+              errors.venue = "Must be at least two characters.";
+            }
+            return errors;
           }}
           onSubmit={async (values, actions) => {
             actions.setSubmitting(true);
@@ -82,13 +89,13 @@ function AddreviewsPage() {
               showDate: values.showDate.trim(),
               rating: values.rating.trim(),
             });
-            // if (submitReview.errors) {
-            //   setHasErrors(apiCall.errors);
-            //   actions.setSubmitting(false);
-            // } else {
-            //   actions.setSubmitting(true);
-            //   history.push("/");
-            // }
+            if (submitReview.errors) {
+              setHasErrors(submitReview.errors);
+              actions.setSubmitting(false);
+            } else {
+              actions.setSubmitting(true);
+              history.push("/");
+            }
           }}
         >
           {({ submitForm, isSubmitting, isValid, setFieldValue }) => (
@@ -136,42 +143,41 @@ function AddreviewsPage() {
                     label="Venue"
                     name="venue"
                   />
+                  <Grid item xs={12} sm={6}>
+                    <InputLabel htmlFor="rating">Rating</InputLabel>
+                    <Field
+                      component={Select}
+                      name="rating"
+                      onChange={e => {
+                        setFieldValue("rating", e.target.value);
+                      }}
+                      inputProps={{
+                        id: "rating",
+                      }}
+                    >
+                      {optionsMap}
+                    </Field>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      component={KeyboardDatePicker}
+                      label="Show date"
+                      invalidDateMessage="Invalid date"
+                      name="showDate"
+                    />
+                  </Grid>
                 </Grid>
-                <Grid item>
+                <Grid item xs={12} sm={12}>
                   <Field
                     component={TextField}
                     variant="outlined"
                     type="content"
+                    multiline
                     required
                     fullWidth
                     id="content"
                     label="What did you think?"
                     name="content"
-                  />
-                  <Field
-                    component={Select}
-                    name="rating"
-                    inputProps={{
-                      id: "rating",
-                    }}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                  </Field>
-                </Grid>
-                <Grid item>
-                  <Field
-                    component={KeyboardDatePicker}
-                    label="Show date"
-                    name="showDate"
-                    disableFuture={true}
-                    onChange={val => {
-                      console.log(val);
-                      setFieldValue("dob", val);
-                    }}
                   />
                 </Grid>
               </Grid>
@@ -179,7 +185,7 @@ function AddreviewsPage() {
                 onClick={submitForm}
                 type="submit"
                 fullWidth
-                disabled={!isValid || isSubmitting }
+                disabled={!isValid || isSubmitting}
                 variant="contained"
                 color="default"
                 className={classes.submit}
