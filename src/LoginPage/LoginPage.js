@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { TextField } from "formik-material-ui";
 import { Formik, Form, Field } from "formik";
 import { makeStyles } from "@material-ui/core/styles";
@@ -9,6 +9,7 @@ import {
   FormControlLabel,
   Checkbox,
   CircularProgress,
+  Link
 } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -149,7 +150,7 @@ function LoginForm({ history, changeLoginState }) {
                 Sign Up
               </Button>
               <Typography component="h5" align="center">
-                Don't have an account? <Link to="/register">Sign up</Link>
+                Don't have an account? <Link href="/register">Sign up</Link>
               </Typography>
             </Form>
           )}
