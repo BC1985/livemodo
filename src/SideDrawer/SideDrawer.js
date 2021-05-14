@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "./SideDrawer.css";
-import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
-import { List, ListItem, IconButton, Drawer } from "@material-ui/core/";
+import { List, IconButton, Drawer } from "@material-ui/core/";
+import { showRoutes } from "../NavBar/Navbar";
 
-const SideDrawer = ({ routes }) => {
+const SideDrawer = ({ routes, authenticateRoutes, isLoggedIn }) => {
   const useStyles = makeStyles({
     list: {
       width: 200,
+      margin: 20,
     },
   });
 
@@ -29,15 +30,7 @@ const SideDrawer = ({ routes }) => {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <List>
-        {routes.map(route => (
-          <ListItem button key={route.name}>
-            <NavLink to={route.to} onClick={route.onClick}>
-              {route.name}
-            </NavLink>
-          </ListItem>
-        ))}
-      </List>
+      <List>{showRoutes(isLoggedIn ? authenticateRoutes : routes)}</List>
     </div>
   );
   return (

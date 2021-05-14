@@ -22,7 +22,7 @@ require("dotenv").config();
 
 function App() {
   const [isLoggedIn, setIsloggedIn] = useState(TokenService.hasAuthToken());
-  const [setIsSideDrawerOpen] = useState(false);
+  const [isSideDrawerOpen, setIsSideDrawerOpen] = useState(false);
 
   const changeLoginState = () => {
     setIsloggedIn(state => !state);
@@ -61,7 +61,7 @@ function App() {
     },
     {
       to: "/reviews",
-      name: "Browse Reviews",
+      name: "Reviews",
     },
     {
       to: "/post",

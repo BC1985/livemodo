@@ -5,7 +5,16 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/core/styles";
 import SideDrawer from "../SideDrawer/SideDrawer";
 
-const Navbar = ({ routes, isLoggedIn, authenticateRoutes }) => {
+export const showRoutes = routes => {
+  return routes.map(r => (
+    <li key={r.name}>
+      <NavLink to={r.to} onClick={r.onClick}>
+        {r.name}
+      </NavLink>
+    </li>
+  ));
+};
+const Navbar = ({ routes, authenticateRoutes, isLoggedIn }) => {
   const useStyles = makeStyles(() => ({
     title: {
       flexGrow: 1,
@@ -16,21 +25,17 @@ const Navbar = ({ routes, isLoggedIn, authenticateRoutes }) => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <SideDrawer routes={isLoggedIn ? authenticateRoutes : routes} />
+        <SideDrawer
+          isLoggedIn={isLoggedIn}
+          routes={routes}
+          authenticateRoutes={authenticateRoutes}
+        />
         <Typography variant="h6" className={classes.title}>
           Livemodo
         </Typography>
         <div className="spacer" />
         <div className="nav-links">
-          <ul>
-            {routes.map(route => (
-              <li key={route.name}>
-                <NavLink to={route.to}>
-                  {route.name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+          <ul>{showRoutes(isLoggedIn ? authenticateRoutes : routes)}</ul>
         </div>
       </Toolbar>
     </AppBar>
