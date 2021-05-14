@@ -5,23 +5,15 @@ import "../BrowseReviews/BrowseReviewsPage.css";
 import { dateAndTime } from "../utils/parseDate";
 import Rating from "../Rating/Rating";
 
-function Review({
-  username,
-  content,
-  tagline,
-  venue,
-  rating,
-  createdAt,
-  bandName,
-  showDate
-}) {
+function Review({ review }) {
   const userThumbnail = <FontAwesomeIcon icon={faPortrait} />;
+  const { content, tagline, venue, rating, createdAt, bandName, showDate } =
+    review;
   return (
     <>
       <div className="review">
         <p className="user-name">
           <span className="user-thumbnail">{userThumbnail}</span>{" "}
-          <span className="username"> {username}</span>
         </p>
         <p>posted: {dateAndTime(createdAt, "PPPPp")}</p>
         <h2 className="band-name">{bandName}</h2>
