@@ -6,12 +6,17 @@ import { List, IconButton, Drawer } from "@material-ui/core/";
 import { showRoutes } from "../NavBar/Navbar";
 
 const SideDrawer = ({ routes, authenticateRoutes, isLoggedIn }) => {
-  const useStyles = makeStyles({
+  const useStyles = makeStyles(theme => ({
     list: {
       width: 200,
       margin: 20,
     },
-  });
+    icon: {
+      [theme.breakpoints.up("sm")]: {
+        display: "none",
+      },
+    },
+  }));
 
   const classes = useStyles();
   const [state, setState] = useState(false);
@@ -43,7 +48,7 @@ const SideDrawer = ({ routes, authenticateRoutes, isLoggedIn }) => {
           color="inherit"
           aria-label="menu"
         >
-          <MenuIcon />
+          <MenuIcon className={classes.icon} />
         </IconButton>
         <Drawer open={state} onClose={toggleDrawer(false)}>
           {list()}
