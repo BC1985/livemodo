@@ -56,7 +56,6 @@ router.route("/post").post(auth, async (req, res) => {
     venue,
     showDate,
     content,
-    timestamps,
     rating,
   } = req.body;
   try {
@@ -71,7 +70,9 @@ router.route("/post").post(auth, async (req, res) => {
     });
     await newReview.validate();
     await newReview.save();
-    res.json({ message: "New review added", created_at: timestamps });
+    console.log(newReview)
+    console.log(res.locals)
+    res.json({ message: "New review added"});
   } catch (error) {
     // let errors = handleErrors(error);
     res.status(500).json(error);
