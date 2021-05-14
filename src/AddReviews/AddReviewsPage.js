@@ -86,8 +86,8 @@ function AddreviewsPage({ history }) {
               bandName: values.bandName.trim(),
               venue: values.venue.trim(),
               content: values.content.trim(),
-              showDate: values.showDate.trim(),
-              rating: values.rating.trim(),
+              showDate: values.showDate,
+              rating: values.rating,
             });
             if (submitReview.errors) {
               setHasErrors(submitReview.errors);
