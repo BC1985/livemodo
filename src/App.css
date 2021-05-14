@@ -8,15 +8,3 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-
-a:link {
-  color: whitesmoke;
-  text-decoration: none;
-}
-
-a:visited {
-  color: whitesmoke;
-}
-a:hover {
-  color: white;
-}

@@ -4,7 +4,6 @@
 }
 
 .nav-wrapper {
-  color: white;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -15,11 +14,22 @@
 .nav-links {
   justify-content: space-evenly;
 }
+.nav-links a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.nav-links a:visited {
+  color: whitesmoke;
+}
+.nav-links a:hover {
+  color: white;
+}
+
 
 nav {
   display: flex;
   flex-direction: row;
-  background-image: linear-gradient(to left, rgb(58, 69, 83), rgb(18, 18, 19));
   color: white;
   align-items: center;
   justify-items: center;
