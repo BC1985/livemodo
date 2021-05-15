@@ -15,10 +15,15 @@ export const showRoutes = routes => {
   ));
 };
 const Navbar = ({ routes, authenticateRoutes, isLoggedIn }) => {
-  const useStyles = makeStyles(() => ({
+  const useStyles = makeStyles(theme => ({
     title: {
       flexGrow: 1,
     },
+    links: {
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      }
+    }
   }));
   const classes = useStyles();
 
@@ -34,7 +39,7 @@ const Navbar = ({ routes, authenticateRoutes, isLoggedIn }) => {
           Livemodo
         </Typography>
         <div className="spacer" />
-        <div className="nav-links">
+        <div className={`nav-links ${classes.links}`}>
           <ul>{showRoutes(isLoggedIn ? authenticateRoutes : routes)}</ul>
         </div>
       </Toolbar>
