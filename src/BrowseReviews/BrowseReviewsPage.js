@@ -3,7 +3,7 @@ import "./BrowseReviewsPage.css";
 import Review from "../Review/Review";
 import config from "../config";
 import Spinner from "../Spinners/Spinner";
-import Typography from "@material-ui/core/Typography";
+import {Typography, Container} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 function BrowseReviewsPage() {
@@ -34,7 +34,7 @@ function BrowseReviewsPage() {
     <Review key={review._id} review={review} />
   ));
   return (
-    <>
+    <Container maxWidth="sm">
       {isLoading ? <Spinner /> : null}
       <main role="main">
         <Typography variant="h2" className={classes.heading}>
@@ -42,7 +42,7 @@ function BrowseReviewsPage() {
         </Typography>
         <div className="review">{allReviews}</div>
       </main>
-    </>
+    </Container>
   );
 }
 export default BrowseReviewsPage;
