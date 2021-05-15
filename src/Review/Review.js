@@ -66,7 +66,7 @@ function Review({ review }) {
       <Card className={classes.card}>
         <CardHeader
           avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
+            <Avatar aria-label="recipe" variant="rounded" className={classes.avatar}>
               R
             </Avatar>
           }
