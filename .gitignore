@@ -26,3 +26,4 @@ src/serviceWorker.js
 src/LoginComponent.js
 .env
 src/images/Untitled-3.psd
+backend/images
