@@ -1,31 +1,47 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPortrait } from "@fortawesome/free-solid-svg-icons";
-import "../BrowseReviews/BrowseReviewsPage.css";
-import { dateAndTime } from "../utils/parseDate";
-import clsx from "clsx";
-import Rating from "../Rating/Rating";
-import { makeStyles } from "@material-ui/core/styles";
-import { red } from "@material-ui/core/colors";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import Typography from "@material-ui/core/Typography";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
-import TodayOutlinedIcon from "@material-ui/icons/TodayOutlined";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import React, { useEffect, useState } from "react"
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faPortrait } from "@fortawesome/free-solid-svg-icons";
+import "../BrowseReviews/BrowseReviewsPage.css"
+import { dateAndTime } from "../utils/parseDate"
+import clsx from "clsx"
+import Rating from "../Rating/Rating"
+import { makeStyles } from "@material-ui/core/styles"
+import { red } from "@material-ui/core/colors"
+import Card from "@material-ui/core/Card"
+import CardHeader from "@material-ui/core/CardHeader"
+import Typography from "@material-ui/core/Typography"
+import CardMedia from "@material-ui/core/CardMedia"
+import CardContent from "@material-ui/core/CardContent"
+import CardActions from "@material-ui/core/CardActions"
+import Collapse from "@material-ui/core/Collapse"
+import Avatar from "@material-ui/core/Avatar"
+import IconButton from "@material-ui/core/IconButton"
+import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined"
+import TodayOutlinedIcon from "@material-ui/icons/TodayOutlined"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import { arrayBufferToBase64 } from "../utils/imageUtil"
+import config from "../config"
 
 function Review({ review }) {
-  const userThumbnail = <FontAwesomeIcon icon={faPortrait} />;
+  // const userThumbnail = <FontAwesomeIcon icon={faPortrait} />;
+  const [expanded, setExpanded] = useState(false)
+  const [image, setImage] = useState("")
   const { content, tagline, venue, rating, createdAt, bandName, showDate } =
-    review;
-
-  const [expanded, setExpanded] = React.useState(false);
+    review
+  useEffect(() => {
+    const getImage = async () => {
+      try {
+        const data = await fetch(`${config.API_BASE_URL}/images`)        
+        const img = await data.json()
+        const base64Flag = "data:image/jpeg;base64,"
+        const imageStr = arrayBufferToBase64(img.img.data.data)
+        setImage(base64Flag + imageStr)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    getImage()
+  }, [])
 
   const useStyles = makeStyles(theme => ({
     root: {
@@ -54,28 +70,34 @@ function Review({ review }) {
     avatar: {
       backgroundColor: red[500],
     },
-  }));
-  const classes = useStyles();
+  }))
+  const classes = useStyles()
 
   const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+    setExpanded(!expanded)
+  }
 
   return (
     <>
       <Card className={classes.card}>
         <CardHeader
           avatar={
-            <Avatar aria-label="recipe" variant="rounded" className={classes.avatar}>
-              R
+            <Avatar
+              aria-label="avatar"
+              variant="rounded"
+              className={classes.avatar}
+            >
+              U
             </Avatar>
           }
           title={tagline}
           subheader={dateAndTime(createdAt, "PPPPp")}
         />
         <CardMedia
+          component="img"
+          src={image}
           className={classes.media}
-          image="https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1390&q=80"
+          image={image}
         />
 
         <CardContent>
@@ -112,7 +134,7 @@ function Review({ review }) {
         </Collapse>
       </Card>
     </>
-  );
+  )
 }
 
-export default Review;
+export default Review
