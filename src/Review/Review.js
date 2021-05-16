@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react"
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faPortrait } from "@fortawesome/free-solid-svg-icons";
 import "../BrowseReviews/BrowseReviewsPage.css"
 import { dateAndTime } from "../utils/parseDate"
 import clsx from "clsx"
@@ -23,23 +21,36 @@ import { arrayBufferToBase64 } from "../utils/imageUtil"
 import config from "../config"
 
 function Review({ review }) {
-  // const userThumbnail = <FontAwesomeIcon icon={faPortrait} />;
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(false);
   const [image, setImage] = useState("")
+  const [avatar, setAvatar] = useState("")
   const { content, tagline, venue, rating, createdAt, bandName, showDate } =
     review
-  useEffect(() => {
-    const getImage = async () => {
-      try {
-        const data = await fetch(`${config.API_BASE_URL}/images`)        
-        const img = await data.json()
-        const base64Flag = "data:image/jpeg;base64,"
-        const imageStr = arrayBufferToBase64(img.img.data.data)
-        setImage(base64Flag + imageStr)
-      } catch (e) {
-        console.log(e)
-      }
+  const getImage = async () => {
+    try {
+      const data = await fetch(`${config.API_BASE_URL}/images`)
+      const img = await data.json()
+      const base64Flag = "data:image/jpeg;base64,"
+      const imageStr = arrayBufferToBase64(img.img.data.data)
+      setImage(base64Flag + imageStr)
+    } catch (e) {
+      console.log(e)
     }
+  };
+  const getAvatar = async () => {
+    try {
+      const data = await fetch(`${config.API_BASE_URL}/images/avatars`)      
+      const avatar = await data.json();
+      const base64Flag = "data:image/jpeg;base64,";
+      const imageStr = arrayBufferToBase64(avatar.img.data.data);
+      setAvatar(base64Flag + imageStr);
+      console.log('AVATAR',avatar)
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    getAvatar()
     getImage()
   }, [])
 
@@ -67,9 +78,6 @@ function Review({ review }) {
     expandOpen: {
       transform: "rotate(180deg)",
     },
-    avatar: {
-      backgroundColor: red[500],
-    },
   }))
   const classes = useStyles()
 
@@ -85,9 +93,9 @@ function Review({ review }) {
             <Avatar
               aria-label="avatar"
               variant="rounded"
-              className={classes.avatar}
+              alt="user"
+              src={avatar}
             >
-              U
             </Avatar>
           }
           title={tagline}
@@ -97,7 +105,6 @@ function Review({ review }) {
           component="img"
           src={image}
           className={classes.media}
-          image={image}
         />
 
         <CardContent>

@@ -4,19 +4,23 @@ import { apiService } from "../services/auth-api-service";
 import { TextField } from "formik-material-ui";
 import { Formik, Form, Field } from "formik";
 import { makeStyles } from "@material-ui/core/styles";
+import PublishOutlinedIcon from "@material-ui/icons/PublishOutlined";
+import axios from "axios";
 import {
   Button,
   Container,
   FormControlLabel,
   Checkbox,
   CircularProgress,
+  Grid,
+  Typography,
+  Fab,
 } from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 
-function SignupForm({history, changeLoginState}) {
+function SignupForm({ history, changeLoginState }) {
   const [checked, setChecked] = useState(Boolean);
   const [hasErrors, setHasErrors] = useState({});
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const useStyles = makeStyles(theme => ({
     paper: {
@@ -34,11 +38,24 @@ function SignupForm({history, changeLoginState}) {
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
+    uploadDiv: {
+      marginRight: theme.spacing(2),
+      marginTop: theme.spacing(3),
+    },
+    icon: {
+      marginRight: theme.spacing(2),
+    },
+    input: {
+      display: "none",
+    },
   }));
   const classes = useStyles();
 
   const handleCheckbox = () => {
     setChecked(checked => !checked);
+  };
+  const handleUploadClick = e => {
+    setSelectedFile(e.target.files[0]);
   };
   // show any error message if field is populated
   const errorMessage = Object.values(hasErrors).filter(err => err.length !== 0);
@@ -58,6 +75,7 @@ function SignupForm({history, changeLoginState}) {
             email: "",
             password: "",
             repeatPassword: "",
+            selectedFile: null,
           }}
           enableReinitialize
           validate={values => {
@@ -141,9 +159,23 @@ function SignupForm({history, changeLoginState}) {
               actions.setSubmitting(true);
               history.push("/");
             }
+            // upload avatar
+            const formData = new FormData();
+            formData.append(
+              "avatar",
+              values.selectedFile,
+              values.selectedFile.name
+            );
+
+            const res = await axios.post(
+              "http://localhost:5000/images/avatars",
+              formData
+            );
+            const data = await res;
+            return data;
           }}
         >
-          {({ submitForm, isSubmitting, isValid, dirty }) => (
+          {({ submitForm, isSubmitting, isValid, setFieldValue }) => (
             <Form>
               <div>
                 {isSubmitting && (
@@ -233,6 +265,32 @@ function SignupForm({history, changeLoginState}) {
                     type="password"
                     id="passwordRepeat"
                   />
+                </Grid>
+              </Grid>
+              <Grid item className={classes.uploadDiv}>
+                <input
+                  accept="image/*"
+                  id="file-upload"
+                  encType="multipart/form-data"
+                  className={classes.input}
+                  type="file"
+                  onChange={e => {
+                    setFieldValue("selectedFile", e.target.files[0]);
+                    handleUploadClick(e);
+                  }}
+                />
+                <label htmlFor="file-upload">
+                  <Fab component="span" className={classes.icon}>
+                    <PublishOutlinedIcon />
+                  </Fab>
+                </label>
+                <Typography variant="body2" component="span">
+                  Upload avatar
+                </Typography>
+                <Grid>
+                  <Typography variant="body2" component="span">
+                    {selectedFile && selectedFile.name}
+                  </Typography>
                 </Grid>
               </Grid>
               <Button
