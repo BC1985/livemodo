@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const authRouter = require("./services/authRouter");
 const reviewsRouter = require("./routes/reviews")
 const usersRouter = require("./routes/users")
+const imageRouter = require("./routes/image")
 require("dotenv").config();
 
 const app = express();
@@ -35,6 +36,7 @@ function close() {
 app.use("/reviews", reviewsRouter);
 app.use("/users", usersRouter);
 app.use("/login", authRouter);
+app.use("/images", imageRouter);
 
 app.listen(port, () => {
   const dbName = 'livemodo api'
