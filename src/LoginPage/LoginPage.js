@@ -147,7 +147,7 @@ function LoginForm({ history, changeLoginState }) {
                 color="default"
                 className={classes.submit}
               >
-                Sign Up
+                Log in
               </Button>
               <Typography component="h5" align="center">
                 Don't have an account? <Link href="/register">Sign up</Link>

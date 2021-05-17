@@ -195,7 +195,7 @@ function AddreviewsPage({ history }) {
                 color="default"
                 className={classes.submit}
               >
-                Sign Up
+                Submit review
               </Button>
             </Form>
           )}
