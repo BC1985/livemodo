@@ -35,6 +35,18 @@ router.route("/").get(async (req, res) => {
     });
   }
 });
+router.route("/all").get(async (req, res) => {
+  const allUsers = User.find();
+  try {
+    const data = await allUsers;
+    res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: error,
+    });
+  }
+});
 router.route("/current-user").get(auth, (req, res, next) => {
   res.json(res.locals.user);
 });
@@ -50,6 +62,7 @@ router.route("/add").post(async (req, res) => {
       email: "",
       password: "",
       username: "",
+      avatar:Buffer
     };
     // validation errors
     if (err.message.includes("User validation failed")) {
@@ -60,13 +73,14 @@ router.route("/add").post(async (req, res) => {
     return errors;
   };
   try {
-    const { firstName, lastName, email, password, username } = req.body;
+    const { firstName, lastName, email, password, username, avatar } = req.body;
     const newUser = await User({
       firstName,
       lastName,
       email,
       password,
       username,
+      avatar
     });
     await newUser.validate();
     newUser.save(err => {

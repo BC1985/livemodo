@@ -41,6 +41,9 @@ const userSchema = new Schema({
     type: String,
     required: [true, "Username is required"],
   },
+  avatar:{
+    img: { data: Buffer, contentType: String },
+  },
   resetPasswordToken: String,
   resetPasswordExpire: Date
 });
